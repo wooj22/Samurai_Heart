@@ -15,12 +15,17 @@ void MenuScene::Update() {
 
 	if (InputManager::Get().IsKeyPressed(VK_SPACE))
 		SceneManager::Get().ChangeScene(GameApp::PLAY);
+
+	if(InputManager::Get().IsKeyPressed('I'))
+		SceneManager::Get().ChangeScene(GameApp::INFO);
 }
 
 /// Render
 void MenuScene::Render() {
 	__super::Render();
-	RenderManager::Get().DrawTextW(L"[Menu Scene] Pressed Spacebar", 50, 50);
+	RenderManager::Get().DrawTextW(L"Samurai Heart", 50, 50);
+	RenderManager::Get().DrawTextW(L"Pressed [Spacebar] -> Play Scene", 50, 80);
+	RenderManager::Get().DrawTextW(L"Pressed [I] -> Info Scene", 50, 120);
 }
 
 /// Exit

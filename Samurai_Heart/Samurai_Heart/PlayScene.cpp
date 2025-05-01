@@ -20,7 +20,7 @@ void PlayScene::Update() {
 /// Render
 void PlayScene::Render() {
 	__super::Render();
-	RenderManager::Get().DrawTextW(L"[Play Scene] Pressed Spacebar", 50, 50);
+	RenderManager::Get().DrawTextW(L"Pressed [Spacebar] -> Menu Scene", 50, 50);
 }
 
 /// Exit

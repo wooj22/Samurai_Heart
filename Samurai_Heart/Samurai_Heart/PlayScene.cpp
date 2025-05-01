@@ -1,0 +1,31 @@
+#include "PlayScene.h"
+#include "GameApp.h"
+#include "../GameEngineLib/framework.h"
+
+/// Start
+void PlayScene::Start() {
+	OutputDebugStringA("PlayScene Start\n");
+
+	__super::Start();
+}
+
+/// Update
+void PlayScene::Update() {
+	__super::Update();
+
+	if (InputManager::Get().IsKeyPressed(VK_SPACE))
+		SceneManager::Get().ChangeScene(GameApp::MENU);
+}
+
+/// Render
+void PlayScene::Render() {
+	__super::Render();
+	RenderManager::Get().DrawTextW(L"[Play Scene] Pressed Spacebar", 50, 50);
+}
+
+/// Exit
+void PlayScene::Exit() {
+	__super::Exit();
+
+	OutputDebugStringA("PlayScene Exit\n");
+}

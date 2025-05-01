@@ -129,13 +129,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h" />
     <ClInclude Include="GameApp.h" />
-    <ClInclude Include="targetver.h" />
+    <ClInclude Include="InfoScene.h" />
+    <ClInclude Include="MenuScene.h" />
+    <ClInclude Include="PlayScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="InfoScene.cpp" />
+    <ClCompile Include="MenuScene.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineLib\GameEngineLib.vcxproj">

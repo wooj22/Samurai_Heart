@@ -1,10 +1,16 @@
 #pragma once
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <string>
 #include <vector>
+using namespace std;
 
 /* Frame Struct */
 struct Frame
 {
 	int x, y, width, height;     // atlas data (left, top, width, height)
+	Frame() = default;
     Frame(int x, int y, int width, int height, float duration)
         : x(x), y(y), width(width), height(height) {}
 };
@@ -13,7 +19,7 @@ struct Frame
 class AnimationClip
 {
 private:
-    std::vector<Frame> frames;  // 한 애니메이션에 포함된 프레임들
+    vector<Frame> frames;  // 한 애니메이션에 포함된 프레임들
     int currentFrame = 0;
 	float frameDuration = 0.0f;
     float timer = 0.0f;
@@ -21,6 +27,39 @@ private:
 public:
 	AnimationClip() = default;
 	~AnimationClip() = default;
+
+    // Load From File
+    void LoadFromFile(const string& filePath) {
+        ifstream file(filePath);
+        string line;
+
+        if (!file.is_open()) {
+            cerr << "Failed to open file: " << filePath << std::endl;
+            return;
+        }
+
+        // 첫 번째 라인 건너뜀 (헤더)
+        std::getline(file, line);
+
+        while (std::getline(file, line)) {
+            istringstream ss(line);
+            string token;
+            Frame frame;
+
+			// parse frame data
+            getline(ss, token, ','); frame.x = std::stoi(token);
+            getline(ss, token, ','); frame.y = std::stoi(token);
+            getline(ss, token, ','); frame.width = std::stoi(token);
+            getline(ss, token, ','); frame.height = std::stoi(token);
+
+            AddFrame(frame);
+        }
+
+        file.close();
+    }
+
+    // Set Frame Duration
+    void SetFrameDuration(float duration) { frameDuration = duration; }
 
     // Add Frame (atlas data)
     void AddFrame(Frame& frame) { frames.push_back(frame); }

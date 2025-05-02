@@ -6,18 +6,19 @@
 #include "Sprite.h"
 #include "AnimationClip.h"
 
-// player¿Í bossÀÇ base class
 class Character : public Object
 {
-private:
+protected:
+	// transform
 	Vector2 position;
 	float width;
 	float height;
-	float halfWidth;
-	float halfHeight;
 
+	// components
 	Rigidbody rigidbody;
 	BoxCollider collider;
+	Sprite* currentSprite;
+	AnimationClip* currentAnimation;
 
 public :
 	Character() = default;

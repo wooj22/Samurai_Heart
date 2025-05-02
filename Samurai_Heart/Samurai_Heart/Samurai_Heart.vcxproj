@@ -129,32 +129,36 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationClip.h" />
+    <ClInclude Include="BaseState.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BoxCollider.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="GameApp.h" />
+    <ClInclude Include="Idle.h" />
     <ClInclude Include="InfoScene.h" />
+    <ClInclude Include="Jump.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Rigidbody.h" />
+    <ClInclude Include="Run.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
+    <ClCompile Include="Idle.cpp" />
     <ClCompile Include="InfoScene.cpp" />
+    <ClCompile Include="Jump.cpp" />
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
-    <ClCompile Include="Rigidbody.cpp" />
-    <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Run.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineLib\GameEngineLib.vcxproj">

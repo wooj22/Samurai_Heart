@@ -1,5 +1,6 @@
 #pragma once
 #include <gdiplus.h>
+#include "AnimationClip.h"
 
 class Sprite
 {
@@ -12,7 +13,7 @@ public:
 	~Sprite() { delete bitmap; }
 
 	// Load Image
-    void Load(wchar_t* path)
+    void Load(const wchar_t* path)
     {
         if (bitmap) delete bitmap;
         bitmap = new Bitmap(path);

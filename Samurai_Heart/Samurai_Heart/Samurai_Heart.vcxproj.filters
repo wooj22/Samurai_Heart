@@ -25,11 +25,14 @@
     <Filter Include="헤더 파일\Component">
       <UniqueIdentifier>{7204133d-e349-48e2-9563-b961bdb2b218}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\Component">
-      <UniqueIdentifier>{ef442b3d-650a-43c9-99d4-aec0293b7e4d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Object">
       <UniqueIdentifier>{4a857b60-f0a5-4000-b470-c9057b2a8fa6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\PlayerStateFSM">
+      <UniqueIdentifier>{89e3de31-31ff-443d-a0a8-036e5b7b9c64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\PlayerStateFSM">
+      <UniqueIdentifier>{2b031964-e127-4a68-9ca1-f4e4aa05356b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +57,7 @@
     <ClInclude Include="Player.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
-    <ClInclude Include="Animation.h">
+    <ClInclude Include="AnimationClip.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
     <ClInclude Include="BoxCollider.h">
@@ -68,6 +71,18 @@
     </ClInclude>
     <ClInclude Include="Camera.h">
       <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Idle.h">
+      <Filter>헤더 파일\PlayerStateFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseState.h">
+      <Filter>헤더 파일\PlayerStateFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Jump.h">
+      <Filter>헤더 파일\PlayerStateFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Run.h">
+      <Filter>헤더 파일\PlayerStateFSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -95,17 +110,17 @@
     <ClCompile Include="Player.cpp">
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Animation.cpp">
-      <Filter>소스 파일\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Rigidbody.cpp">
-      <Filter>소스 파일\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Sprite.cpp">
-      <Filter>소스 파일\Component</Filter>
-    </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>소스 파일\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Idle.cpp">
+      <Filter>소스 파일\PlayerStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Jump.cpp">
+      <Filter>소스 파일\PlayerStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Run.cpp">
+      <Filter>소스 파일\PlayerStateFSM</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

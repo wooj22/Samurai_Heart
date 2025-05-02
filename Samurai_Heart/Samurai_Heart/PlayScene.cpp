@@ -1,18 +1,19 @@
 #include "PlayScene.h"
 #include "GameApp.h"
+#include "Player.h"
 #include "../GameEngineLib/framework.h"
 
 /// Start
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
-
+	
 	__super::Start();
 }
 
 /// Update
 void PlayScene::Update() {
 	__super::Update();
-
+	
 	if (InputManager::Get().IsKeyPressed(VK_SPACE))
 		SceneManager::Get().ChangeScene(GameApp::MENU);
 }

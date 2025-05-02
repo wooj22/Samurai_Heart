@@ -19,17 +19,17 @@ void InputManager::Update()
 	}
 }
 
-bool InputManager::IsKeyDown(int vKey)
+bool InputManager::GetKey(int vKey)
 {
 	return (m_currState[vKey] & 0x8000) != 0;
 }
 
-bool InputManager::IsKeyPressed(int vKey)
+bool InputManager::GetKeyDown(int vKey)
 {
 	return (!(m_prevState[vKey] & 0x8000) && (m_currState[vKey] & 0x8000));
 }
 
-bool InputManager::IsKeyReleased(int vKey)
+bool InputManager::GetKeyUP(int vKey)
 {
 	return ((m_prevState[vKey] & 0x8000) && !(m_currState[vKey] & 0x8000));
 }

@@ -57,6 +57,7 @@ public:
 	bool isFloor;
 	bool isWall;
 	bool isJumping;
+	bool isDash;
 	bool isMpEmpty;
 	bool isChargeMax;
 

@@ -17,9 +17,9 @@ public:
 	void Update();
 	void Release() {};
 
-	bool IsKeyDown(int vKey);
-	bool IsKeyPressed(int vKey);
-	bool IsKeyReleased(int vKey);
+	bool GetKey(int vKey);
+	bool GetKeyDown(int vKey);
+	bool GetKeyUP(int vKey);
 
 	friend class Singleton<InputManager>;
 };

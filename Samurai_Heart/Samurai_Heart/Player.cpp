@@ -82,7 +82,37 @@ void Player::ChangeState(PlayerState newState)
 /// Key Input Handler
 void Player::KeyInputHandler() 
 {
+	// move key
+	if (InputManager::Get().GetKeyDown(MoveLKey))
+		isMoveLKey = true;
+	if (InputManager::Get().GetKeyUP(MoveLKey))
+		isMoveLKey = false;
+	if (InputManager::Get().GetKeyDown(MoveRKey))
+		isMoveRKey = true;
+	if (InputManager::Get().GetKeyUP(MoveRKey))
+		isMoveRKey = false;
 
+	// jump key
+	if (InputManager::Get().GetKeyDown(JumpKey))
+		isJumpKey = true;
+	if (InputManager::Get().GetKeyUP(JumpKey))
+		isJumpKey = false;
+
+	// attack key
+	if (InputManager::Get().GetKeyDown(AttackKey))
+		isAttackKey = true;
+	if (InputManager::Get().GetKeyUP(AttackKey))
+		isAttackKey = false;
+	if (InputManager::Get().GetKeyDown(SpecialAttackKey))
+		isSpecialAttackKey = true;
+	if (InputManager::Get().GetKeyUP(SpecialAttackKey))
+		isSpecialAttackKey = false;
+
+	// defense key
+	if (InputManager::Get().GetKeyDown(DefenseKey))
+		isDefenseKey = true;
+	if (InputManager::Get().GetKeyUP(DefenseKey))
+		isDefenseKey = false;
 }
 
 /// ReSize

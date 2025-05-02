@@ -21,7 +21,7 @@ void Idle::UpdateLogic() {
 void Idle::Render() {
 	// animation render
 	RenderManager::Get().DrawImage(player->currentSprite->GetBitmap(), 
-		player->position.x, player->position.y, 
+		1000, 500, 
 		player->currentAnimation->GetCurrentFrame().x, player->currentAnimation->GetCurrentFrame().y,
 		player->width, player->height);
 }

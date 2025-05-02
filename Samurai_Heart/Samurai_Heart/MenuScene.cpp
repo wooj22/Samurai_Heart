@@ -13,10 +13,10 @@ void MenuScene::Start() {
 void MenuScene::Update() {
 	__super::Update();
 
-	if (InputManager::Get().IsKeyPressed(VK_SPACE))
+	if (InputManager::Get().GetKeyDown(VK_SPACE))
 		SceneManager::Get().ChangeScene(GameApp::PLAY);
 
-	if(InputManager::Get().IsKeyPressed('I'))
+	if(InputManager::Get().GetKeyDown('I'))
 		SceneManager::Get().ChangeScene(GameApp::INFO);
 }
 

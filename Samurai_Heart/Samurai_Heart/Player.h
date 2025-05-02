@@ -52,14 +52,14 @@ public:
 	float attackCoolTime = 0.5f;
 	
 	// [player flag]
-	bool isDie;
-	bool isHit;
-	bool isFloor;
-	bool isWall;
-	bool isJumping;
-	bool isDash;
-	bool isMpEmpty;
-	bool isChargeMax;
+	bool isDie = false;
+	bool isHit = false;
+	bool isFloor = false;
+	bool isWall = false;
+	bool isJumping = false;
+	bool isDash = false;
+	bool isMpEmpty = false;
+	bool isChargeMax = false;
 
 	// [player Key Input Flags]
 	bool isMoveLKey;
@@ -110,7 +110,7 @@ public:
 	AnimationClip SpecialAttackAnimation;
 
 public:
-	Player() { OutputDebugStringA("Player Create\n"); }
+	Player() = default;
 	~Player() override {};
 
 	void Start() override;

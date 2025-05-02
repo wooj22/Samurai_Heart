@@ -15,14 +15,18 @@ void Player::Update()
 {
 	KeyInputHandler();
 	ReSize();
+	collider.UpdateCollider(position, width, height);
 	
-	// fsm state logic
+	// fsm state update
 	curState->ChangeStateLogic();
 	curState->UpdateLogic();
 }
 
 void Player::Render()
 {
+	collider.DrawCollider();
+
+	// fsm state render
 	curState->Render();
 }
 
@@ -115,46 +119,95 @@ void Player::KeyInputHandler()
 		isDefenseKey = false;
 }
 
-/// ReSize
+/// ReSize - 현재 애니메이션의 프레임 크기로 플레이어 크기 조정
 void Player::ReSize()
 {
-	// 현재 animation 사이즈 get -> 멤버에 반영
-	
-	// collider update
-	collider.UpdateCollider(position, width, height);
+	width = currentAnimation->GetCurrentFrame().width;
+	height = currentAnimation->GetCurrentFrame().height;
 }
 
 /*-------------------- Player Event --------------------*/
+// Charge up hp
 void Player::ChargeUp() 
 {
-
+	this->charge += 5;
+	if (this->charge >= chargeMax)
+	{
+		this->charge = chargeMax;
+		isChargeMax = true;
+	}
+	else
+	{
+		isChargeMax = false;
+	}
 }
 
+// Charge downhp
 void Player::ChargeDown()
 {
-
+	this->charge -= 5;
+	if (this->charge <= 0)
+	{
+		this->charge = 0;
+		isChargeMax = false;
+	}
+	else
+	{
+		isChargeMax = true;
+	}
 }
 
+// MP up
 void Player::MpUp() 
 {
-
-
+	this->mp += 5;
+	if (this->mp >= maxMp)
+	{
+		this->mp = maxMp;
+		isMpEmpty = false;
+	}
+	else
+	{
+		isMpEmpty = true;
+	}
 }
+
+// MP down
 void Player::MpDown()
 {
-
+	this->mp -= 5;
+	if (this->mp <= 0)
+	{
+		this->mp = 0;
+		isMpEmpty = true;
+	}
+	else
+	{
+		isMpEmpty = false;
+	}
 }
 
+// Collision check
 bool Player::isCollision(BoxCollider other)
 {
 	return this->collider.isCollision(other);
 }
 
+// Hit event
 void Player::Hit(int damage) 
 {
+	this->hp -= damage;
+	this->isHit = true;
 
+	if (this->hp <= 0)
+	{
+		hp = 0;
+		isDie = true;
+		this->Die();
+	}
 }
 
+// Die event
 void Player::Die() 
 {
 

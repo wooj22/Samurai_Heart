@@ -6,8 +6,9 @@
 /// Start
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
-	(Object*)CreateObject<Player>();
-	
+	Player* player = CreateObject<Player>();
+	player->SetPosition(Vector2(100, 100));
+
 	__super::Start();
 }
 
@@ -15,7 +16,7 @@ void PlayScene::Start() {
 void PlayScene::Update() {
 	__super::Update();
 	
-	if (InputManager::Get().IsKeyPressed(VK_SPACE))
+	if (InputManager::Get().GetKeyDown(VK_SPACE))
 		SceneManager::Get().ChangeScene(GameApp::MENU);
 }
 

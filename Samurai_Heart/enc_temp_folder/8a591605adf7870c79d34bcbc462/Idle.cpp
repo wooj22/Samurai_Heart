@@ -8,7 +8,7 @@ void Idle::Enter() {
 }
 
 void Idle::ChangeStateLogic() {
-	
+
 }
 
 void Idle::UpdateLogic() {

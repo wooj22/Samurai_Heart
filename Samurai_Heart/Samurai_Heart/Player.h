@@ -13,8 +13,7 @@ class Player : public Character
 //
 //	Rigidbody rigidbody;
 //	BoxCollider collider;
-//	Sprite sprite;
-//	Animation animation;
+
 
 public:
 	Player() { OutputDebugStringA("Player Create\n"); }
@@ -23,8 +22,5 @@ public:
 	void Start() override;
 	void Update() override;
 	void Render() override;
-
-	/*-------------------*/
-
 };
 

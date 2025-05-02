@@ -4,7 +4,7 @@
 #include "BoxCollider.h"
 #include "Rigidbody.h"
 #include "Sprite.h"
-#include "Animation.h"
+#include "AnimationClip.h"
 
 // player¿Í bossÀÇ base class
 class Character : public Object
@@ -18,8 +18,6 @@ private:
 
 	Rigidbody rigidbody;
 	BoxCollider collider;
-	Sprite sprite;
-	Animation animation;
 
 public :
 	Character() = default;

@@ -3,7 +3,6 @@
 #include "Run.h"
 #include "Jump.h"
 
-
 void Player::Start() 
 {
 	PlayerSpriteInit();

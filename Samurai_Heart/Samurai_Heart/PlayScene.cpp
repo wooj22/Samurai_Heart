@@ -7,7 +7,7 @@
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 	Player* player = CreateObject<Player>();
-	player->SetPosition(Vector2(100, 100));
+	player->SetPosition(Vector2(1000, 500));
 
 	__super::Start();
 }

@@ -8,7 +8,7 @@
 
 class Character : public Object
 {
-protected:
+public:
 	// transform
 	Vector2 position;
 	float width;
@@ -20,7 +20,6 @@ protected:
 	Sprite* currentSprite;
 	AnimationClip* currentAnimation;
 
-public :
 	Character() = default;
 	~Character() override = default;
 

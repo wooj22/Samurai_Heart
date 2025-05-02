@@ -91,3 +91,9 @@ void RenderManager::Release() {
 	DeleteDC(backBufferDC);
 	ReleaseDC(hwnd, frontBufferDC);
 }
+
+/// Draw Box
+void RenderManager::DrawBox(Vector2 minPos, float width, float height) {
+	Pen redPen(Color(255, 255, 0, 0));
+	backBufferGraphics->DrawRectangle(&redPen, minPos.x, minPos.y, width, height);
+}

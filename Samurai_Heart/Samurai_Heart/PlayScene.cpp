@@ -6,6 +6,7 @@
 /// Start
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
+	(Object*)CreateObject<Player>();
 	
 	__super::Start();
 }

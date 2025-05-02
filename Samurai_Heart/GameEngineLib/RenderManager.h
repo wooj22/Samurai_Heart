@@ -3,6 +3,7 @@
 #pragma comment(lib, "gdiplus.lib")
 #include "Singleton.h"
 #include "framework.h"
+#include "Vector2.h"
 using namespace Gdiplus;
 using namespace std;
 
@@ -30,14 +31,20 @@ public:
 	void Update() {};
 	void Release();
 
+	// Load
 	void LoadImageFile(Bitmap*& bitmap, wchar_t* filePath);
 	void CopyImage(Bitmap*& bitmapCopy, Bitmap*& bitmapOrigin);
 	void FilpImage(Bitmap*& bitmap);
+
+	// Draw
 	void DrawBackground();
 	void DrawImage(Bitmap* bitmap, int posX, int posY);
 	void DrawTextC(const char* text, int posX, int posY);
 	void DrawTextW(const wchar_t* text, int posX, int posY);
 	void DrawTextS(const string& text, int posX, int posY);
 	void DrawBackToFront();
+
+	// Debug
+	void DrawBox(Vector2 minPos, float width, float height);
 };
 

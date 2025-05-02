@@ -9,24 +9,25 @@ private:
 
 public:
     Sprite() = default;
+	~Sprite() { delete bitmap; }
 
-    void Load(const wchar_t* path)
+	// Load Image
+    void Load(wchar_t* path)
     {
         if (bitmap) delete bitmap;
         bitmap = new Bitmap(path);
     }
 
-    void SetSourceRect(const Frame& frame)
+	// Set Frame Rect
+    void SetFrameRect(Frame& frame)
     {
         sourceRect = Rect(frame.x, frame.y, frame.width, frame.height);
     }
 
-    Bitmap* GetBitmap() const { return bitmap; }
-    Rect GetSourceRect() const { return sourceRect; }
+    // Get Bitmap
+    Bitmap* GetBitmap() { return bitmap; }
 
-    ~Sprite()
-    {
-        delete bitmap;
-    }
+    // Get Frame Rect
+    Rect GetFrameRect() { return sourceRect; }
 };
 

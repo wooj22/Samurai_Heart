@@ -50,7 +50,7 @@ void RenderManager::DrawBackground()
 
 /// Image Draw
 void RenderManager::DrawImage(Bitmap* bitmap, int posX, int posY) 
-{
+{//
 	backBufferGraphics->DrawImage(bitmap, posX, posY);
 }
 

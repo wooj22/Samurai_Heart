@@ -4,15 +4,12 @@
 #include <sstream>
 #include <string>
 #include <vector>
-using namespace std;
 
 /* Frame Struct */
+// atlas data (left, top, width, height)
 struct Frame
 {
-	int x, y, width, height;     // atlas data (left, top, width, height)
-	Frame() = default;
-    Frame(int x, int y, int width, int height, float duration)
-        : x(x), y(y), width(width), height(height) {}
+	int x, y, width, height;
 };
 
 /* Animation Class */
@@ -28,8 +25,8 @@ public:
 	AnimationClip() = default;
 	~AnimationClip() = default;
 
-    // Load From File
-    void LoadFromFile(const string& filePath) {
+    // Load Frame Data From File
+    void LoadFrameDataFromFile(const string& filePath) {
         ifstream file(filePath);
         string line;
 
@@ -49,7 +46,7 @@ public:
             // 첫 번째 값 (frame index)은 무시
             getline(ss, token, ',');
 
-            // 이후 실제 필요한 값들 파싱
+            // 파싱
             getline(ss, token, ','); frame.x = std::stoi(token);
             getline(ss, token, ','); frame.y = std::stoi(token);
             getline(ss, token, ','); frame.width = std::stoi(token);
@@ -65,7 +62,7 @@ public:
     void SetFrameDuration(float duration) { frameDuration = duration; }
 
     // Add Frame (atlas data)
-    void AddFrame(Frame& frame) { frames.push_back(frame); }
+    void AddFrame(const Frame& frame) { frames.push_back(frame); }
 
     // Frame Update
     void UpdateFrame(float deltaTime)
@@ -83,7 +80,7 @@ public:
 	// Get Current Frame
     Frame GetCurrentFrame()
     {
-        if (frames.empty()) return Frame(0, 0, 0, 0, 0);
+        if (frames.empty()) return Frame();
         return frames[currentFrame];
     }
 

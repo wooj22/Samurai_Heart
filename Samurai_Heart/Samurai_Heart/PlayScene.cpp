@@ -16,14 +16,14 @@ void PlayScene::Start() {
 void PlayScene::Update() {
 	__super::Update();
 	
-	if (InputManager::Get().GetKeyDown(VK_SPACE))
+	if (InputManager::Get().GetKeyDown('M'))
 		SceneManager::Get().ChangeScene(GameApp::MENU);
 }
 
 /// Render
 void PlayScene::Render() {
 	__super::Render();
-	RenderManager::Get().DrawTextW(L"Pressed [Spacebar] -> Menu Scene", 50, 50);
+	RenderManager::Get().DrawTextW(L"Pressed [M] -> Menu Scene", 50, 50);
 }
 
 /// Exit

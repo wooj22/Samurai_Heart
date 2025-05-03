@@ -13,7 +13,7 @@ void MenuScene::Start() {
 void MenuScene::Update() {
 	__super::Update();
 
-	if (InputManager::Get().GetKeyDown(VK_SPACE))
+	if (InputManager::Get().GetKeyDown('P'))
 		SceneManager::Get().ChangeScene(GameApp::PLAY);
 
 	if(InputManager::Get().GetKeyDown('I'))
@@ -24,7 +24,7 @@ void MenuScene::Update() {
 void MenuScene::Render() {
 	__super::Render();
 	RenderManager::Get().DrawTextW(L"Samurai Heart", 50, 50);
-	RenderManager::Get().DrawTextW(L"Pressed [Spacebar] -> Play Scene", 50, 80);
+	RenderManager::Get().DrawTextW(L"Pressed [P] -> Play Scene", 50, 80);
 	RenderManager::Get().DrawTextW(L"Pressed [I] -> Info Scene", 50, 120);
 }
 

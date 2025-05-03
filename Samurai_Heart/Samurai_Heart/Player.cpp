@@ -10,9 +10,6 @@ void Player::Start()
 	StateInit();
 }
 
-float debugtimer = 0;
-float debugCooltime = 1.0f;
-
 void Player::Update() 
 {
 	KeyInputHandler();
@@ -50,15 +47,15 @@ void Player::PlayerSpriteInit()
 void Player::PlayerAnimationInit()
 {
 	// idle
-	idleAnimation.LoadFromFile("../Resource/Player/Idle.txt");
+	idleAnimation.LoadFrameDataFromFile("../Resource/Player/Idle.txt");
 	idleAnimation.SetFrameDuration(0.1f);
 	
 	// run
-	runAnimation.LoadFromFile("../Resource/Player/Run.txt");
+	runAnimation.LoadFrameDataFromFile("../Resource/Player/Run.txt");
 	runAnimation.SetFrameDuration(0.1f);
 
 	// jump down (jump up 1 frame)
-	jumpDownAnimation.LoadFromFile("../Resource/Player/JumpDown.txt");
+	jumpDownAnimation.LoadFrameDataFromFile("../Resource/Player/JumpDown.txt");
 	jumpDownAnimation.SetFrameDuration(0.1f);
 }
 
@@ -124,11 +121,11 @@ void Player::KeyInputHandler()
 		isDefenseKey = false;
 }
 
-/// ReSize - 현재 애니메이션의 프레임 크기로 플레이어 크기 조정
+/// ReSize
 void Player::ReSize()
 {
-	width = currentAnimation->GetCurrentFrame().width;
-	height = currentAnimation->GetCurrentFrame().height;
+	width = currentSprite->GetFrameRect().Width;
+	height = currentSprite->GetFrameRect().Height;
 }
 
 /*-------------------- Player Event --------------------*/
@@ -220,13 +217,16 @@ void Player::Die()
 
 
 /*----- Debug ------*/
+float debugtimer = 0;
+float debugCooltime = 0.1f;
+
 // player debug
 void Player::PlayerDebug() {
 	debugtimer += TimeManager::Get().GetDeltaTime();
 
 	if (debugtimer >= debugCooltime) {
 		// 현재 플레이어의 State
-		std::string stateInfo = std::string("Player State: ") + PlayerStateToString(curPlayerState) + "\n";
+		std::string stateInfo = std::string("[Player State] ") + PlayerStateToString(curPlayerState) + "\n";
 		OutputDebugStringA(stateInfo.c_str());
 
 		// 현재 플레이어 position.x, position.y

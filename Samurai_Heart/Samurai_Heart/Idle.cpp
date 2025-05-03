@@ -10,7 +10,13 @@ void Idle::Enter() {
 }
 
 void Idle::ChangeStateLogic() {
-	
+	// run
+	if (player->isMoveLKey || player->isMoveRKey)
+		player->ChangeState(player->RUN);
+
+	// jump
+	if (player->isJumpKey)
+		player->ChangeState(player->JUMP);
 }
 
 void Idle::UpdateLogic() {
@@ -24,9 +30,9 @@ void Idle::Render() {
 	// animation render
 	RenderManager::Get().DrawImage(
 		player->currentSprite->GetBitmap(), 
-		player->position.x, player->position.y,	
+		player->position.x - player->width/2, player->position.y - player->height/2,	
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
-		player->currentSprite->GetFrameRect().Width, player->currentSprite->GetFrameRect().Height);
+		player->width, player->height);
 }
 
 void Idle::Exit() {

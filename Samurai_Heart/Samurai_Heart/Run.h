@@ -1,5 +1,6 @@
 #pragma once
 #include "BaseState.h"
+#include "Player.h"
 
 class Run : public BaseState
 {

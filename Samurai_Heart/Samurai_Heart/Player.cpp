@@ -38,6 +38,11 @@ void Player::PlayerSpriteInit()
 	runSprite.Load(L"../Resource/Player/Run.png");
 	jumpUpSprite.Load(L"../Resource/Player/JumpUp.png");
 	jumpDownSprite.Load(L"../Resource/Player/JumpDown.png");
+
+	if(idleSprite.GetBitmap() == nullptr) OutputDebugStringA("Idle nullptr\n");
+	if (runSprite.GetBitmap() == nullptr) OutputDebugStringA("Run nullptr\n");
+	if (jumpUpSprite.GetBitmap() == nullptr) OutputDebugStringA("JumpUp nullptr\n");
+	if (jumpDownSprite.GetBitmap() == nullptr) OutputDebugStringA("JumpDown nullptr\n");
 }
 
 // animation load

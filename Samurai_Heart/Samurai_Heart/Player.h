@@ -1,22 +1,15 @@
 #pragma once
-#include "Character.h"
 #include "BaseState.h"
+#include "../GameEngineLib/Object.h"
+#include "../GameEngineLib/Vector2.h"
+#include "BoxCollider.h"
+#include "Rigidbody.h"
+#include "Sprite.h"
+#include "AnimationClip.h"
 #include "../GameEngineLib/framework.h"
 
-class Player : public Character
+class Player : public Object
 {
-//protected:
-//	// transform
-//	Vector2 position;
-//	float width;
-//	float height;
-//
-//	// components
-//	Rigidbody rigidbody;
-//	BoxCollider collider;
-//	Sprite* currentSprite;
-//	AnimationClip* currentAnimation;
-
 public:
 	// [player state enum]
 	enum PlayerState {
@@ -25,12 +18,15 @@ public:
 	};
 	PlayerState curPlayerState;
 
-private:
 	// [player state]
 	BaseState* curState;
 	BaseState* stateArr[12] = {};
 
-public:
+	// transform
+	Vector2 position;
+	float width;
+	float height;
+
 	// [player stat]
 	int		hp = 100;
 	int 	mp = 100;
@@ -76,6 +72,12 @@ public:
 	int AttackKey = 'D';
 	int SpecialAttackKey = 'F';
 	int DefenseKey = 'V';
+
+	// components
+	Rigidbody rigidbody;
+	BoxCollider collider;
+	Sprite* currentSprite;
+	AnimationClip* currentAnimation;
 
 	// [player sprite]
 	Sprite idleSprite;

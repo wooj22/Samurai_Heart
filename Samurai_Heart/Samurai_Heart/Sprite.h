@@ -10,13 +10,33 @@ private:
 
 public:
     Sprite() = default;
-	~Sprite() { delete bitmap; }
+	~Sprite() { 
+        if (bitmap == nullptr) {
+            OutputDebugStringA("~Sprite : bitmap is nullptr!\n");
+        }
+        else {
+            WCHAR buffer[256];
+            swprintf(buffer, 256, L"~Sprite : Deleting bitmap at %p\n", bitmap);
+            OutputDebugStringW(buffer);
+
+            delete bitmap;
+        }
+    }
 
 	// Load Image
     void Load(const wchar_t* path)
     {
-        if (bitmap) delete bitmap;
+        if (bitmap) {
+            delete bitmap;
+            bitmap = nullptr;
+        }
+
         bitmap = new Bitmap(path);
+        if (bitmap->GetLastStatus() != Ok) {
+            OutputDebugStringA("Bitmap load failed!\n");
+            delete bitmap;
+            bitmap = nullptr;
+        }
     }
 
 	// Set Frame Rect

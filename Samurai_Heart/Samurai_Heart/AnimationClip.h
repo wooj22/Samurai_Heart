@@ -46,7 +46,10 @@ public:
             string token;
             Frame frame;
 
-			// parse frame data
+            // 첫 번째 값 (frame index)은 무시
+            getline(ss, token, ',');
+
+            // 이후 실제 필요한 값들 파싱
             getline(ss, token, ','); frame.x = std::stoi(token);
             getline(ss, token, ','); frame.y = std::stoi(token);
             getline(ss, token, ','); frame.width = std::stoi(token);

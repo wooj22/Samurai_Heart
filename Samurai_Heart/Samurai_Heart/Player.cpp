@@ -10,6 +10,9 @@ void Player::Start()
 	StateInit();
 }
 
+float debugtimer = 0;
+float debugCooltime = 1.0f;
+
 void Player::Update() 
 {
 	KeyInputHandler();
@@ -19,6 +22,9 @@ void Player::Update()
 	// fsm state update
 	curState->ChangeStateLogic();
 	curState->UpdateLogic();
+
+	// debug
+	PlayerDebug();
 }
 
 void Player::Render()
@@ -38,11 +44,6 @@ void Player::PlayerSpriteInit()
 	runSprite.Load(L"../Resource/Player/Run.png");
 	jumpUpSprite.Load(L"../Resource/Player/JumpUp.png");
 	jumpDownSprite.Load(L"../Resource/Player/JumpDown.png");
-
-	if(idleSprite.GetBitmap() == nullptr) OutputDebugStringA("Idle nullptr\n");
-	if (runSprite.GetBitmap() == nullptr) OutputDebugStringA("Run nullptr\n");
-	if (jumpUpSprite.GetBitmap() == nullptr) OutputDebugStringA("JumpUp nullptr\n");
-	if (jumpDownSprite.GetBitmap() == nullptr) OutputDebugStringA("JumpDown nullptr\n");
 }
 
 // animation load
@@ -215,4 +216,55 @@ void Player::Hit(int damage)
 void Player::Die() 
 {
 
+}
+
+
+/*----- Debug ------*/
+// player debug
+void Player::PlayerDebug() {
+	debugtimer += TimeManager::Get().GetDeltaTime();
+
+	if (debugtimer >= debugCooltime) {
+		// 현재 플레이어의 State
+		std::string stateInfo = std::string("Player State: ") + PlayerStateToString(curPlayerState) + "\n";
+		OutputDebugStringA(stateInfo.c_str());
+
+		// 현재 플레이어 position.x, position.y
+		char posBuffer[128];
+		sprintf_s(posBuffer, "Position: (%.2f, %.2f)\n", position.x, position.y);
+		OutputDebugStringA(posBuffer);
+
+		// 현재 플레이어 width, height
+		char sizeBuffer[128];
+		sprintf_s(sizeBuffer, "Size: (%.2f, %.2f)\n", width, height);
+		OutputDebugStringA(sizeBuffer);
+
+		// currentAnimation의 프레임 정보
+		Frame currentFrame = currentAnimation->GetCurrentFrame();
+		char frameBuffer[128];
+		sprintf_s(frameBuffer, "Current Animation Frame: x=%d, y=%d, w=%d, h=%d\n",
+			currentFrame.x, currentFrame.y, currentFrame.width, currentFrame.height);
+		OutputDebugStringA(frameBuffer);
+
+		// currentSprite의 프레임 정보
+		Rect spriteRect = currentSprite->GetFrameRect();
+		char spriteRectBuffer[128];
+		sprintf_s(spriteRectBuffer, "Current Sprite Frame Rect: x=%d, y=%d, w=%d, h=%d\n",
+			spriteRect.X, spriteRect.Y, spriteRect.Width, spriteRect.Height);
+		OutputDebugStringA(spriteRectBuffer);
+
+		debugtimer = 0;
+	}
+}
+
+// enum → 문자열 변환 함수
+const char* Player::PlayerStateToString(PlayerState state)
+{
+	switch (state)
+	{
+	case IDLE: return "Idle";
+	case RUN: return "Move";
+	case JUMP: return "Jump";
+	default: return "Unknown";
+	}
 }

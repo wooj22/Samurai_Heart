@@ -55,10 +55,10 @@ void RenderManager::DrawImage(Bitmap* bitmap, int posX, int posY)
 }
 
 /// Image Draw with Scale (atlas)
-void RenderManager::DrawImage(Bitmap* bitmap, int destX, int destY, int srcX, int srcY, int srcW, int srcH)
+void RenderManager::DrawImage(Bitmap* bitmap, int posX, int posY, int srcX, int srcY, int srcW, int srcH)
 {
 	Rect srcRect(srcX, srcY, srcW, srcH);
-	Rect destRect(destX, destY, srcW, srcH); // 스케일 없이 원본 크기로 그릴 경우
+	Rect destRect(posX, posY, srcW, srcH); // 스케일 없이 원본 크기로 그릴 경우
 
 	backBufferGraphics->DrawImage(bitmap, destRect, srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
 }

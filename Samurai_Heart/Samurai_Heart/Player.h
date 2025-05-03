@@ -1,16 +1,19 @@
 #pragma once
-#include "BaseState.h"
 #include "../GameEngineLib/Object.h"
 #include "../GameEngineLib/Vector2.h"
+#include "../GameEngineLib/framework.h"
 #include "BoxCollider.h"
 #include "Rigidbody.h"
 #include "Sprite.h"
 #include "AnimationClip.h"
-#include "../GameEngineLib/framework.h"
+#include "BaseState.h"
+#include "Idle.h"
+#include "Run.h"
+#include "Jump.h"
 
 class Player : public Object
 {
-public:
+private:
 	// [player state enum]
 	enum PlayerState {
 		IDLE, RUN, JUMP, WALL_JUMP, WALL_SLIDE,
@@ -84,7 +87,7 @@ public:
 	Sprite runSprite;
 	Sprite jumpUpSprite;
 	Sprite jumpDownSprite;
-	Sprite WallSlideSprite;
+	/*Sprite WallSlideSprite;
 	Sprite WallJumpSprite;
 	Sprite DashSprite;
 	Sprite DefenseSprite;
@@ -93,14 +96,14 @@ public:
 	Sprite Attack01Sprite;
 	Sprite Attack02Sprite;
 	Sprite Attack03Sprite;
-	Sprite SpecialAttackSprite;
+	Sprite SpecialAttackSprite;*/
 
 	// [player animation]
 	AnimationClip idleAnimation;
 	AnimationClip runAnimation;
 	AnimationClip jumpUpAnimation;
 	AnimationClip jumpDownAnimation;
-	AnimationClip WallSlideAnimation;
+	/*AnimationClip WallSlideAnimation;
 	AnimationClip WallJumpAnimation;
 	AnimationClip DashAnimation;
 	AnimationClip DefenseAnimation;
@@ -109,11 +112,11 @@ public:
 	AnimationClip Attack01Animation;
 	AnimationClip Attack02Animation;
 	AnimationClip Attack03Animation;
-	AnimationClip SpecialAttackAnimation;
+	AnimationClip SpecialAttackAnimation;*/
 
 public:
-	Player() = default;
-	~Player() override {};
+	Player() { OutputDebugStringA("Player Create\n"); };
+	~Player() override { OutputDebugStringA("Player Destory\n"); };
 
 	void Start() override;
 	void Update() override;
@@ -143,5 +146,15 @@ public:
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }
 	Vector2 GetPosition() { return position; }
+
+	// debug
+	void PlayerDebug();
+	const char* PlayerStateToString(PlayerState state);
+
+	// fsm friend
+	friend class BaseState;
+	friend class Idle;
+	friend class Run;
+	friend class Jump;
 };
 

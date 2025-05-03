@@ -167,7 +167,7 @@ void WinGameApp::Release()
 	inputManager.Release();
 	timeManager.Release();
 	soundManager.Release();
-	renderManager.Release();
 	sceneManager.Release();
+	renderManager.Release();
 }
 

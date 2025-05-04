@@ -32,7 +32,7 @@ void Idle::Render() {
 		player->currentSprite->GetBitmap(), 
 		player->position.x - player->width/2, player->position.y - player->height/2,	
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
-		player->width, player->height);
+		player->currentSprite->GetFrameRect().Width, player->currentSprite->GetFrameRect().Height);
 }
 
 void Idle::Exit() {

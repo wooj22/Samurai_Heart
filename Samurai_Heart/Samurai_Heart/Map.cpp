@@ -13,40 +13,39 @@ void Background::Update()
 
 void Background::Render() 
 {
-	/*RenderManager::Get().DrawImage(
-		image, screenPosition.x, screenPosition.y);*/
+	float pos = 0;
 
-	RenderManager::Get().DrawImage(
-		image,
-		screenPosition.x,
-		screenPosition.y,
-		width,
-		height
-	);
+	for (int i = 0; i < widthImageCount; i++) {
+		RenderManager::Get().DrawImage(
+			image,
+			screenPosition.x + pos, screenPosition.y,
+			width, height
+		);
+
+		pos += width;
+	}
 }
 
-// Init - bitmap, size, pos
-void Background::Init(const wchar_t* path, Vector2 pos)
+// Init
+void Background::Init(const wchar_t* path, Vector2 pos, Map* map)
 {
+	// image load
 	image = new Bitmap(path);
 
-	if (image->GetLastStatus() != Ok) {
-		OutputDebugStringA("Failed to load background image\n");
-		delete image;
-		image = nullptr;
-	}
-
+	// size
 	width = image->GetWidth();
 	height = image->GetHeight();
 
-	// 화면의 세로 크기에 맞추어 배경 이미지 크기 변경
-	float scale = 600.f / height;  // 화면의 세로 크기 (600)를 배경 이미지의 세로 크기로 나누어 비율 계산
-
-	// 세로 크기에 맞추어 비율을 맞춘 가로 크기
+	// map height size scalse setting
+	float scale = map->worldHeight / height;
 	width = width * scale;
-	height = 600.f;  // 세로 크기는 화면 크기로 고정
+	height = map->worldHeight;
 
+	// position
 	position = pos;
+
+	// 가로 반복 횟수
+	widthImageCount = map->worldWidth / width;
 }
 
 // Set ScreenPosition

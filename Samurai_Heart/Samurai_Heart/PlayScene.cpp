@@ -13,15 +13,16 @@ void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 
 	// play map
-	playMap = new Map(800.f, 600.f, 2000.f, 600.f);
+	playMap = new Map(800.f, 600.f, 1500.f, 700.f);
 
 	// image resorce
 	backImage = CreateObject<Background>();
-	backImage->Init(L"../Resource/Map/Background/BackGround01.png", Vector2(0,0));
+	backImage->Init(L"../Resource/Map/Background/BackGround01.png", 
+		Vector2(0,0), playMap);
 
 	// player
 	player = CreateObject<Player>();
-	player->SetPosition(Vector2(400, 300));
+	player->SetPosition(Vector2(100, 500));
 
 	// camera
 	Camera::Get().SetSize(800.f, 600.f);

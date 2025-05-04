@@ -15,12 +15,15 @@ public:
 
 /* Bacgroudn Image */
 class Background : public Object {
-public:
+private:
     Vector2 position;
     Vector2 screenPosition;
     float width, height;
-    Bitmap* image;              
-         
+    Bitmap* image;         
+    Map* map;
+    int widthImageCount;
+   
+public:
     Background() = default;
     ~Background() { delete image; }
 
@@ -28,7 +31,7 @@ public:
     void Update() override;
     void Render() override;
 
-    void Init(const wchar_t* path, Vector2 pos);
+    void Init(const wchar_t* path, Vector2 pos, Map* map);
     void SetScreenPosition();
 };
 

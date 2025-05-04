@@ -5,7 +5,7 @@
 // Player 중심 고정
 void Camera::FollowPlayer(Player* player, Map* map) {
     position.x = player->GetPosition().x - width / 2;
-    position.y = player->GetPosition().y - height / 2;
+    position.y = player->GetPosition().y - height / 1.5;
 
     // 맵 경계
     if (position.x < 0) position.x = 0;

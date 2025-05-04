@@ -20,6 +20,10 @@ void Run::ChangeStateLogic() {
 }
 
 void Run::UpdateLogic() {
+	// test
+	if (player->isMoveRKey) player->position.y++;
+	if(player->isMoveLKey) player->position.y--;
+
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

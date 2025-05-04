@@ -49,13 +49,13 @@ void RenderManager::DrawBackground()
 }
 
 /// Image Draw
-void RenderManager::DrawImage(Bitmap* bitmap, int posX, int posY) 
+void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY)
 {
 	backBufferGraphics->DrawImage(bitmap, posX, posY);
 }
 
 /// Image Draw with Scale (atlas)
-void RenderManager::DrawImage(Bitmap* bitmap, int posX, int posY, int srcX, int srcY, int srcW, int srcH)
+void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH)
 {
 	Rect srcRect(srcX, srcY, srcW, srcH);
 	Rect destRect(posX, posY, srcW, srcH); // 스케일 없이 원본 크기로 그릴 경우
@@ -63,8 +63,15 @@ void RenderManager::DrawImage(Bitmap* bitmap, int posX, int posY, int srcX, int 
 	backBufferGraphics->DrawImage(bitmap, destRect, srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
 }
 
+// Image Draw rect
+void RenderManager::DrawImage(Bitmap* image, float x, float y, float width, float height) 
+{
+	RectF destRect(x, y, width, height);
+	backBufferGraphics->DrawImage(image, destRect);
+}
+
 // Text C Draw
-void RenderManager::DrawTextC(const char* text, int posX, int posY)
+void RenderManager::DrawTextC(const char* text, float posX, float posY)
 {
 	SetBkMode(backBufferDC, TRANSPARENT);
 	SetTextColor(backBufferDC, RGB(255, 255, 255));
@@ -72,7 +79,7 @@ void RenderManager::DrawTextC(const char* text, int posX, int posY)
 }
 
 // Text W Draw
-void RenderManager::DrawTextW(const wchar_t* text, int posX, int posY) 
+void RenderManager::DrawTextW(const wchar_t* text, float posX, float posY)
 {
 	SetBkMode(backBufferDC, TRANSPARENT);
 	SetTextColor(backBufferDC, RGB(255, 255, 255));
@@ -80,7 +87,7 @@ void RenderManager::DrawTextW(const wchar_t* text, int posX, int posY)
 }
 
 // Text S Draw
-void RenderManager::DrawTextS(const std::string& text, int posX, int posY) {
+void RenderManager::DrawTextS(const std::string& text, float posX, float posY) {
 	SetBkMode(backBufferDC, TRANSPARENT);
 	SetTextColor(backBufferDC, RGB(255, 255, 255));
 	TextOutA(backBufferDC, posX, posY, text.c_str(), static_cast<int>(text.length()));

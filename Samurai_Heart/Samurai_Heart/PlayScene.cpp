@@ -5,15 +5,25 @@
 #include "../GameEngineLib/framework.h"
 
 Player* player;
-Map* map;
+Map* playMap;
+Background* backImage;
 
 /// Start
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 
-	map = new Map(800.f, 600.f, 2000.f, 600.f);
+	// play map
+	playMap = new Map(800.f, 600.f, 2000.f, 600.f);
+
+	// image resorce
+	backImage = CreateObject<Background>();
+	backImage->Init(L"../Resource/Map/Background/BackGround01.png", Vector2(0,0));
+
+	// player
 	player = CreateObject<Player>();
-	player->SetPosition(Vector2(1500, 300));
+	player->SetPosition(Vector2(400, 300));
+
+	// camera
 	Camera::Get().SetSize(800.f, 600.f);
 
 	__super::Start();
@@ -22,10 +32,9 @@ void PlayScene::Start() {
 /// Update
 void PlayScene::Update() {
 	__super::Update();
-	Camera::Get().FollowPlayer(player, map);
+	Camera::Get().FollowPlayer(player, playMap);
 	Camera::Get().DebugPosition();
 	
-
 	if (InputManager::Get().GetKeyDown('M'))
 		SceneManager::Get().ChangeScene(GameApp::MENU);
 }

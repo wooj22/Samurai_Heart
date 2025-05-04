@@ -11,10 +11,10 @@ void Camera::FollowPlayer(Player* player, Map* map) {
     if (position.x < 0) position.x = 0;
     if (position.y < 0) position.y = 0;
 
-    /*if (position.x + width > map->worldWidth)
+    if (position.x + width > map->worldWidth)
         position.x = map->worldWidth - width;
     if (position.y + height > map->worldHeight)
-        position.y = map->worldHeight - height;*/
+        position.y = map->worldHeight - height;
 }
 
 // 월드좌표 -> 카메라 좌표 반환

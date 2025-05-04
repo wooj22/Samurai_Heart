@@ -38,11 +38,12 @@ public:
 
 	// Draw
 	void DrawBackground();
-	void DrawImage(Bitmap* bitmap, int posX, int posY);
-	void DrawImage(Bitmap* bitmap, int posX, int posY, int srcX, int srcY, int srcW, int srcH);
-	void DrawTextC(const char* text, int posX, int posY);
-	void DrawTextW(const wchar_t* text, int posX, int posY);
-	void DrawTextS(const string& text, int posX, int posY);
+	void DrawImage(Bitmap* bitmap, float posX, float posY);
+	void DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH);
+	void DrawImage(Bitmap* image, float x, float y, float width, float height);
+	void DrawTextC(const char* text, float posX, float posY);
+	void DrawTextW(const wchar_t* text, float posX, float posY);
+	void DrawTextS(const string& text, float posX, float posY);
 	void DrawBackToFront();
 
 	// Debug

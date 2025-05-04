@@ -84,6 +84,9 @@
     <ClInclude Include="Run.h">
       <Filter>헤더 파일\PlayerStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>헤더 파일\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -121,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="Run.cpp">
       <Filter>소스 파일\PlayerStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>소스 파일\Object</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

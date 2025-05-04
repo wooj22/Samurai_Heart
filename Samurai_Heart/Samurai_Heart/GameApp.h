@@ -2,11 +2,13 @@
 #include "../GameEngineLib/framework.h"
 #include "../GameEngineLib/WinGameApp.h"
 #include "../GameEngineLib/SceneManager.h"
+#include "Camera.h"
 
 class GameApp : public WinGameApp
 {
 public:
 	enum sceneName { MENU, INFO, PLAY };
+	Camera camera;
 
 	GameApp(int inputWidth = 1920, int inputHeight = 1080) :
 		WinGameApp(inputWidth, inputHeight) {};

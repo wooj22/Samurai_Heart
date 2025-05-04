@@ -6,6 +6,7 @@
 #include "Rigidbody.h"
 #include "Sprite.h"
 #include "AnimationClip.h"
+#include "Camera.h"
 #include "BaseState.h"
 #include "Idle.h"
 #include "Run.h"
@@ -27,6 +28,7 @@ private:
 
 	// transform
 	Vector2 position;
+	Vector2 screenPosition;
 	float width;
 	float height;
 
@@ -133,6 +135,7 @@ public:
 	// update
 	void KeyInputHandler();
 	void ReSize();
+	void SetScreenPosition();
 
 	// player event
 	void ChargeUp();

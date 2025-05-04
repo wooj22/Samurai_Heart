@@ -14,7 +14,9 @@ void Player::Update()
 {
 	KeyInputHandler();
 	ReSize();
+	SetScreenPosition();
 	collider.UpdateCollider(position, width, height);
+	collider.UpdateScreenCollider(screenPosition, width, height);
 	
 	// fsm state update
 	curState->ChangeStateLogic();
@@ -128,6 +130,11 @@ void Player::ReSize()
 	height = currentSprite->GetFrameRect().Height;
 }
 
+// ScreenPosition Update
+void Player::SetScreenPosition() {
+	screenPosition = Camera::Get().WorldToCameraPos(position);
+}
+
 /*-------------------- Player Event --------------------*/
 // Charge up hp
 void Player::ChargeUp() 
@@ -218,7 +225,7 @@ void Player::Die()
 
 /*----- Debug ------*/
 float debugtimer = 0;
-float debugCooltime = 0.1f;
+float debugCooltime = 0.5f;
 
 // player debug
 void Player::PlayerDebug() {
@@ -233,6 +240,11 @@ void Player::PlayerDebug() {
 		char posBuffer[128];
 		sprintf_s(posBuffer, "Position: (%.2f, %.2f)\n", position.x, position.y);
 		OutputDebugStringA(posBuffer);
+
+		// 현재 플레이어 screenPosition.x, screenPosition.y
+		char s_posBuffer[128];
+		sprintf_s(s_posBuffer, "Scrren Position: (%.2f, %.2f)\n", screenPosition.x, screenPosition.y);
+		OutputDebugStringA(s_posBuffer);
 
 		// 현재 플레이어 width, height
 		char sizeBuffer[128];

@@ -30,7 +30,7 @@ void Idle::Render() {
 	// animation render
 	RenderManager::Get().DrawImage(
 		player->currentSprite->GetBitmap(), 
-		player->position.x - player->width/2, player->position.y - player->height/2,	
+		player->screenPosition.x - player->width/2, player->screenPosition.y - player->height/2,
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
 		player->currentSprite->GetFrameRect().Width, player->currentSprite->GetFrameRect().Height);
 }

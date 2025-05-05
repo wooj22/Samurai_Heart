@@ -64,6 +64,7 @@ void Attack::Exit()
 	OutputDebugStringA("[Player] Attack Exit\n");
 }
 
+// Set Attack Animation
 void Attack::SetAttackAnimation(int combo)
 {
 	switch (combo)

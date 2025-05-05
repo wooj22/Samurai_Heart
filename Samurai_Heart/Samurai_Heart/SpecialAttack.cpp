@@ -11,6 +11,10 @@ void SpecialAttack::Enter() {
 	// sprite & animation set
 	player->currentSprite = &player->specialAttackSprite;
 	player->currentAnimation = &player->specialAttackAnimation;
+
+	// 돌진
+	if (player->isMoveLKey) player->rigidbody.SetVelocityX(-player->speed * 3.f);
+	if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->speed * 3.f);
 }
 
 void SpecialAttack::ChangeStateLogic() {
@@ -20,9 +24,6 @@ void SpecialAttack::ChangeStateLogic() {
 }
 
 void SpecialAttack::UpdateLogic() {
-	// 돌진
-	player->rigidbody.SetVelocityX(player->speed * 3.f);
-
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

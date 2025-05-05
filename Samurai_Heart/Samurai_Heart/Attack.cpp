@@ -47,7 +47,8 @@ void Attack::UpdateLogic()
 		if (comboStep == 2) comboStep = -1;
 
 		// 한번 attack 할때마다 속도주기 (지금 coolTime이 없어서 여기 넣어둠)
-		player->rigidbody.SetVelocityX(player->speed);
+		if(player->isMoveLKey) player->rigidbody.SetVelocityX(-player->speed);
+		if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->speed);
 	}
 
 	// 감속

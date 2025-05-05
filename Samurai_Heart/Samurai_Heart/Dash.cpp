@@ -6,7 +6,7 @@ void Dash::Enter()
 	OutputDebugStringA("[Player] Dash Enter\n");
 
 	// sprite set
-	player->currentSprite = &player->DashSprite;
+	player->currentSprite = &player->dashSprite;
 	player->currentSprite->SetFullFrameRect();
 
 	// gravity X

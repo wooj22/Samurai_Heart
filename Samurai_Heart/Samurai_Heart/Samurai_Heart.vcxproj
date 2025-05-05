@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AnimationClip.h" />
+    <ClInclude Include="Attack.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BoxCollider.h" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />

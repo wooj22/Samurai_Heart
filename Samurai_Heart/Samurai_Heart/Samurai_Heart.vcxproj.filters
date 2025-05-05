@@ -93,6 +93,9 @@
     <ClInclude Include="Defense.h">
       <Filter>헤더 파일\PlayerStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>헤더 파일\PlayerStateFSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -138,6 +141,9 @@
       <Filter>소스 파일\PlayerStateFSM</Filter>
     </ClCompile>
     <ClCompile Include="Defense.cpp">
+      <Filter>소스 파일\PlayerStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack.cpp">
       <Filter>소스 파일\PlayerStateFSM</Filter>
     </ClCompile>
   </ItemGroup>

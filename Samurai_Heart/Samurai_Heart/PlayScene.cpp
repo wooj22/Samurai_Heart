@@ -34,7 +34,7 @@ void PlayScene::Start() {
 
 	// player
 	player = CreateObject<Player>();
-	player->SetPosition(Vector2(100, 500));
+	player->SetPosition(Vector2(100, 300));
 
 	// camera
 	Camera::Get().SetSize(800.f, 600.f);

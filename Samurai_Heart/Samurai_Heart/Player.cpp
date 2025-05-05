@@ -53,8 +53,11 @@ void Player::SpriteInit()
 	idleSprite.Load(L"../Resource/Player/Idle.png");
 	runSprite.Load(L"../Resource/Player/Run.png");
 	jumpSprite.Load(L"../Resource/Player/JumpDown.png");
-	DashSprite.Load(L"../Resource/Player/Dash.png");
-	DefenseSprite.Load(L"../Resource/Player/Defense.png");
+	dashSprite.Load(L"../Resource/Player/Dash.png");
+	defenseSprite.Load(L"../Resource/Player/Defense.png");
+	attack01Sprite.Load(L"../Resource/Player/Attack01.png");
+	attack02Sprite.Load(L"../Resource/Player/Attack02.png");
+	attack03Sprite.Load(L"../Resource/Player/Attack03.png");
 }
 
 // animation load
@@ -66,7 +69,7 @@ void Player::AnimationInit()
 	
 	// run
 	runAnimation.LoadFrameDataFromFile("../Resource/Player/Run.txt");
-	runAnimation.SetFrameDuration(0.1f);
+	runAnimation.SetFrameDuration(0.05f);
 
 	// jump
 	jumpAnimation.LoadFrameDataFromFile("../Resource/Player/JumpDown.txt");
@@ -77,6 +80,16 @@ void Player::AnimationInit()
 
 	// defecse
 	// animation x
+
+	// attack
+	attack01Animation.LoadFrameDataFromFile("../Resource/Player/Attack01.txt");
+	attack01Animation.SetFrameDuration(0.1f);
+
+	attack02Animation.LoadFrameDataFromFile("../Resource/Player/Attack02.txt");
+	attack02Animation.SetFrameDuration(0.1f);
+
+	attack03Animation.LoadFrameDataFromFile("../Resource/Player/Attack03.txt");
+	attack03Animation.SetFrameDuration(0.1f);
 }
 
 /*-------------------- FSM --------------------*/
@@ -89,6 +102,7 @@ void Player::FSMInt()
 	stateArr[JUMP] = new Jump(this);
 	stateArr[DASH] = new Dash(this);
 	stateArr[DEFENSE] = new Defense(this);
+	stateArr[ATTACK] = new Attack(this);
 
 	// state set
 	curPlayerState = IDLE;

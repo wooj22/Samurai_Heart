@@ -13,6 +13,7 @@
 #include "Jump.h"
 #include "Dash.h"
 #include "Defense.h"
+#include "Attack.h"
 
 class Player : public Object
 {
@@ -103,13 +104,13 @@ private:
 	Sprite jumpSprite;
 	//Sprite WallSlideSprite;
 	//Sprite WallJumpSprite;
-	Sprite DashSprite;
-	Sprite DefenseSprite;
+	Sprite dashSprite;
+	Sprite defenseSprite;
 	//Sprite HitSprite;
 	//Sprite DieSprite;
-	//Sprite Attack01Sprite;
-	//Sprite Attack02Sprite;
-	//Sprite Attack03Sprite;
+	Sprite attack01Sprite;
+	Sprite attack02Sprite;
+	Sprite attack03Sprite;
 	//Sprite SpecialAttackSprite;
 
 	// [player animation]
@@ -122,9 +123,9 @@ private:
 	//AnimationClip DefenseAnimation;	// animation x
 	//AnimationClip HitAnimation;
 	//AnimationClip DieAnimation;
-	//AnimationClip Attack01Animation;
-	//AnimationClip Attack02Animation;
-	//AnimationClip Attack03Animation;
+	AnimationClip attack01Animation;
+	AnimationClip attack02Animation;
+	AnimationClip attack03Animation;
 	//AnimationClip SpecialAttackAnimation;
 
 public:
@@ -176,5 +177,6 @@ public:
 	friend class Jump;
 	friend class Dash;
 	friend class Defense;
+	friend class Attack;
 };
 

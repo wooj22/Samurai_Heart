@@ -9,7 +9,7 @@ void Defense::Enter()
 	player->isDefense = true;
 
 	// sprite set
-	player->currentSprite = &player->DefenseSprite;
+	player->currentSprite = &player->defenseSprite;
 	player->currentSprite->SetFullFrameRect();
 
 	player->rigidbody.SetVelocity((0, 0));

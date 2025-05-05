@@ -6,19 +6,24 @@
 
 Player* player;
 Map* playMap;
-Background* backImage;
+Background* backImage1;
+Background* backImage2;
 
 /// Start
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 
 	// play map
-	playMap = new Map(800.f, 600.f, 1500.f, 700.f);
+	playMap = new Map(800.f, 600.f, 4000.f, 700.f);
 
 	// image resorce
-	backImage = CreateObject<Background>();
-	backImage->Init(L"../Resource/Map/Background/BackGround01.png", 
+	backImage1 = CreateObject<Background>();
+	backImage1->Init(L"../Resource/Map/Background/BackGround01.png", 
 		Vector2(0,0), playMap);
+
+	backImage2 = CreateObject<Background>();
+	backImage2->Init(L"../Resource/Map/Background/BackGround02.png",
+		Vector2(0, 0), playMap);
 
 	// player
 	player = CreateObject<Player>();

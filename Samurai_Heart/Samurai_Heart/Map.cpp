@@ -13,16 +13,20 @@ void Background::Update()
 
 void Background::Render() 
 {
-	float pos = 0;
+	for (int i = 0; i < widthImageCount; i++)
+	{
+		// 반복된 월드 위치 계산
+		Vector2 worldPos = position;
+		worldPos.x += i * width;
 
-	for (int i = 0; i < widthImageCount; i++) {
+		// 카메라 좌표로 변환
+		Vector2 drawPos = Camera::Get().WorldToCameraPos(worldPos);
+
 		RenderManager::Get().DrawImage(
 			image,
-			screenPosition.x + pos, screenPosition.y,
+			drawPos.x, drawPos.y,
 			width, height
 		);
-
-		pos += width;
 	}
 }
 
@@ -46,9 +50,10 @@ void Background::Init(const wchar_t* path, Vector2 pos, Map* map)
 
 	// 가로 반복 횟수
 	widthImageCount = map->worldWidth / width;
+	widthImageCount++; // 잘리는 영역
 }
 
-// Set ScreenPosition
+// Set ScreenPositiona
 void Background::SetScreenPosition() 
 {
 	screenPosition = Camera::Get().WorldToCameraPos(position);

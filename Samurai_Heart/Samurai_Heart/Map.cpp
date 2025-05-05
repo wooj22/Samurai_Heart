@@ -64,7 +64,7 @@ void Background::SetScreenPosition()
 /*----------- Ground -----------*/
 void Ground::Start()
 {
-	
+	collider.SetTag(this->tag);
 }
 
 void Ground::Update()

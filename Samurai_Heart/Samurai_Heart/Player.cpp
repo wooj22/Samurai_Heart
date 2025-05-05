@@ -8,6 +8,8 @@ void Player::Start()
 	SpriteInit();
 	AnimationInit();
 	FSMInt();
+
+	collider.SetTag(this->tag);
 }
 
 void Player::Update() 
@@ -26,7 +28,7 @@ void Player::Update()
 	// rigidbody
 	// 기본적으로 중력을 update하며 각 state에서 중력값을 setting
 	// 이동 코드에 따라 velocity값을 setting하여 아래 로직에서 position에 더해짐
-	//GravityUpdate();
+	GravityUpdate();
 	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
 
 	// collider
@@ -148,8 +150,8 @@ void Player::SetScreenPosition() {
 
 // gravity
 void Player::GravityUpdate() {
-
-	rigidbody.UpdateGravity(TimeManager::Get().GetDeltaTime());
+	if(!isGround)
+		rigidbody.UpdateGravity(TimeManager::Get().GetDeltaTime());
 }
 
 /*-------------------- Player Event --------------------*/
@@ -216,6 +218,22 @@ void Player::MpDown()
 // Collision check
 bool Player::isCollision(BoxCollider other)
 {
+	if (other.GetTag() == "Ground")
+	{
+		if (this->collider.isCollision(other)) {
+			this->isGround = true;
+			rigidbody.SetVelocityY(0);
+		}
+		else {
+			this->isGround = false;
+		}
+	}
+
+	if (other.GetTag() == "Boss")
+	{
+
+	}
+
 	return this->collider.isCollision(other);
 }
 
@@ -268,19 +286,24 @@ void Player::PlayerDebug() {
 		sprintf_s(sizeBuffer, "Size: (%.2f, %.2f)\n", width, height);
 		OutputDebugStringA(sizeBuffer);
 
+		// 현재 플레이어의 isGround
+		char groundBuffer[128];
+		sprintf_s(groundBuffer, "is Ground : %d\n", isGround);
+		OutputDebugStringA(groundBuffer);
+
 		// currentAnimation의 프레임 정보
-		Frame currentFrame = currentAnimation->GetCurrentFrame();
+		/*Frame currentFrame = currentAnimation->GetCurrentFrame();
 		char frameBuffer[128];
 		sprintf_s(frameBuffer, "Current Animation Frame: x=%d, y=%d, w=%d, h=%d\n",
 			currentFrame.x, currentFrame.y, currentFrame.width, currentFrame.height);
-		OutputDebugStringA(frameBuffer);
+		OutputDebugStringA(frameBuffer);*/
 
 		// currentSprite의 프레임 정보
-		Rect spriteRect = currentSprite->GetFrameRect();
+		/*Rect spriteRect = currentSprite->GetFrameRect();
 		char spriteRectBuffer[128];
 		sprintf_s(spriteRectBuffer, "Current Sprite Frame Rect: x=%d, y=%d, w=%d, h=%d\n",
 			spriteRect.X, spriteRect.Y, spriteRect.Width, spriteRect.Height);
-		OutputDebugStringA(spriteRectBuffer);
+		OutputDebugStringA(spriteRectBuffer);*/
 
 		debugtimer = 0;
 	}

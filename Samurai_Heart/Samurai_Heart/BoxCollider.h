@@ -14,8 +14,14 @@ public:
 	Vector2 screenMin;
 	Vector2 screenMax;
 
+	string tag;
+
     BoxCollider() = default;
 	~BoxCollider() = default;
+
+	// Tag
+	void SetTag(string tag_input) { tag = tag_input; }
+	string GetTag() { return tag; }
 
 	// Collider Update
     void UpdateCollider(Vector2 position, float width, float height) {

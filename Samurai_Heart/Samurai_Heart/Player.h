@@ -38,12 +38,12 @@ private:
 	int 	mp = 100;
 	int		charge = 0;
 	int 	power = 10;
-	float	speed = 200.0f;
-	float   dashSpeed = 500.0f;
-	float   wallSlideSpeed = 100.0f;
+	float	speed = 200.f;
+	float   dashSpeed = 500.f;
+	float   wallSlideSpeed = 100.f;
 	float	jumpPower = 300.0f;
 	float   defecseAverage = 0.5f;
-	float   gravity = 9.8f;
+	float   gravity = 500.f;
 
 	// [player gauge] - hp, mp(dasyh, defences), charge
 	int maxHp = 100;
@@ -56,7 +56,7 @@ private:
 	// [player flag]
 	bool isDie = false;
 	bool isHit = false;
-	bool isFloor = false;
+	bool isGround = false;
 	bool isWall = false;
 	bool isJumping = false;
 	bool isDash = false;

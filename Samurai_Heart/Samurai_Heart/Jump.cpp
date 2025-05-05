@@ -13,7 +13,7 @@ void Jump::Enter() {
 }
 
 void Jump::ChangeStateLogic() {
-	if (player->isFloor) player->ChangeState(player->IDLE);
+	if (player->isGround) player->ChangeState(player->IDLE);
 
 	// test
 	if(InputManager::Get().GetKeyDown('J')) player->ChangeState(player->IDLE);

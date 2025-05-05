@@ -44,9 +44,15 @@ void PlayScene::Start() {
 
 /// Update
 void PlayScene::Update() {
+	// objcet
 	__super::Update();
+
+	// camera
 	Camera::Get().FollowPlayer(player, playMap);
 	Camera::Get().DebugPosition();
+
+	// ground collision
+	player->isCollision(ground->GetCollider());
 	
 	if (InputManager::Get().GetKeyDown('M'))
 		SceneManager::Get().ChangeScene(GameApp::MENU);

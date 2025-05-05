@@ -20,6 +20,9 @@ void SpecialAttack::ChangeStateLogic() {
 }
 
 void SpecialAttack::UpdateLogic() {
+	// µ¹Áø
+	player->rigidbody.SetVelocityX(player->speed * 3.f);
+
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

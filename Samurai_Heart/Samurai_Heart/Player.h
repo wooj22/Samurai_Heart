@@ -47,7 +47,7 @@ private:
 	float   dashSpeed = 500.f;
 	float   wallSlideSpeed = 100.f;
 	float	jumpPower = 600.0f;
-	float   defecseAverage = 0.2f;	// defense상태일때 hitDamage * 0.2f
+	float   defecseAverage = 0.2f;		// defense상태일때 hitDamage * 0.2f
 	float   gravity = 500.f;
 
 	// [player gauge] - hp, charge
@@ -70,10 +70,12 @@ private:
 	// [cool time & timer]
 	float attackCoolTime = 0.5f;
 	float attackTimer = 0.f;
-	float dashCheckInterval = 1.7f; // 이 시간 안에 2번 눌렀다면 isDash ture
+	float dashCheckInterval = 1.7f;	    // 이 시간 안에 2번 눌렀다면 isDash ture
 	float dashCheakTimer = 0.f;
-	float dashTime = 0.3f;			// dash 유지시간
-	float dashTimer = 0.f;			// dash 유지 체크 타이머
+	float dashTime = 0.3f;				// dash 유지시간
+	float dashTimer = 0.f;				// dash 유지 체크 타이머
+	float hitInvincibilityTime = 1.f;	// 무적타임, hit 주기
+	float  hitInvincibilityTimer = 0.f;
 
 	// [dash cheak]
 	float lastLeftInputTime = -1.0f;     // 마지막 왼쪽 키 입력 시간
@@ -152,6 +154,7 @@ public:
 	// update
 	void UpdateTimer();
 	void UpdateKeyInput();
+	void DashCheak();
 	void UpdateSize();
 	void UpdateScreenPos();
 	void UpdateGravity();

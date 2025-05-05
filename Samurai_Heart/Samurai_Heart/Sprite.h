@@ -15,10 +15,6 @@ public:
             OutputDebugStringA("~Sprite : bitmap is nullptr!\n");
         }
         else {
-            WCHAR buffer[256];
-            swprintf(buffer, 256, L"~Sprite : Deleting bitmap at %p\n", bitmap);
-            OutputDebugStringW(buffer);
-
             delete bitmap;
         }
     }

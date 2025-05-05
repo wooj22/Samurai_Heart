@@ -179,6 +179,16 @@ void Player::UpdateKeyInput()
 		isDefenseKey = false;
 
 	// dash cheak
+	DashCheak();
+
+	// --- test ---  (HIT, DIE) 아직 게임 상호작용 로직이 없어서
+	if (InputManager::Get().GetKeyDown('K')) {
+		TakeDamage(20);
+	}
+}
+
+// Dash Cheak
+void Player::DashCheak() {
 	dashCheakTimer += TimeManager::Get().GetDeltaTime();
 
 	// dash - left
@@ -289,14 +299,26 @@ bool Player::isCollision(BoxCollider other)
 // Hit event
 void Player::TakeDamage(int damage) 
 {
-	this->hp -= damage;
-	this->isHit = true;
+	// hit 상태인동안은 무적 (HIT STATE 제어)
+	if (!isHit) {
+		this->hp -= damage;
+		isHit = true;
 
-	if (this->hp <= 0)
-	{
-		hp = 0;
-		isDie = true;
-		this->Death();
+		if (this->hp <= 0)
+		{
+			hp = 0;
+			isDie = true;
+			this->Death();
+			ChangeState(DIE);
+		}
+		else {
+			ChangeState(HIT);
+		}
+
+		// debug
+		char hitBuffer[128];
+		sprintf_s(hitBuffer, "player Hit! [hp] : %d\n", hp);
+		OutputDebugStringA(hitBuffer);
 	}
 }
 
@@ -309,7 +331,7 @@ void Player::Death()
 
 /*----- Debug ------*/
 float debugtimer = 0;
-float debugCooltime = 0.5f;
+float debugCooltime = 1.f;
 
 // player debug
 void Player::PlayerDebug() {

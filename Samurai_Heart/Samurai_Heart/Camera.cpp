@@ -28,7 +28,7 @@ Vector2 Camera::WorldToCameraPos(Vector2 pos) {
 
 // debug
 float timer = 0;
-float debugCoolTime = 0.5f;
+float debugCoolTime = 1.f;
 
 void Camera::DebugPosition() {
     timer += TimeManager::Get().GetDeltaTime();

@@ -125,17 +125,18 @@ public:
 	void Render() override;
 
 	// sprite & animation
-	void PlayerSpriteInit();
-	void PlayerAnimationInit();
+	void SpriteInit();
+	void AnimationInit();
 
 	// fsm
-	void StateInit();
+	void FSMInt();
 	void ChangeState(PlayerState state);
 
 	// update
 	void KeyInputHandler();
 	void ReSize();
 	void SetScreenPosition();
+	void GravityUpdate();
 
 	// player event
 	void ChargeUp();

@@ -5,19 +5,24 @@
 
 void Player::Start() 
 {
-	PlayerSpriteInit();
-	PlayerAnimationInit();
-	StateInit();
+	SpriteInit();
+	AnimationInit();
+	FSMInt();
 }
 
 void Player::Update() 
 {
+	// key input -> flag setting
 	KeyInputHandler();
+
+	// transform
 	ReSize();
 	SetScreenPosition();
+
+	// collider
 	collider.UpdateCollider(position, width, height);
 	collider.UpdateScreenCollider(screenPosition, width, height);
-	
+
 	// fsm state update
 	curState->ChangeStateLogic();
 	curState->UpdateLogic();
@@ -37,7 +42,7 @@ void Player::Render()
 
 /*-------------------- Sprite & Animation --------------------*/
 // sprite load
-void Player::PlayerSpriteInit()
+void Player::SpriteInit()
 {
 	idleSprite.Load(L"../Resource/Player/Idle.png");
 	runSprite.Load(L"../Resource/Player/Run.png");
@@ -46,7 +51,7 @@ void Player::PlayerSpriteInit()
 }
 
 // animation load
-void Player::PlayerAnimationInit()
+void Player::AnimationInit()
 {
 	// idle
 	idleAnimation.LoadFrameDataFromFile("../Resource/Player/Idle.txt");
@@ -63,7 +68,7 @@ void Player::PlayerAnimationInit()
 
 /*-------------------- FSM --------------------*/
 /// State Init
-void Player::StateInit() 
+void Player::FSMInt() 
 {
 	// fsm state class µî·Ï
 	stateArr[IDLE] = new Idle(this);
@@ -133,6 +138,12 @@ void Player::ReSize()
 // ScreenPosition Update
 void Player::SetScreenPosition() {
 	screenPosition = Camera::Get().WorldToCameraPos(position);
+}
+
+// gravity
+void Player::GravityUpdate() {
+	rigidbody.UpdateRigidbody(TimeManager::Get().GetDeltaTime());
+	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
 }
 
 /*-------------------- Player Event --------------------*/

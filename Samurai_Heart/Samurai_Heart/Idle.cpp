@@ -20,6 +20,9 @@ void Idle::ChangeStateLogic() {
 }
 
 void Idle::UpdateLogic() {
+	// gravity
+	player->GravityUpdate();
+
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

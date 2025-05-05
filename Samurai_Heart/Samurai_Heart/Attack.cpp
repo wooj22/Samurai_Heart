@@ -7,9 +7,9 @@ void Attack::Enter()
 
 	// flag
 	player->isAttack = true;
-	comboStep = 0;
 
 	// sprite & animation set
+	comboStep = 0;
 	SetAttackAnimation(comboStep);
 	player->currentAnimation->Reset();
 
@@ -40,12 +40,11 @@ void Attack::UpdateLogic()
 	// attack animation change
 	if (player->isAttackKey && player->currentAnimation->IsFinished())
 	{
-		if (comboStep < 2) // 0 ¡æ 1 ¡æ 2
-		{
-			comboStep++;
-			SetAttackAnimation(comboStep);
-			player->currentAnimation->Reset();
-		}
+		comboStep++;
+		SetAttackAnimation(comboStep);
+		player->currentAnimation->Reset();
+
+		if (comboStep == 2) comboStep = -1;
 	}
 }
 

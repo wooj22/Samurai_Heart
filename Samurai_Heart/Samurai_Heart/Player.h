@@ -112,7 +112,7 @@ private:
 	Sprite attack01Sprite;
 	Sprite attack02Sprite;
 	Sprite attack03Sprite;
-	//Sprite SpecialAttackSprite;
+	Sprite specialAttackSprite;
 
 	// [player animation]
 	AnimationClip idleAnimation;
@@ -127,7 +127,7 @@ private:
 	AnimationClip attack01Animation;
 	AnimationClip attack02Animation;
 	AnimationClip attack03Animation;
-	//AnimationClip SpecialAttackAnimation;
+	AnimationClip SspecialAttackAnimation;
 
 public:
 	Player() { OutputDebugStringA("Player Create\n"); };

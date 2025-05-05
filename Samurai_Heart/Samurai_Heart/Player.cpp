@@ -58,6 +58,7 @@ void Player::SpriteInit()
 	attack01Sprite.Load(L"../Resource/Player/Attack01.png");
 	attack02Sprite.Load(L"../Resource/Player/Attack02.png");
 	attack03Sprite.Load(L"../Resource/Player/Attack03.png");
+	specialAttackSprite.Load(L"../Resource/Player/Attack04.png");
 }
 
 // animation load
@@ -90,6 +91,11 @@ void Player::AnimationInit()
 
 	attack03Animation.LoadFrameDataFromFile("../Resource/Player/Attack03.txt");
 	attack03Animation.SetFrameDuration(0.1f);
+
+	// special attack
+	SspecialAttackAnimation.LoadFrameDataFromFile("../Resource/Player/Attack04.txt");
+	SspecialAttackAnimation.SetFrameDuration(0.1f);
+
 }
 
 /*-------------------- FSM --------------------*/

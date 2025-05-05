@@ -12,6 +12,7 @@
 #include "Run.h"
 #include "Jump.h"
 #include "Dash.h"
+#include "Defense.h"
 
 class Player : public Object
 {
@@ -36,24 +37,23 @@ private:
 
 	// [player stat]
 	int		hp = 100;
-	int 	mp = 100;
 	int		charge = 0;
 	int 	power = 10;
 	float	speed = 200.f;
 	float   dashSpeed = 500.f;
 	float   wallSlideSpeed = 100.f;
 	float	jumpPower = 600.0f;
-	float   defecseAverage = 0.5f;
+	float   defecseAverage = 0.2f;	// defense상태일때 hitDamage * 0.2f
 	float   gravity = 500.f;
 
-	// [player gauge] - hp, mp(dasyh, defences), charge
+	// [player gauge] - hp, charge
 	int maxHp = 100;
-	int maxMp = 100;
 	int	chargeMax = 100;
 
 	// [player flag]
 	bool isDie = false;
 	bool isHit = false;
+	bool isDefense = false;
 	bool isGround = false;
 	bool isWall = false;
 	bool isJumping = false;
@@ -104,7 +104,7 @@ private:
 	//Sprite WallSlideSprite;
 	//Sprite WallJumpSprite;
 	Sprite DashSprite;
-	//Sprite DefenseSprite;
+	Sprite DefenseSprite;
 	//Sprite HitSprite;
 	//Sprite DieSprite;
 	//Sprite Attack01Sprite;
@@ -118,8 +118,8 @@ private:
 	AnimationClip jumpAnimation;
 	//AnimationClip WallSlideAnimation;
 	//AnimationClip WallJumpAnimation;
-	//AnimationClip DashAnimation;	// dash는 animation이 없음
-	//AnimationClip DefenseAnimation;
+	//AnimationClip DashAnimation;	// animation x
+	//AnimationClip DefenseAnimation;	// animation x
 	//AnimationClip HitAnimation;
 	//AnimationClip DieAnimation;
 	//AnimationClip Attack01Animation;
@@ -175,5 +175,6 @@ public:
 	friend class Run;
 	friend class Jump;
 	friend class Dash;
+	friend class Defense;
 };
 

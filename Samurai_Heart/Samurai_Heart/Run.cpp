@@ -21,6 +21,10 @@ void Run::ChangeStateLogic() {
 	// dash
 	if (player->isDash && player->isGround)
 		player->ChangeState(player->DASH);
+
+	// defense
+	if (player->isDefenseKey && player->isGround)
+		player->ChangeState(player->DEFENSE);
 }
 
 void Run::UpdateLogic() {

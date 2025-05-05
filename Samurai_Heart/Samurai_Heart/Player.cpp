@@ -54,6 +54,7 @@ void Player::SpriteInit()
 	runSprite.Load(L"../Resource/Player/Run.png");
 	jumpSprite.Load(L"../Resource/Player/JumpDown.png");
 	DashSprite.Load(L"../Resource/Player/Dash.png");
+	DefenseSprite.Load(L"../Resource/Player/Defense.png");
 }
 
 // animation load
@@ -73,6 +74,9 @@ void Player::AnimationInit()
 
 	// dash
 	// animation x
+
+	// defecse
+	// animation x
 }
 
 /*-------------------- FSM --------------------*/
@@ -84,6 +88,7 @@ void Player::FSMInt()
 	stateArr[RUN] = new Run(this);
 	stateArr[JUMP] = new Jump(this);
 	stateArr[DASH] = new Dash(this);
+	stateArr[DEFENSE] = new Defense(this);
 
 	// state set
 	curPlayerState = IDLE;
@@ -237,36 +242,6 @@ void Player::ChargeDown()
 	else
 	{
 		isChargeMax = true;
-	}
-}
-
-// MP up
-void Player::MpUp() 
-{
-	this->mp += 5;
-	if (this->mp >= maxMp)
-	{
-		this->mp = maxMp;
-		isMpEmpty = false;
-	}
-	else
-	{
-		isMpEmpty = true;
-	}
-}
-
-// MP down
-void Player::MpDown()
-{
-	this->mp -= 5;
-	if (this->mp <= 0)
-	{
-		this->mp = 0;
-		isMpEmpty = true;
-	}
-	else
-	{
-		isMpEmpty = false;
 	}
 }
 

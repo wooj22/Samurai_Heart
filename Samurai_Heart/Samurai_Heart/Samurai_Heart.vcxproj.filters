@@ -90,6 +90,9 @@
     <ClInclude Include="Dash.h">
       <Filter>헤더 파일\PlayerStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="Defense.h">
+      <Filter>헤더 파일\PlayerStateFSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -132,6 +135,9 @@
       <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="Dash.cpp">
+      <Filter>소스 파일\PlayerStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Defense.cpp">
       <Filter>소스 파일\PlayerStateFSM</Filter>
     </ClCompile>
   </ItemGroup>

@@ -136,6 +136,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Character.h" />
     <ClInclude Include="Dash.h" />
+    <ClInclude Include="Defense.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Idle.h" />
     <ClInclude Include="InfoScene.h" />
@@ -153,6 +154,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Character.cpp" />
     <ClCompile Include="Dash.cpp" />
+    <ClCompile Include="Defense.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Idle.cpp" />

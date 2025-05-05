@@ -45,6 +45,14 @@ public:
         sourceRect = Rect(frame.x, frame.y, frame.width, frame.height);
     }
 
+    // Set Full Frame Rect
+    void SetFullFrameRect() {
+        sourceRect.X = 0;
+        sourceRect.Y = 0;
+        sourceRect.Width = bitmap->GetWidth();
+        sourceRect.Height = bitmap->GetHeight();
+    }
+
     // Get Bitmap
     Bitmap* GetBitmap() { return bitmap; }
 

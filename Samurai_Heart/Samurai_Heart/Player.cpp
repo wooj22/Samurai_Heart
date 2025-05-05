@@ -14,12 +14,10 @@ void Player::Start()
 
 void Player::Update() 
 {
-	// key input -> flag setting
-	KeyInputHandler();
-
-	// transform
-	ReSize();
-	SetScreenPosition();
+	UpdateTimer();
+	UpdateKeyInput();
+	UpdateSize();
+	UpdateScreenPos();
 
 	// fsm state update
 	curState->ChangeStateLogic();
@@ -28,7 +26,7 @@ void Player::Update()
 	// rigidbody
 	// 기본적으로 중력을 update하며 각 state에서 중력값을 setting
 	// 이동 코드에 따라 velocity값을 setting하여 아래 로직에서 position에 더해짐
-	GravityUpdate();
+	UpdateGravity();
 	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
 
 	// collider
@@ -99,8 +97,15 @@ void Player::ChangeState(PlayerState newState)
 }
 
 /*-------------------- Update --------------------*/
+/// Timer
+void Player::UpdateTimer() 
+{
+	attackTimer += TimeManager::Get().GetDeltaTime();
+	dashTimer += TimeManager::Get().GetDeltaTime();
+}
+
 /// Key Input Handler
-void Player::KeyInputHandler() 
+void Player::UpdateKeyInput() 
 {
 	// move key
 	if (InputManager::Get().GetKeyDown(MoveLKey))
@@ -133,22 +138,68 @@ void Player::KeyInputHandler()
 		isDefenseKey = true;
 	if (InputManager::Get().GetKeyUP(DefenseKey))
 		isDefenseKey = false;
+
+	// dash cheak
+	// 시간 경과 체크
+	dashTimer += TimeManager::Get().GetDeltaTime();
+
+	// 대시 입력 처리
+	if (InputManager::Get().GetKeyDown(MoveLKey)) {
+		// 왼쪽 키가 눌렸을 때 처리
+		if (lastLeftInputTime != -1.0f && dashTimer < dashCheckInterval) {
+			// 마지막 입력 이후 대시 체크 시간이 지났고, 두 번째 입력이라면
+			leftInputCount++;
+			if (leftInputCount == 2) {
+				isDash = true;  // 대시 시작
+				leftInputCount = 0; // 카운트 초기화
+				dashTimer = 0.f;  // 대시 타이머 초기화
+			}
+		}
+		else {
+			leftInputCount = 1;  // 첫 번째 입력
+		}
+		lastLeftInputTime = dashTimer;  // 마지막 입력 시간 갱신
+	}
+
+	if (InputManager::Get().GetKeyDown(MoveRKey)) {
+		// 오른쪽 키가 눌렸을 때 처리
+		if (lastRightInputTime != -1.0f && dashTimer < dashCheckInterval) {
+			// 마지막 입력 이후 대시 체크 시간이 지났고, 두 번째 입력이라면
+			rightInputCount++;
+			if (rightInputCount == 2) {
+				isDash = true;  // 대시 시작
+				rightInputCount = 0; // 카운트 초기화
+				dashTimer = 0.f;  // 대시 타이머 초기화
+			}
+		}
+		else {
+			rightInputCount = 1;  // 첫 번째 입력
+		}
+		lastRightInputTime = dashTimer;  // 마지막 입력 시간 갱신
+	}
+
+	// 대시 타이머가 0.5초 이상이면 대시 상태 초기화
+	if (dashTimer > dashCheckInterval) {
+		leftInputCount = 0;
+		rightInputCount = 0;
+		dashTimer = 0.f;  // 타이머 초기화
+	}
 }
 
 /// ReSize
-void Player::ReSize()
+void Player::UpdateSize()
 {
 	width = currentSprite->GetFrameRect().Width;
 	height = currentSprite->GetFrameRect().Height;
 }
 
 // ScreenPosition Update
-void Player::SetScreenPosition() {
+void Player::UpdateScreenPos() {
 	screenPosition = Camera::Get().WorldToCameraPos(position);
 }
 
 // gravity
-void Player::GravityUpdate() {
+void Player::UpdateGravity() {
 	if(!isGround)
 		rigidbody.UpdateGravity(TimeManager::Get().GetDeltaTime());
 }

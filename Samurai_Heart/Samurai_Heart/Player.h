@@ -50,9 +50,6 @@ private:
 	int maxMp = 100;
 	int	chargeMax = 100;
 
-	// [cool time & timer]
-	float attackCoolTime = 0.5f;
-	
 	// [player flag]
 	bool isDie = false;
 	bool isHit = false;
@@ -62,6 +59,18 @@ private:
 	bool isDash = false;
 	bool isMpEmpty = false;
 	bool isChargeMax = false;
+
+	// [cool time & timer]
+	float attackCoolTime = 0.5f;
+	float attackTimer = 0.f;
+	float dashCheckInterval = 1.2f; // 이 시간 안에 2번 눌렀다면 isDash ture
+	float dashTimer = 0.f;
+
+	// [dash cheak]
+	float lastLeftInputTime = -1.0f;     // 마지막 왼쪽 키 입력 시간
+	float lastRightInputTime = -1.0f;    // 마지막 오른쪽 키 입력 시간
+	int leftInputCount = 0;              // 왼쪽 연속 입력 횟수
+	int rightInputCount = 0;             // 오른쪽 연속 입력 횟수
 
 	// [player Key Input Flags]
 	bool isMoveLKey;
@@ -132,10 +141,11 @@ public:
 	void ChangeState(PlayerState state);
 
 	// update
-	void KeyInputHandler();
-	void ReSize();
-	void SetScreenPosition();
-	void GravityUpdate();
+	void UpdateTimer();
+	void UpdateKeyInput();
+	void UpdateSize();
+	void UpdateScreenPos();
+	void UpdateGravity();
 
 	// player event
 	void ChargeUp();

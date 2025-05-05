@@ -148,6 +148,7 @@
     <ClInclude Include="PlayScene.h" />
     <ClInclude Include="Rigidbody.h" />
     <ClInclude Include="Run.h" />
+    <ClInclude Include="SpecialAttack.h" />
     <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Run.cpp" />
+    <ClCompile Include="SpecialAttack.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineLib\GameEngineLib.vcxproj">

@@ -93,8 +93,8 @@ void Player::AnimationInit()
 	attack03Animation.SetFrameDuration(0.1f);
 
 	// special attack
-	SspecialAttackAnimation.LoadFrameDataFromFile("../Resource/Player/Attack04.txt");
-	SspecialAttackAnimation.SetFrameDuration(0.1f);
+	specialAttackAnimation.LoadFrameDataFromFile("../Resource/Player/Attack04.txt");
+	specialAttackAnimation.SetFrameDuration(0.1f);
 
 }
 
@@ -109,6 +109,7 @@ void Player::FSMInt()
 	stateArr[DASH] = new Dash(this);
 	stateArr[DEFENSE] = new Defense(this);
 	stateArr[ATTACK] = new Attack(this);
+	stateArr[SPECIAL_ATTACK] = new SpecialAttack(this);
 
 	// state set
 	curPlayerState = IDLE;
@@ -251,18 +252,10 @@ void Player::ChargeUp()
 }
 
 // Charge downhp
-void Player::ChargeDown()
+void Player::ChargeZero()
 {
-	this->charge -= 5;
-	if (this->charge <= 0)
-	{
-		this->charge = 0;
-		isChargeMax = false;
-	}
-	else
-	{
-		isChargeMax = true;
-	}
+	this->charge = 0;
+	isChargeMax = false;
 }
 
 // Collision check

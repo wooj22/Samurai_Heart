@@ -14,6 +14,7 @@
 #include "Dash.h"
 #include "Defense.h"
 #include "Attack.h"
+#include "SpecialAttack.h"
 
 class Player : public Object
 {
@@ -55,13 +56,14 @@ private:
 	bool isDie = false;
 	bool isHit = false;
 	bool isAttack = false;		
+	bool isSpecialAttack = false;
 	bool isDefense = false;
 	bool isGround = false;
 	bool isWall = false;
 	bool isJumping = false;
 	bool isDash = false;
 	bool isMpEmpty = false;
-	bool isChargeMax = false;
+	bool isChargeMax = true;		// test용 (false로 바꾸기)
 
 	// [cool time & timer]
 	float attackCoolTime = 0.5f;
@@ -120,14 +122,14 @@ private:
 	AnimationClip jumpAnimation;
 	//AnimationClip WallSlideAnimation;
 	//AnimationClip WallJumpAnimation;
-	//AnimationClip DashAnimation;	// animation x
+	//AnimationClip DashAnimation;	    // animation x
 	//AnimationClip DefenseAnimation;	// animation x
 	//AnimationClip HitAnimation;
 	//AnimationClip DieAnimation;
 	AnimationClip attack01Animation;
 	AnimationClip attack02Animation;
 	AnimationClip attack03Animation;
-	AnimationClip SspecialAttackAnimation;
+	AnimationClip specialAttackAnimation;
 
 public:
 	Player() { OutputDebugStringA("Player Create\n"); };
@@ -154,7 +156,7 @@ public:
 
 	// player event
 	void ChargeUp();
-	void ChargeDown();
+	void ChargeZero();
 	void MpUp();
 	void MpDown();
 	bool isCollision(BoxCollider other);
@@ -179,5 +181,6 @@ public:
 	friend class Dash;
 	friend class Defense;
 	friend class Attack;
+	friend class SpecialAttack;
 };
 

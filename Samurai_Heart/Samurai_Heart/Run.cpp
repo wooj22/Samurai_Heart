@@ -29,6 +29,10 @@ void Run::ChangeStateLogic() {
 	// attack
 	if (player->isAttackKey && player->isGround)
 		player->ChangeState(player->ATTACK);
+
+	// specialAttack
+	if (player->isSpecialAttackKey && player->isChargeMax && player->isGround)
+		player->ChangeState(player->SPECIAL_ATTACK);
 }
 
 void Run::UpdateLogic() {

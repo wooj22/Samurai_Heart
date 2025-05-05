@@ -13,7 +13,7 @@ void Attack::Enter()
 	SetAttackAnimation(comboStep);
 	player->currentAnimation->Reset();
 
-	player->rigidbody.SetVelocity((0, 0));
+	
 }
 
 void Attack::ChangeStateLogic()
@@ -37,7 +37,7 @@ void Attack::UpdateLogic()
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();
 	player->currentSprite->SetFrameRect(currentFrame);
 
-	// attack animation change
+	// attack animation change  //TODO :: cooltime으로 확장성 높이기
 	if (player->isAttackKey && player->currentAnimation->IsFinished())
 	{
 		comboStep++;
@@ -45,7 +45,13 @@ void Attack::UpdateLogic()
 		player->currentAnimation->Reset();
 
 		if (comboStep == 2) comboStep = -1;
+
+		// 한번 attack 할때마다 속도주기 (지금 coolTime이 없어서 여기 넣어둠)
+		player->rigidbody.SetVelocityX(player->speed);
 	}
+
+	// 감속
+	player->rigidbody.SetVelocityX(player->rigidbody.GetVelocityX() * 0.7f);
 }
 
 void Attack::Render()

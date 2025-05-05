@@ -20,9 +20,6 @@ void Jump::ChangeStateLogic() {
 }
 
 void Jump::UpdateLogic() {
-	// gravity
-	player->GravityUpdate();
-
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

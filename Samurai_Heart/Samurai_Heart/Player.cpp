@@ -19,13 +19,19 @@ void Player::Update()
 	ReSize();
 	SetScreenPosition();
 
-	// collider
-	collider.UpdateCollider(position, width, height);
-	collider.UpdateScreenCollider(screenPosition, width, height);
-
 	// fsm state update
 	curState->ChangeStateLogic();
 	curState->UpdateLogic();
+
+	// rigidbody
+	// 기본적으로 중력을 update하며 각 state에서 중력값을 setting
+	// 이동 코드에 따라 velocity값을 setting하여 아래 로직에서 position에 더해짐
+	//GravityUpdate();
+	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
+
+	// collider
+	collider.UpdateCollider(position, width, height);
+	collider.UpdateScreenCollider(screenPosition, width, height);
 
 	// debug
 	PlayerDebug();
@@ -142,8 +148,8 @@ void Player::SetScreenPosition() {
 
 // gravity
 void Player::GravityUpdate() {
-	rigidbody.UpdateRigidbody(TimeManager::Get().GetDeltaTime());
-	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
+
+	rigidbody.UpdateGravity(TimeManager::Get().GetDeltaTime());
 }
 
 /*-------------------- Player Event --------------------*/

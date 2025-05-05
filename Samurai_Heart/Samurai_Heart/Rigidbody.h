@@ -15,16 +15,14 @@ public:
     Rigidbody() = default;
 	~Rigidbody() = default;
 
-    // Rigidbody Update - 속도에 중력 적용
-    void UpdateRigidbody(float deltaTime)
+    // gravity
+    void SetGravity(float g) { gravity = g; }
+    void UseGravity(bool use) { useGravity = use; }
+    void UpdateGravity(float deltaTime)
     {
         if (useGravity)
             velocity.y += gravity * deltaTime;
     }
-
-    // gravity
-    void SetGravity(float g) { gravity = g; }
-    void UseGravity(bool use) { useGravity = use; }
 
 	// velocity setter
     void SetVelocity(const Vector2& v) { velocity = v; }

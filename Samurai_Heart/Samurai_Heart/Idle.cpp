@@ -7,6 +7,8 @@ void Idle::Enter() {
 	// sprite & animation set
 	player->currentSprite = &player->idleSprite;
 	player->currentAnimation = &player->idleAnimation;
+
+	player->rigidbody.SetVelocity((0, 0));
 }
 
 void Idle::ChangeStateLogic() {
@@ -20,9 +22,6 @@ void Idle::ChangeStateLogic() {
 }
 
 void Idle::UpdateLogic() {
-	// gravity
-	//player->GravityUpdate();
-
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

@@ -20,12 +20,9 @@ void Run::ChangeStateLogic() {
 }
 
 void Run::UpdateLogic() {
-	// gravity
-	//player->GravityUpdate();
-
 	// test
-	if (player->isMoveRKey) player->position.x += 5;
-	if(player->isMoveLKey) player->position.x -= 5;
+	if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->speed);
+	if (player->isMoveLKey) player->rigidbody.SetVelocityX(-player->speed);
 
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());

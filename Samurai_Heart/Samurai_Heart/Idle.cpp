@@ -21,7 +21,7 @@ void Idle::ChangeStateLogic() {
 
 void Idle::UpdateLogic() {
 	// gravity
-	player->GravityUpdate();
+	//player->GravityUpdate();
 
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());

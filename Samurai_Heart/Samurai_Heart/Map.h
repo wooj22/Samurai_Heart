@@ -16,11 +16,16 @@ public:
 /* Bacgroudn Image */
 class Background : public Object {
 private:
+    // transfrom
     Vector2 position;
     Vector2 screenPosition;
     float width, height;
-    Bitmap* image;         
-    Map* map;
+
+    // image
+    Bitmap* image;        
+
+    // tileing
+    //Map* map;
     int widthImageCount;
    
 public:
@@ -39,23 +44,35 @@ public:
 /* Ground */
 class Ground : public Object {
 private:
-    Vector2 position;
-    Vector2 screenPosition;
-    float width, height;
+    // transform (충돌 영역, center)
+    Vector2 position;                   // 전체 ground 중심 position
+    Vector2 screenPosition;             // 전체 ground screen position
+    float groundWidth, grouandHeight;   // 전체 ground 영역
+
+    // tileing transform (반복되는 각 이미지, left top)
+    Vector2 imagePosition;              
+    Vector2 imageScreenPosition;
+    float imageWidth, imageHeight;      
+
+    // image
     Bitmap* image;
+
+    // collider -> isGround cheak
     BoxCollider collider;
 
+    // tileing
+    Map* map;
+    int widthImageCount;
+
 public:
-    Ground(const wchar_t* path, Vector2 pos, float width_input, float height_input)
-        : position(pos), width(width_input), height(height_input)
-    {
-        image = new Bitmap(path);
-    }
+    Ground() = default;
     ~Ground() { delete image; }
 
     void Start() override;
     void Update() override;
     void Render() override;
 
-    BoxCollider& GetCollider() { return collider; }
+    void Init(const wchar_t* path, Vector2 pos, Map* map);
+    void SetScreenPosition();
+    BoxCollider GetCollider() { return collider; }
 };

@@ -21,11 +21,11 @@ void Run::ChangeStateLogic() {
 
 void Run::UpdateLogic() {
 	// gravity
-	player->GravityUpdate();
+	//player->GravityUpdate();
 
 	// test
-	/*if (player->isMoveRKey) player->position.x += 5;
-	if(player->isMoveLKey) player->position.x -= 5;*/
+	if (player->isMoveRKey) player->position.x += 5;
+	if(player->isMoveLKey) player->position.x -= 5;
 
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());

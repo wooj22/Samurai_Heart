@@ -41,7 +41,7 @@ private:
 	float	speed = 200.f;
 	float   dashSpeed = 500.f;
 	float   wallSlideSpeed = 100.f;
-	float	jumpPower = 300.0f;
+	float	jumpPower = 600.0f;
 	float   defecseAverage = 0.5f;
 	float   gravity = 500.f;
 

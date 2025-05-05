@@ -6,10 +6,14 @@ void Jump::Enter() {
 
 	// flag set
 	player->isJumping = true;
+	player->isGround = false;
 
 	// sprite & animation set
 	player->currentSprite = &player->jumpDownSprite;
 	player->currentAnimation = &player->jumpDownAnimation;
+
+	// jump (1ȸ)
+	player->rigidbody.SetVelocityY(-player->jumpPower);
 }
 
 void Jump::ChangeStateLogic() {

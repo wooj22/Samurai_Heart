@@ -15,7 +15,7 @@ void Run::ChangeStateLogic() {
 		player->ChangeState(player->IDLE);
 
 	// jump
-	if (player->isJumpKey)
+	if (player->isJumpKey && player->isGround)
 		player->ChangeState(player->JUMP);
 }
 

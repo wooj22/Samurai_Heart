@@ -54,8 +54,7 @@ void Player::SpriteInit()
 {
 	idleSprite.Load(L"../Resource/Player/Idle.png");
 	runSprite.Load(L"../Resource/Player/Run.png");
-	jumpUpSprite.Load(L"../Resource/Player/JumpUp.png");
-	jumpDownSprite.Load(L"../Resource/Player/JumpDown.png");
+	jumpSprite.Load(L"../Resource/Player/JumpDown.png");
 }
 
 // animation load
@@ -69,9 +68,9 @@ void Player::AnimationInit()
 	runAnimation.LoadFrameDataFromFile("../Resource/Player/Run.txt");
 	runAnimation.SetFrameDuration(0.1f);
 
-	// jump down (jump up 1 frame)
-	jumpDownAnimation.LoadFrameDataFromFile("../Resource/Player/JumpDown.txt");
-	jumpDownAnimation.SetFrameDuration(0.1f);
+	// jump
+	jumpAnimation.LoadFrameDataFromFile("../Resource/Player/JumpDown.txt");
+	jumpAnimation.SetFrameDuration(0.1f);
 }
 
 /*-------------------- FSM --------------------*/

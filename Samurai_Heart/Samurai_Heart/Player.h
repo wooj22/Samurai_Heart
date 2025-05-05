@@ -88,8 +88,7 @@ private:
 	// [player sprite]
 	Sprite idleSprite;
 	Sprite runSprite;
-	Sprite jumpUpSprite;
-	Sprite jumpDownSprite;
+	Sprite jumpSprite;
 	/*Sprite WallSlideSprite;
 	Sprite WallJumpSprite;
 	Sprite DashSprite;
@@ -104,8 +103,7 @@ private:
 	// [player animation]
 	AnimationClip idleAnimation;
 	AnimationClip runAnimation;
-	AnimationClip jumpUpAnimation;
-	AnimationClip jumpDownAnimation;
+	AnimationClip jumpAnimation;
 	/*AnimationClip WallSlideAnimation;
 	AnimationClip WallJumpAnimation;
 	AnimationClip DashAnimation;

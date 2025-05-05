@@ -9,8 +9,8 @@ void Jump::Enter() {
 	player->isGround = false;
 
 	// sprite & animation set
-	player->currentSprite = &player->jumpDownSprite;
-	player->currentAnimation = &player->jumpDownAnimation;
+	player->currentSprite = &player->jumpSprite;
+	player->currentAnimation = &player->jumpAnimation;
 
 	// jump (1ȸ)
 	player->rigidbody.SetVelocityY(-player->jumpPower);

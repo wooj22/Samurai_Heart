@@ -1,7 +1,4 @@
 #include "Player.h"
-#include "Idle.h"
-#include "Run.h"
-#include "Jump.h"
 
 void Player::Start() 
 {
@@ -59,6 +56,8 @@ void Player::SpriteInit()
 	attack02Sprite.Load(L"../Resource/Player/Attack02.png");
 	attack03Sprite.Load(L"../Resource/Player/Attack03.png");
 	specialAttackSprite.Load(L"../Resource/Player/Attack04.png");
+	hitSprite.Load(L"../Resource/Player/Hit.png");
+	dieSprite.Load(L"../Resource/Player/Die.png");
 }
 
 // animation load
@@ -74,7 +73,7 @@ void Player::AnimationInit()
 
 	// jump
 	jumpAnimation.LoadFrameDataFromFile("../Resource/Player/JumpDown.txt");
-	jumpAnimation.SetFrameDuration(0.1f);
+	jumpAnimation.SetFrameDuration(0.8f);
 
 	// dash
 	// animation x
@@ -94,8 +93,15 @@ void Player::AnimationInit()
 
 	// special attack
 	specialAttackAnimation.LoadFrameDataFromFile("../Resource/Player/Attack04.txt");
-	specialAttackAnimation.SetFrameDuration(0.1f);
+	specialAttackAnimation.SetFrameDuration(0.15f);
 
+	// hit
+	hitAnimation.LoadFrameDataFromFile("../Resource/Player/Hit.txt");
+	hitAnimation.SetFrameDuration(0.15f);
+
+	// die
+	dieAnimation.LoadFrameDataFromFile("../Resource/Player/Die.txt");
+	dieAnimation.SetFrameDuration(0.15f);
 }
 
 /*-------------------- FSM --------------------*/
@@ -110,6 +116,8 @@ void Player::FSMInt()
 	stateArr[DEFENSE] = new Defense(this);
 	stateArr[ATTACK] = new Attack(this);
 	stateArr[SPECIAL_ATTACK] = new SpecialAttack(this);
+	stateArr[HIT] = new Hit(this);
+	stateArr[DIE] = new Die(this);
 
 	// state set
 	curPlayerState = IDLE;
@@ -279,7 +287,7 @@ bool Player::isCollision(BoxCollider other)
 }
 
 // Hit event
-void Player::Hit(int damage) 
+void Player::TakeDamage(int damage) 
 {
 	this->hp -= damage;
 	this->isHit = true;
@@ -288,12 +296,12 @@ void Player::Hit(int damage)
 	{
 		hp = 0;
 		isDie = true;
-		this->Die();
+		this->Death();
 	}
 }
 
 // Die event
-void Player::Die() 
+void Player::Death() 
 {
 
 }

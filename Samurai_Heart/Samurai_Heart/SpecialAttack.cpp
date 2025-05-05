@@ -1,7 +1,8 @@
 #include "SpecialAttack.h"
 #include <windows.h>
 
-void SpecialAttack::Enter() {
+void SpecialAttack::Enter() 
+{
 	OutputDebugStringA("[Player] SpecialAttack Enter\n");
 
 	// flag
@@ -17,20 +18,23 @@ void SpecialAttack::Enter() {
 	if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->speed * 3.f);
 }
 
-void SpecialAttack::ChangeStateLogic() {
+void SpecialAttack::ChangeStateLogic()
+{
 	// idle
 	if (player->specialAttackAnimation.IsFinished())
 		player->ChangeState(player->IDLE);
 }
 
-void SpecialAttack::UpdateLogic() {
+void SpecialAttack::UpdateLogic() 
+{
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();
 	player->currentSprite->SetFrameRect(currentFrame);
 }
 
-void SpecialAttack::Render() {
+void SpecialAttack::Render()
+{
 	// animation render
 	RenderManager::Get().DrawImage(
 		player->currentSprite->GetBitmap(),
@@ -39,7 +43,8 @@ void SpecialAttack::Render() {
 		player->width, player->height);
 }
 
-void SpecialAttack::Exit() {
+void SpecialAttack::Exit() 
+{
 	player->isSpecialAttack = false;
 	OutputDebugStringA("[Player] SpecialAttack Exit\n");
 }

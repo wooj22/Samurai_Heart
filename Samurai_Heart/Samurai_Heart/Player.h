@@ -15,6 +15,8 @@
 #include "Defense.h"
 #include "Attack.h"
 #include "SpecialAttack.h"
+#include "Hit.h"
+#include "Die.h"
 
 class Player : public Object
 {
@@ -29,7 +31,7 @@ private:
 
 	// [player state]
 	BaseState* curState;
-	BaseState* stateArr[12] = {};
+	BaseState* stateArr[11] = {};
 
 	// transform
 	Vector2 position;
@@ -109,8 +111,8 @@ private:
 	//Sprite WallJumpSprite;
 	Sprite dashSprite;
 	Sprite defenseSprite;
-	//Sprite HitSprite;
-	//Sprite DieSprite;
+	Sprite hitSprite;
+	Sprite dieSprite;
 	Sprite attack01Sprite;
 	Sprite attack02Sprite;
 	Sprite attack03Sprite;
@@ -124,8 +126,8 @@ private:
 	//AnimationClip WallJumpAnimation;
 	//AnimationClip DashAnimation;	    // animation x
 	//AnimationClip DefenseAnimation;	// animation x
-	//AnimationClip HitAnimation;
-	//AnimationClip DieAnimation;
+	AnimationClip hitAnimation;
+	AnimationClip dieAnimation;
 	AnimationClip attack01Animation;
 	AnimationClip attack02Animation;
 	AnimationClip attack03Animation;
@@ -160,8 +162,8 @@ public:
 	void MpUp();
 	void MpDown();
 	bool isCollision(BoxCollider other);
-	void Hit(int damage);
-	void Die();
+	void TakeDamage(int damage);
+	void Death();
 
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }
@@ -182,5 +184,7 @@ public:
 	friend class Defense;
 	friend class Attack;
 	friend class SpecialAttack;
+	friend class Hit;
+	friend class Die;
 };
 

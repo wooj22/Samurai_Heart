@@ -21,6 +21,7 @@ private:
 		DASH, DEFENSE, HIT, DIE, ATTACK, SPECIAL_ATTACK
 	};
 	PlayerState curPlayerState;
+	string tag = "Player";
 
 	// [player state]
 	BaseState* curState;
@@ -150,6 +151,8 @@ public:
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }
 	Vector2 GetPosition() { return position; }
+	string GetTag() { return tag; }
+	BoxCollider GetCollider() { return collider; }
 
 	// debug
 	void PlayerDebug();

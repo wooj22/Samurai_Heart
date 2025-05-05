@@ -44,6 +44,8 @@ public:
 /* Ground */
 class Ground : public Object {
 private:
+    string tag = "Ground";
+    
     // transform (충돌 영역, center)
     Vector2 position;                   // 전체 ground 중심 position
     Vector2 screenPosition;             // 전체 ground screen position
@@ -74,5 +76,6 @@ public:
 
     void Init(const wchar_t* path, Vector2 pos, Map* map);
     void SetScreenPosition();
+    string GetTag() { return tag; }
     BoxCollider GetCollider() { return collider; }
 };

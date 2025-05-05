@@ -53,6 +53,7 @@ void Player::SpriteInit()
 	idleSprite.Load(L"../Resource/Player/Idle.png");
 	runSprite.Load(L"../Resource/Player/Run.png");
 	jumpSprite.Load(L"../Resource/Player/JumpDown.png");
+	DashSprite.Load(L"../Resource/Player/Dash.png");
 }
 
 // animation load
@@ -69,6 +70,9 @@ void Player::AnimationInit()
 	// jump
 	jumpAnimation.LoadFrameDataFromFile("../Resource/Player/JumpDown.txt");
 	jumpAnimation.SetFrameDuration(0.1f);
+
+	// dash
+	// animation x
 }
 
 /*-------------------- FSM --------------------*/
@@ -79,6 +83,7 @@ void Player::FSMInt()
 	stateArr[IDLE] = new Idle(this);
 	stateArr[RUN] = new Run(this);
 	stateArr[JUMP] = new Jump(this);
+	stateArr[DASH] = new Dash(this);
 
 	// state set
 	curPlayerState = IDLE;
@@ -101,7 +106,7 @@ void Player::ChangeState(PlayerState newState)
 void Player::UpdateTimer() 
 {
 	attackTimer += TimeManager::Get().GetDeltaTime();
-	dashTimer += TimeManager::Get().GetDeltaTime();
+	dashCheakTimer += TimeManager::Get().GetDeltaTime();
 }
 
 /// Key Input Handler
@@ -141,48 +146,48 @@ void Player::UpdateKeyInput()
 
 	// dash cheak
 	// 시간 경과 체크
-	dashTimer += TimeManager::Get().GetDeltaTime();
+	dashCheakTimer += TimeManager::Get().GetDeltaTime();
 
 	// 대시 입력 처리
 	if (InputManager::Get().GetKeyDown(MoveLKey)) {
 		// 왼쪽 키가 눌렸을 때 처리
-		if (lastLeftInputTime != -1.0f && dashTimer < dashCheckInterval) {
+		if (lastLeftInputTime != -1.0f && dashCheakTimer < dashCheckInterval) {
 			// 마지막 입력 이후 대시 체크 시간이 지났고, 두 번째 입력이라면
 			leftInputCount++;
 			if (leftInputCount == 2) {
 				isDash = true;  // 대시 시작
 				leftInputCount = 0; // 카운트 초기화
-				dashTimer = 0.f;  // 대시 타이머 초기화
+				dashCheakTimer = 0.f;  // 대시 타이머 초기화
 			}
 		}
 		else {
 			leftInputCount = 1;  // 첫 번째 입력
 		}
-		lastLeftInputTime = dashTimer;  // 마지막 입력 시간 갱신
+		lastLeftInputTime = dashCheakTimer;  // 마지막 입력 시간 갱신
 	}
 
 	if (InputManager::Get().GetKeyDown(MoveRKey)) {
 		// 오른쪽 키가 눌렸을 때 처리
-		if (lastRightInputTime != -1.0f && dashTimer < dashCheckInterval) {
+		if (lastRightInputTime != -1.0f && dashCheakTimer < dashCheckInterval) {
 			// 마지막 입력 이후 대시 체크 시간이 지났고, 두 번째 입력이라면
 			rightInputCount++;
 			if (rightInputCount == 2) {
 				isDash = true;  // 대시 시작
 				rightInputCount = 0; // 카운트 초기화
-				dashTimer = 0.f;  // 대시 타이머 초기화
+				dashCheakTimer = 0.f;  // 대시 타이머 초기화
 			}
 		}
 		else {
 			rightInputCount = 1;  // 첫 번째 입력
 		}
-		lastRightInputTime = dashTimer;  // 마지막 입력 시간 갱신
+		lastRightInputTime = dashCheakTimer;  // 마지막 입력 시간 갱신
 	}
 
 	// 대시 타이머가 0.5초 이상이면 대시 상태 초기화
-	if (dashTimer > dashCheckInterval) {
+	if (dashCheakTimer > dashCheckInterval) {
 		leftInputCount = 0;
 		rightInputCount = 0;
-		dashTimer = 0.f;  // 타이머 초기화
+		dashCheakTimer = 0.f;  // 타이머 초기화
 	}
 }
 

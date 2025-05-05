@@ -10,13 +10,17 @@ void Run::Enter() {
 }
 
 void Run::ChangeStateLogic() {
-	// run
+	// idle
 	if (!player->isMoveLKey && !player->isMoveRKey)
 		player->ChangeState(player->IDLE);
 
 	// jump
 	if (player->isJumpKey && player->isGround)
 		player->ChangeState(player->JUMP);
+
+	// dash
+	if (player->isDash && player->isGround)
+		player->ChangeState(player->DASH);
 }
 
 void Run::UpdateLogic() {

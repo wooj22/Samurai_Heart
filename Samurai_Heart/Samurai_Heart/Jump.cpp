@@ -17,10 +17,8 @@ void Jump::Enter() {
 }
 
 void Jump::ChangeStateLogic() {
+	// idle
 	if (player->isGround) player->ChangeState(player->IDLE);
-
-	// test
-	if(InputManager::Get().GetKeyDown('J')) player->ChangeState(player->IDLE);
 }
 
 void Jump::UpdateLogic() {

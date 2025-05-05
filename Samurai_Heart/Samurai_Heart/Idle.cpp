@@ -19,6 +19,10 @@ void Idle::ChangeStateLogic() {
 	// jump
 	if (player->isJumpKey && player->isGround)
 		player->ChangeState(player->JUMP);
+
+	// dash
+	if(player->isDash && player->isGround)
+		player->ChangeState(player->DASH);
 }
 
 void Idle::UpdateLogic() {

@@ -54,6 +54,13 @@ void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY)
 	backBufferGraphics->DrawImage(bitmap, posX, posY);
 }
 
+// Image Draw rect
+void RenderManager::DrawImage(Bitmap* image, float x, float y, float width, float height)
+{
+	RectF destRect(x, y, width, height);
+	backBufferGraphics->DrawImage(image, destRect);
+}
+
 /// Image Draw with Scale (atlas)
 void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH)
 {
@@ -61,13 +68,6 @@ void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY, float srcX
 	Rect destRect(posX, posY, srcW, srcH); // 스케일 없이 원본 크기로 그릴 경우
 
 	backBufferGraphics->DrawImage(bitmap, destRect, srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
-}
-
-// Image Draw rect
-void RenderManager::DrawImage(Bitmap* image, float x, float y, float width, float height) 
-{
-	RectF destRect(x, y, width, height);
-	backBufferGraphics->DrawImage(image, destRect);
 }
 
 // Text C Draw

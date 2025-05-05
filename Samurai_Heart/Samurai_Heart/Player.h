@@ -11,6 +11,7 @@
 #include "Idle.h"
 #include "Run.h"
 #include "Jump.h"
+#include "Dash.h"
 
 class Player : public Object
 {
@@ -63,8 +64,10 @@ private:
 	// [cool time & timer]
 	float attackCoolTime = 0.5f;
 	float attackTimer = 0.f;
-	float dashCheckInterval = 1.2f; // 이 시간 안에 2번 눌렀다면 isDash ture
-	float dashTimer = 0.f;
+	float dashCheckInterval = 1.7f; // 이 시간 안에 2번 눌렀다면 isDash ture
+	float dashCheakTimer = 0.f;
+	float dashTime = 0.3f;			// dash 유지시간
+	float dashTimer = 0.f;			// dash 유지 체크 타이머
 
 	// [dash cheak]
 	float lastLeftInputTime = -1.0f;     // 마지막 왼쪽 키 입력 시간
@@ -98,31 +101,31 @@ private:
 	Sprite idleSprite;
 	Sprite runSprite;
 	Sprite jumpSprite;
-	/*Sprite WallSlideSprite;
-	Sprite WallJumpSprite;
+	//Sprite WallSlideSprite;
+	//Sprite WallJumpSprite;
 	Sprite DashSprite;
-	Sprite DefenseSprite;
-	Sprite HitSprite;
-	Sprite DieSprite;
-	Sprite Attack01Sprite;
-	Sprite Attack02Sprite;
-	Sprite Attack03Sprite;
-	Sprite SpecialAttackSprite;*/
+	//Sprite DefenseSprite;
+	//Sprite HitSprite;
+	//Sprite DieSprite;
+	//Sprite Attack01Sprite;
+	//Sprite Attack02Sprite;
+	//Sprite Attack03Sprite;
+	//Sprite SpecialAttackSprite;
 
 	// [player animation]
 	AnimationClip idleAnimation;
 	AnimationClip runAnimation;
 	AnimationClip jumpAnimation;
-	/*AnimationClip WallSlideAnimation;
-	AnimationClip WallJumpAnimation;
-	AnimationClip DashAnimation;
-	AnimationClip DefenseAnimation;
-	AnimationClip HitAnimation;
-	AnimationClip DieAnimation;
-	AnimationClip Attack01Animation;
-	AnimationClip Attack02Animation;
-	AnimationClip Attack03Animation;
-	AnimationClip SpecialAttackAnimation;*/
+	//AnimationClip WallSlideAnimation;
+	//AnimationClip WallJumpAnimation;
+	//AnimationClip DashAnimation;	// dash는 animation이 없음
+	//AnimationClip DefenseAnimation;
+	//AnimationClip HitAnimation;
+	//AnimationClip DieAnimation;
+	//AnimationClip Attack01Animation;
+	//AnimationClip Attack02Animation;
+	//AnimationClip Attack03Animation;
+	//AnimationClip SpecialAttackAnimation;
 
 public:
 	Player() { OutputDebugStringA("Player Create\n"); };
@@ -171,5 +174,6 @@ public:
 	friend class Idle;
 	friend class Run;
 	friend class Jump;
+	friend class Dash;
 };
 

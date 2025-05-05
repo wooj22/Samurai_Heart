@@ -1,0 +1,42 @@
+#include "Dash.h"
+#include <windows.h>
+
+
+void Dash::Enter() {
+	OutputDebugStringA("[Player] Dash Enter\n");
+
+	// sprite set
+	player->currentSprite = &player->DashSprite;
+
+	// gravity X
+	player->rigidbody.UseGravity(false);
+}
+
+void Dash::ChangeStateLogic() {
+	// idle
+	if (player->dashTimer >= player->dashTime)
+		player->ChangeState(player->IDLE);
+}
+
+void Dash::UpdateLogic() {
+	player->dashTimer += TimeManager::Get().GetDeltaTime();
+
+	// test
+	if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->dashSpeed);
+	if (player->isMoveLKey) player->rigidbody.SetVelocityX(-player->dashSpeed);
+}
+
+void Dash::Render() {
+	// sprite render
+	RenderManager::Get().DrawImage(
+		player->currentSprite->GetBitmap(),
+		player->screenPosition.x - player->width / 2, player->screenPosition.y - player->height / 2,
+		player->width, player->height);
+}
+
+void Dash::Exit() {
+	player->isDash = false;
+	player->dashTimer = 0;
+	player->rigidbody.UseGravity(true);
+	OutputDebugStringA("[Player] Dash Exit\n");
+}

@@ -29,6 +29,10 @@ void Idle::ChangeStateLogic()
 	// defense
 	if(player->isDefenseKey && player->isGround)
 		player->ChangeState(player->DEFENSE);
+
+	// attack
+	if(player->isAttackKey && player->isGround)
+		player->ChangeState(player->ATTACK);
 }
 
 void Idle::UpdateLogic() 

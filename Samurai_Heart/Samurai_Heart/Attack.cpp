@@ -5,38 +5,48 @@ void Attack::Enter()
 {
 	OutputDebugStringA("[Player] Attack Enter\n");
 
+	// flag
+	player->isAttack = true;
+	comboStep = 0;
+
 	// sprite & animation set
-	player->currentSprite = &player->idleSprite;
-	player->currentAnimation = &player->idleAnimation;
+	SetAttackAnimation(comboStep);
+	player->currentAnimation->Reset();
 
 	player->rigidbody.SetVelocity((0, 0));
 }
 
 void Attack::ChangeStateLogic()
 {
-	// run
-	if (player->isMoveLKey || player->isMoveRKey)
-		player->ChangeState(player->RUN);
-
-	// jump
-	if (player->isJumpKey && player->isGround)
-		player->ChangeState(player->JUMP);
-
-	// dash
-	if (player->isDash && player->isGround)
-		player->ChangeState(player->DASH);
-
-	// defense
-	if (player->isDefenseKey && player->isGround)
-		player->ChangeState(player->DEFENSE);
+	// 공격 키가 안눌려있고 현재 애니메이션이 끝났을 때
+	if (!player->isAttackKey && player->currentAnimation->IsFinished())
+	{
+		// run
+		if (player->isMoveLKey || player->isMoveRKey)
+			player->ChangeState(player->RUN);
+		// idle
+		else
+			player->ChangeState(player->IDLE);
+	}
 }
 
 void Attack::UpdateLogic()
 {
-	// animation sprite update
+	// sprtie & animation update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();
 	player->currentSprite->SetFrameRect(currentFrame);
+
+	// attack animation change
+	if (player->isAttackKey && player->currentAnimation->IsFinished())
+	{
+		if (comboStep < 2) // 0 → 1 → 2
+		{
+			comboStep++;
+			SetAttackAnimation(comboStep);
+			player->currentAnimation->Reset();
+		}
+	}
 }
 
 void Attack::Render()
@@ -51,5 +61,25 @@ void Attack::Render()
 
 void Attack::Exit()
 {
+	player->isAttack = true;
 	OutputDebugStringA("[Player] Attack Exit\n");
+}
+
+void Attack::SetAttackAnimation(int combo)
+{
+	switch (combo)
+	{
+	case 0:
+		player->currentSprite = &player->attack01Sprite;
+		player->currentAnimation = &player->attack01Animation;
+		break;
+	case 1:
+		player->currentSprite = &player->attack02Sprite;
+		player->currentAnimation = &player->attack02Animation;
+		break;
+	case 2:
+		player->currentSprite = &player->attack03Sprite;
+		player->currentAnimation = &player->attack03Animation;
+		break;
+	}
 }

@@ -54,6 +54,7 @@ private:
 	// [player flag]
 	bool isDie = false;
 	bool isHit = false;
+	bool isAttack = false;		
 	bool isDefense = false;
 	bool isGround = false;
 	bool isWall = false;

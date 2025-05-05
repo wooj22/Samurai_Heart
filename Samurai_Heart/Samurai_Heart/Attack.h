@@ -4,6 +4,8 @@
 
 class Attack : public BaseState
 {
+private:
+	int comboStep = 0;
 public:
 	Attack(Player* player) : BaseState(player) {}
 	void Enter() override;
@@ -11,5 +13,6 @@ public:
 	void UpdateLogic() override;
 	void Render() override;
 	void Exit() override;
-};
 
+	void SetAttackAnimation(int combo);
+};

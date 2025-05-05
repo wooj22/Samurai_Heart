@@ -84,6 +84,11 @@ public:
         return frames[currentFrame];
     }
 
+    // Animation Finished return
+    bool IsFinished() {
+        return (currentFrame == static_cast<int>(frames.size()) - 1 && timer == 0.0f);
+    }
+
 	// Reset Animation
     void Reset()
     {

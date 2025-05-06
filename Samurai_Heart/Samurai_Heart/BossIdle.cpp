@@ -14,6 +14,9 @@ void BossIdle::ChangeStateLogic()
 {
 	// run (trace)
 	if (boss->curDist <= boss->traceLimit) boss->ChangeState(boss->RUN);
+
+	// attack
+	if (boss->curDist <= boss->attackLimit) boss->ChangeState(boss->ATTACK);
 }
 
 void BossIdle::UpdateLogic() 

@@ -12,8 +12,6 @@ void Attack::Enter()
 	comboStep = 0;
 	SetAttackAnimation(comboStep);
 	player->currentAnimation->Reset();
-
-	
 }
 
 void Attack::ChangeStateLogic()
@@ -44,7 +42,7 @@ void Attack::UpdateLogic()
 		SetAttackAnimation(comboStep);
 		player->currentAnimation->Reset();
 
-		if (comboStep == 2) comboStep = -1;
+		comboStep = comboStep == 2 ? -1 : comboStep;
 
 		// 한번 attack 할때마다 속도주기 (지금 coolTime이 없어서 여기 넣어둠)
 		if (player->isMoveLKey) player->lastDirection = -1;

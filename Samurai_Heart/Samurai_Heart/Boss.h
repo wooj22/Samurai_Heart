@@ -11,12 +11,16 @@
 #include "BossIdle.h"
 #include "BossRun.h"
 #include "BossJump.h"
+#include "BossAttack.h"
 
 class Player;
 
 // 보스 패턴
-// default : run (계속 플레이어를 향해 쫒아간다)
-// 
+// default : IDLE
+// curDist < 1000 일 경우 RUN
+// curDist < 350 일 경우 ATTACK
+// 플레이어에게 10번 공격당했을경우 direction 반대방향으로 Jump
+// 플레이어에게 공격당했을 경우 Hit or Die
 
 class Boss : public Object
 {
@@ -44,13 +48,13 @@ private:
 	int hp = 10000;
 	int maxHp = 10000;
 	int power = 10;
-	float speed = 180.f;
+	float speed = 150.f;
 	float jumpPower = 1000.f;
 	float gravity = 700.f;
 
 	// [Boss Ai data]
 	float traceLimit = 1000.f;
-	float attackLimit = 150.f;
+	float attackLimit = 100.f;
 	int jumpHpLimit = 10;	// 10번 공격받으면 한번 도망치기
 
 	// [Boss flag]
@@ -136,5 +140,6 @@ public:
 	friend class BossIdle;
 	friend class BossRun;
 	friend class BossJump;
+	friend class BossAttack;
 };
 

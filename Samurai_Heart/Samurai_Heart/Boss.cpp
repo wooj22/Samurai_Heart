@@ -91,6 +91,7 @@ void Boss::FSMInt() {
 	stateArr[IDLE] = new BossIdle(this);
 	stateArr[RUN] = new BossRun(this);
 	stateArr[JUMP] = new BossJump(this);
+	stateArr[ATTACK] = new BossAttack(this);
 
 	// state set
 	curBossState = IDLE;

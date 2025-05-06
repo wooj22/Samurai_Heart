@@ -133,6 +133,7 @@
     <ClInclude Include="Attack.h" />
     <ClInclude Include="BaseState.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossAttack.h" />
     <ClInclude Include="BossBaseState.h" />
     <ClInclude Include="BossIdle.h" />
     <ClInclude Include="BossJump.h" />
@@ -162,6 +163,7 @@
   <ItemGroup>
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossAttack.cpp" />
     <ClCompile Include="BossIdle.cpp" />
     <ClCompile Include="BossJump.cpp" />
     <ClCompile Include="BossRun.cpp" />

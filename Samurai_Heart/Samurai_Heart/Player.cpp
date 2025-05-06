@@ -331,9 +331,16 @@ void Player::TakeDamage(int damage)
 {
 	// hit 상태인동안은 무적 (HIT STATE 제어)
 	if (!isHit) {
-		this->hp -= damage;
-		isHit = true;
 
+		// damage
+		if(isDefense) this->hp -= damage* defecseAverage;
+		else {
+			// flag (off는 HIT state를 나올때 처리)
+			isHit = true;
+			this->hp -= damage;
+		}
+
+		// state change
 		if (this->hp <= 0)
 		{
 			hp = 0;
@@ -342,7 +349,7 @@ void Player::TakeDamage(int damage)
 			ChangeState(DIE);
 		}
 		else {
-			ChangeState(HIT);
+			if(!isDefense) ChangeState(HIT);
 		}
 
 		// debug
@@ -373,35 +380,45 @@ void Player::PlayerDebug() {
 		std::string stateInfo = std::string("[Player State] ") + PlayerStateToString(curPlayerState) + "\n";
 		OutputDebugStringA(stateInfo.c_str());
 
-		// 현재 플레이어 position.x, position.y
-		char posBuffer[128];
-		sprintf_s(posBuffer, "Position: (%.2f, %.2f)\n", position.x, position.y);
-		OutputDebugStringA(posBuffer);
-
-		// 현재 플레이어 screenPosition.x, screenPosition.y
-		char s_posBuffer[128];
-		sprintf_s(s_posBuffer, "Scrren Position: (%.2f, %.2f)\n", screenPosition.x, screenPosition.y);
-		OutputDebugStringA(s_posBuffer);
-
-		// 현재 플레이어 width, height
-		char sizeBuffer[128];
-		sprintf_s(sizeBuffer, "Size: (%.2f, %.2f)\n", width, height);
-		OutputDebugStringA(sizeBuffer);
-
-		// 현재 플레이어의 isGround
-		char groundBuffer[128];
-		sprintf_s(groundBuffer, "is Ground : %d\n", isGround);
-		OutputDebugStringA(groundBuffer);
-
-		// 현재 플레이어의 isWall
-		char wallBuffer[128];
-		sprintf_s(wallBuffer, "is Wall : %d\n", isWall);
-		OutputDebugStringA(wallBuffer);
+		// 현재 플레이어의 Hp
+		char hpBuffer[123];
+		sprintf_s(hpBuffer, "hp : %d\n", hp);
+		OutputDebugStringA(hpBuffer);
 
 		// 현재 플레이어의 Charge
 		char chargeBuffer[123];
 		sprintf_s(chargeBuffer, "charge : %d (is Cahrge? : %d)\n", charge, isChargeMax);
 		OutputDebugStringA(chargeBuffer);
+
+		// 현재 플레이어의 isDefense
+		char defenseBuffer[123];
+		sprintf_s(defenseBuffer, "is Defense? : %d\n", isDefense);
+		OutputDebugStringA(defenseBuffer);
+
+		// 현재 플레이어의 isGround
+		char groundBuffer[128];
+		sprintf_s(groundBuffer, "is Ground? : %d\n", isGround);
+		OutputDebugStringA(groundBuffer);
+
+		// 현재 플레이어의 isWall
+		char wallBuffer[128];
+		sprintf_s(wallBuffer, "is Wall? : %d\n", isWall);
+		OutputDebugStringA(wallBuffer);
+
+		// 현재 플레이어 position.x, position.y
+		/*char posBuffer[128];
+		sprintf_s(posBuffer, "Position: (%.2f, %.2f)\n", position.x, position.y);
+		OutputDebugStringA(posBuffer);*/
+
+		// 현재 플레이어 screenPosition.x, screenPosition.y
+		/*char s_posBuffer[128];
+		sprintf_s(s_posBuffer, "Scrren Position: (%.2f, %.2f)\n", screenPosition.x, screenPosition.y);
+		OutputDebugStringA(s_posBuffer);*/
+
+		// 현재 플레이어 width, height
+		/*char sizeBuffer[128];
+		sprintf_s(sizeBuffer, "Size: (%.2f, %.2f)\n", width, height);
+		OutputDebugStringA(sizeBuffer);*/
 
 		// currentAnimation의 프레임 정보
 		/*Frame currentFrame = currentAnimation->GetCurrentFrame();

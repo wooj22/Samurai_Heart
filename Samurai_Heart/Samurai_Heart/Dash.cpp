@@ -14,6 +14,9 @@ void Dash::Enter()
 
 	// dash
 	player->rigidbody.SetVelocityX(player->dashSpeed * player->lastDirection);
+
+	// sound
+	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Dash.mp3");
 }
 
 void Dash::ChangeStateLogic() 

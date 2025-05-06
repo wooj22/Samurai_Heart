@@ -14,6 +14,9 @@ void Jump::Enter() {
 
 	// jump (1회)
 	player->rigidbody.SetVelocityY(-player->jumpPower);
+
+	// sound
+	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Jump.mp3");
 }
 
 void Jump::ChangeStateLogic() {

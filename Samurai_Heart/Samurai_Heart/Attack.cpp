@@ -91,14 +91,20 @@ void Attack::SetAttackAnimation(int combo)
 	case 0:
 		player->currentSprite = &player->attack01Sprite;
 		player->currentAnimation = &player->attack01Animation;
+		// sound
+		SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Attack01.mp3");
 		break;
 	case 1:
 		player->currentSprite = &player->attack02Sprite;
 		player->currentAnimation = &player->attack02Animation;
+		// sound
+		SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Attack02.mp3");
 		break;
 	case 2:
 		player->currentSprite = &player->attack03Sprite;
 		player->currentAnimation = &player->attack03Animation;
+		// sound
+		SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Attack03.mp3");
 		break;
 	}
 }

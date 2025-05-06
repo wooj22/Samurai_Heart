@@ -375,6 +375,9 @@ void Player::TakeDamage(int damage)
 			if(!isDefense) ChangeState(HIT);
 		}
 
+		// sound
+		SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Hit.mp3");
+
 		// ui update
 		UIManager::Get().UpdatePlayerHP_Image(hp);
 
@@ -388,6 +391,9 @@ void Player::TakeDamage(int damage)
 // Die event
 void Player::Death() 
 {
+	// sound
+	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Die.mp3");
+
 	// fadeout ÈÄ ¾ÀÀüÈ¯
 	FadeManager::Get().StartFadeOut(1.f);
 }

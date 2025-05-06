@@ -236,6 +236,9 @@ void Boss::TakeDamage(int damage)
 
 void Boss::Death() 
 {
+	// sound
+	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_BossDie.mp3");
+
 	// fadeout ÈÄ ¾ÀÀüÈ¯
 	FadeManager::Get().StartFadeOut(1.f);
 }

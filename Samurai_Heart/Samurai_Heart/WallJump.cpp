@@ -22,6 +22,9 @@ void WallJump::Enter()
 
 	player->lastDirection = -player->wallDirection; // wall의 반대 방향
 	player->rigidbody.SetVelocityX(player->speed * 1.2f * player->lastDirection);	
+
+	// sound
+	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_Jump.mp3");
 }
 
 void WallJump::ChangeStateLogic()

@@ -19,6 +19,9 @@ void SpecialAttack::Enter()
 
 	// µ¹Áø
 	player->rigidbody.SetVelocityX(player->specialAttackSpeed * player->lastDirection);
+
+	// sound
+	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_SpecialAttack.mp3");
 }
 
 void SpecialAttack::ChangeStateLogic()

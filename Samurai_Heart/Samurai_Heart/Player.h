@@ -49,6 +49,7 @@ private:
 	int		hp = 100;
 	int		charge = 0;
 	int 	power = 10;
+	int		specialAttackPower = 100;
 	float	speed = 200.f;
 	float   dashSpeed = 500.f;
 	float   wallSlideSpeed = 50.f;
@@ -174,7 +175,7 @@ public:
 	void MpUp();
 	void MpDown();
 	bool isCollision(BoxCollider other);
-	void DoAttack();
+	void DoAttack(int damage);
 	void TakeDamage(int damage);
 	void Death();
 

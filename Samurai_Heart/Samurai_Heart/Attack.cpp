@@ -46,7 +46,7 @@ void Attack::UpdateLogic()
 		comboStep = comboStep == 2 ? -1 : comboStep;
 
 		// attack
-		player->DoAttack();
+		player->DoAttack(player->power);
 
 		// move
 		if (player->isMoveLKey) player->lastDirection = -1;

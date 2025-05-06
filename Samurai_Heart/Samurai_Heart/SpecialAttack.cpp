@@ -30,6 +30,9 @@ void SpecialAttack::ChangeStateLogic()
 
 void SpecialAttack::UpdateLogic() 
 {
+	// attack (지나가는동안 계속 줌)
+	player->DoAttack(player->specialAttackPower);
+
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

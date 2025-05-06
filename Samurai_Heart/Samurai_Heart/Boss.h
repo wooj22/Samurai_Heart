@@ -9,6 +9,8 @@
 #include "Camera.h"
 #include "BossBaseState.h"
 #include "BossIdle.h"
+#include "BossRun.h"
+#include "BossJump.h"
 
 class Boss : public Object
 {
@@ -49,6 +51,7 @@ private:
 
 	// [Controll]
 	int lastDirection = 0;
+	float curDist = 0;	// player와의 거리
 
 	float attackCoolTime = 0.5f;		
 	float attackTimer = 0.f;
@@ -116,5 +119,7 @@ public:
 
 	// fsm class
 	friend class BossIdle;
+	friend class BossRun;
+	friend class BossJump;
 };
 

@@ -123,6 +123,12 @@
     <ClInclude Include="BossIdle.h">
       <Filter>헤더 파일\BossStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="BossRun.h">
+      <Filter>헤더 파일\BossStateFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BossJump.h">
+      <Filter>헤더 파일\BossStateFSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -189,6 +195,12 @@
       <Filter>소스 파일\PlayerStateFSM</Filter>
     </ClCompile>
     <ClCompile Include="BossIdle.cpp">
+      <Filter>소스 파일\BossStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="BossRun.cpp">
+      <Filter>소스 파일\BossStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="BossJump.cpp">
       <Filter>소스 파일\BossStateFSM</Filter>
     </ClCompile>
   </ItemGroup>

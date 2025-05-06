@@ -86,9 +86,11 @@ void Boss::AnimationInit() {
 void Boss::FSMInt() {
 	// fsm state class µî·Ï
 	stateArr[IDLE] = new BossIdle(this);
+	stateArr[RUN] = new BossRun(this);
+	stateArr[JUMP] = new BossJump(this);
 
 	// state set
-	curBossState = IDLE;
+	curBossState = RUN;
 	curState = stateArr[curBossState];
 	ChangeState(curBossState);
 }

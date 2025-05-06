@@ -310,6 +310,13 @@ bool Player::isCollision(BoxCollider other)
 	return this->collider.isCollision(other);
 }
 
+// Attack
+void Player::DoAttack() {
+	if (isCollision(boss->GetCollider())) {
+		boss->TakeDamage(power);
+	}
+}
+
 // Hit event
 void Player::TakeDamage(int damage) 
 {

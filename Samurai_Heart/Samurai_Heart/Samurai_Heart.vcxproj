@@ -135,6 +135,8 @@
     <ClInclude Include="Boss.h" />
     <ClInclude Include="BossAttack.h" />
     <ClInclude Include="BossBaseState.h" />
+    <ClInclude Include="BossDie.h" />
+    <ClInclude Include="BossHit.h" />
     <ClInclude Include="BossIdle.h" />
     <ClInclude Include="BossJump.h" />
     <ClInclude Include="BossRun.h" />
@@ -164,6 +166,8 @@
     <ClCompile Include="Attack.cpp" />
     <ClCompile Include="Boss.cpp" />
     <ClCompile Include="BossAttack.cpp" />
+    <ClCompile Include="BossDie.cpp" />
+    <ClCompile Include="BossHit.cpp" />
     <ClCompile Include="BossIdle.cpp" />
     <ClCompile Include="BossJump.cpp" />
     <ClCompile Include="BossRun.cpp" />

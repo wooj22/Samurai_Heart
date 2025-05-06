@@ -36,15 +36,19 @@ void Attack::UpdateLogic()
 	player->currentSprite->SetFrameRect(currentFrame);
 
 	// attack animation change  //TODO :: cooltime으로 확장성 높이기
+	// 한 공격 애니메이션이 시작되는 지점
 	if (player->isAttackKey && player->currentAnimation->IsFinished())
 	{
+		// animation
 		comboStep++;
 		SetAttackAnimation(comboStep);
 		player->currentAnimation->Reset();
-
 		comboStep = comboStep == 2 ? -1 : comboStep;
 
-		// 한번 attack 할때마다 속도주기 (지금 coolTime이 없어서 여기 넣어둠)
+		// attack
+		player->DoAttack();
+
+		// move
 		if (player->isMoveLKey) player->lastDirection = -1;
 		if (player->isMoveRKey) player->lastDirection = 1;
 

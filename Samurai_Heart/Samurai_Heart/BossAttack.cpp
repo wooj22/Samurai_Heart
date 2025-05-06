@@ -26,12 +26,16 @@ void BossAttack::ChangeStateLogic()
 void BossAttack::UpdateLogic()
 {
 	// attack animation change
+	// 한 공격 애니메이션이 시작되는 지점
 	if (boss->currentAnimation->IsFinished()) {
+		// animation
 		comboStep++;
 		SetAttackAnimation(comboStep);
 		boss->currentAnimation->Reset();
-
 		comboStep = comboStep == 1 ? -1 : comboStep;
+
+		// attack
+		boss->DoAttack();
 	}
 
 	// animation sprite update

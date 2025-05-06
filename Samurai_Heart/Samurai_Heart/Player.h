@@ -80,7 +80,7 @@ private:
 	int lastDirection = 0;			// -1 left, 1 right
 
 	// [cool time & timer]
-	float attackCoolTime = 0.5f;
+	float attackCoolTime = 0.5f;	// 일단 애니메이션 재생 시간으로 제어하는중..
 	float attackTimer = 0.f;
 	float dashCheckInterval = 1.7f;	    // 이 시간 안에 2번 눌렀다면 isDash ture
 	float dashCheakTimer = 0.f;
@@ -174,6 +174,7 @@ public:
 	void MpUp();
 	void MpDown();
 	bool isCollision(BoxCollider other);
+	void DoAttack();
 	void TakeDamage(int damage);
 	void Death();
 

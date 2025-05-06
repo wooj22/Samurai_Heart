@@ -126,6 +126,7 @@ public:
 
 	// boss event
 	bool isCollision(BoxCollider other);
+	void DoAttack();
 	void TakeDamage(int damage);
 	void Death();
 

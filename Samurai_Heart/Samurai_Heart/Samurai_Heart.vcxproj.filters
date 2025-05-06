@@ -132,6 +132,12 @@
     <ClInclude Include="BossAttack.h">
       <Filter>헤더 파일\BossStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="BossHit.h">
+      <Filter>헤더 파일\BossStateFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BossDie.h">
+      <Filter>헤더 파일\BossStateFSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -207,6 +213,12 @@
       <Filter>소스 파일\BossStateFSM</Filter>
     </ClCompile>
     <ClCompile Include="BossAttack.cpp">
+      <Filter>소스 파일\BossStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="BossHit.cpp">
+      <Filter>소스 파일\BossStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="BossDie.cpp">
       <Filter>소스 파일\BossStateFSM</Filter>
     </ClCompile>
   </ItemGroup>

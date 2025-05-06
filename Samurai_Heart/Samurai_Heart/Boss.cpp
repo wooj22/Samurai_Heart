@@ -165,6 +165,12 @@ bool Boss::isCollision(BoxCollider other)
 	return this->collider.isCollision(other);
 }
 
+void Boss::DoAttack() {
+	if (isCollision(player->GetCollider())) {
+		player->TakeDamage(power);
+	}
+}
+
 void Boss::TakeDamage(int damage) 
 {
 	// hit 상태인동안은 무적 (HIT STATE 제어)

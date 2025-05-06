@@ -30,7 +30,8 @@ public:
 
 
     void FollowPlayer(Player* player, Map* map);
-    Vector2 WorldToCameraPos(Vector2 pos);
+    Vector2 WorldToCameraPos(Vector2 worldPos);
+    bool IsInView(Vector2 worldPos);
 
     // debug
     void DebugPosition();

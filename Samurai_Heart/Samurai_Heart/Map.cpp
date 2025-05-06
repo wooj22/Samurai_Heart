@@ -17,6 +17,8 @@ void Background::Render()
 		// 카메라 좌표로 변환
 		Vector2 drawPos = Camera::Get().WorldToCameraPos(worldPos);
 
+		// 컬링
+
 		// draw
 		RenderManager::Get().DrawImage(
 			image,

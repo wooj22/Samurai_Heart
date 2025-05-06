@@ -18,13 +18,24 @@ void Camera::FollowPlayer(Player* player, Map* map) {
 }
 
 // 월드좌표 -> 카메라 좌표 반환
-Vector2 Camera::WorldToCameraPos(Vector2 pos) {
-    float camX = pos.x - position.x;
-    float camY = pos.y - position.y;
+Vector2 Camera::WorldToCameraPos(Vector2 worldPos) {
+    float camX = worldPos.x - position.x;
+    float camY = worldPos.y - position.y;
 
     return Vector2(camX, camY);
 }
 
+// 컬링 여부
+bool Camera::IsInView(Vector2 worldPos)
+{
+    float left = position.x - width / 2.0f;
+    float right = position.x + width / 2.0f;
+    float top = position.y - height / 2.0f;
+    float bottom = position.y + height / 2.0f;
+
+    return (worldPos.x >= left && worldPos.x <= right &&
+        worldPos.y >= top && worldPos.y <= bottom);
+}
 
 // debug
 float timer = 0;

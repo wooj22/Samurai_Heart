@@ -7,6 +7,9 @@
 void MenuScene::Start() {
 	OutputDebugStringA("MenuScene Start\n");
 
+	// sound
+	SoundManager::Get().PlayBGM("../Resource/Sound/BGM_MenuScene.mp3");
+
 	// fade in
 	FadeManager::Get().StartFadeIn(1.5f);
 
@@ -62,6 +65,9 @@ void MenuScene::Render() {
 /// Exit
 void MenuScene::Exit() {
 	__super::Exit();
+
+	// sound
+	SoundManager::Get().StopBGM();
 
 	OutputDebugStringA("MenuScene Exit\n");
 }

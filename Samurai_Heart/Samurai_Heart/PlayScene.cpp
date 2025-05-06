@@ -11,6 +11,8 @@
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 
+	// sound
+	SoundManager::Get().PlayBGM("../Resource/Sound/BGM_PlayScene.mp3");
 
 	// fade in
 	FadeManager::Get().StartFadeIn(1.5f);
@@ -85,6 +87,9 @@ void PlayScene::Render() {
 /// Exit
 void PlayScene::Exit() {
 	__super::Exit();
+
+	// sound
+	SoundManager::Get().StopBGM();
 
 	OutputDebugStringA("PlayScene Exit\n");
 }

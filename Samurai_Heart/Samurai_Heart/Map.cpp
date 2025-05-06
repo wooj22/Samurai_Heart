@@ -1,11 +1,6 @@
 #include "Map.h"
 
 /*----------- BackGround -----------*/
-void Background::Start() 
-{
-	
-}
-
 void Background::Update() 
 {
 	SetScreenPosition();
@@ -56,6 +51,41 @@ void Background::Init(const wchar_t* path, Vector2 pos, Map* map)
 
 // Set ScreenPositiona
 void Background::SetScreenPosition() 
+{
+	screenPosition = Camera::Get().WorldToCameraPos(position);
+}
+
+/*----------- Prop -----------*/
+void Prop::Update()
+{
+	SetScreenPosition();
+}
+
+void Prop::Render()
+{
+	RenderManager::Get().DrawImage(
+		image,
+		screenPosition.x, screenPosition.y,
+		width, height
+	);
+}
+
+// Init
+void Prop::Init(const wchar_t* path, Vector2 pos)
+{
+	// image load
+	image = new Bitmap(path);
+
+	// size (prob scaleing)
+	width = image->GetWidth() * 2.f;
+	height = image->GetHeight() * 2.f;
+
+	// position
+	position = pos;
+}
+
+// Set ScreenPositiona
+void Prop::SetScreenPosition()
 {
 	screenPosition = Camera::Get().WorldToCameraPos(position);
 }

@@ -32,11 +32,34 @@ public:
     Background() = default;
     ~Background() { delete image; }
 
-    void Start() override;
+    void Start() override {}
     void Update() override;
     void Render() override;
 
     void Init(const wchar_t* path, Vector2 pos, Map* map);
+    void SetScreenPosition();
+};
+
+/* Prop Image */
+class Prop : public Object {
+private:
+    // transfrom
+    Vector2 position;
+    Vector2 screenPosition;
+    float width, height;
+
+    // image
+    Bitmap* image;
+
+public:
+    Prop() = default;
+    ~Prop() { delete image; }
+
+    void Start() override {}
+    void Update() override;
+    void Render() override;
+
+    void Init(const wchar_t* path, Vector2 pos);
     void SetScreenPosition();
 };
 

@@ -31,14 +31,22 @@ void SoundManager::Release()
 /// BGM play
 void SoundManager::PlayBGM(const char* filePath) 
 {
-	// 메모리 누수 방지
+	// 기존 BGM 해제
 	if (bgm_sound) {
 		bgm_sound->release();
 		bgm_sound = nullptr;
 	}
 
-	// 새 file 받아서 play
+	// 새 파일로 BGM 로드 (루프 모드 설정)
 	system->createSound(filePath, FMOD_LOOP_NORMAL, nullptr, &bgm_sound);
+
+	// 루프 카운트 무한(-1)로 명시적으로 설정
+	if (bgm_sound) {
+		bgm_sound->setMode(FMOD_LOOP_NORMAL);
+		bgm_sound->setLoopCount(-1);
+	}
+
+	// 재생
 	system->playSound(bgm_sound, nullptr, false, &bgm_channel);
 }
 

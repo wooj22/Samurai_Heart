@@ -138,6 +138,13 @@ void RenderManager::DrawTextS(const std::string& text, float posX, float posY) {
 	TextOutA(backBufferDC, posX, posY, text.c_str(), static_cast<int>(text.length()));
 }
 
+// Draw Rect (full)
+void RenderManager::DrawRect(Vector2 pos, float width, float height, Color color)
+{
+	SolidBrush brush(color);
+	backBufferGraphics->FillRectangle(&brush, pos.x, pos.y, width, height);
+}
+
 /// Back -> Front copy
 void RenderManager::DrawBackToFront() {
 	BitBlt(frontBufferDC, 0, 0, width, height, backBufferDC, 0, 0, SRCCOPY);

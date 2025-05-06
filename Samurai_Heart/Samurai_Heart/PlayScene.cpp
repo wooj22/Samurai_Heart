@@ -4,6 +4,7 @@
 #include "Boss.h"
 #include "Map.h"
 #include "UI_Text.h"
+#include "UI_Image.h"
 #include "../GameEngineLib/framework.h"
 
 /// Start
@@ -169,15 +170,23 @@ void PlayScene::CreateUI()
 {
 	// boss hp
 	bossHp_text = CreateObject<UI_Text>();
-	bossHp_text->Init("Boss HP", Vector2(700, 20));
+	bossHp_text->Init("Boss HP", Vector2(725, 20));
 
-	//bossHp_Image = CreateObject<UI_Image>();
+	bossHp_Image = CreateObject<UI_Image>();
+	bossHp_Image->Init(Vector2(510,40), 500, 30, Color::Red);
 
 	// player hp
 	playerHp_text = CreateObject<UI_Text>();
 	playerHp_text->Init("HP", Vector2(40, 355));
 
+	playerHp_Image = CreateObject<UI_Image>();
+	playerHp_Image->Init(Vector2(100, 355), 150, 15, Color::Green);
+
 	// player charge
 	playerCharge_text = CreateObject<UI_Text>();
 	playerCharge_text->Init("Charge", Vector2(40, 370));
+
+	playerChage_Image = CreateObject<UI_Image>();
+	playerChage_Image->Init(Vector2(100, 370), 150, 15, Color::Blue);
+
 }

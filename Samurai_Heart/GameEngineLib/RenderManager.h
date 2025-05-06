@@ -48,6 +48,8 @@ public:
 	void DrawTextC(const char* text, float posX, float posY);
 	void DrawTextW(const wchar_t* text, float posX, float posY);
 	void DrawTextS(const string& text, float posX, float posY);
+	
+	void DrawRect(Vector2 pos, float width, float height, Color color);
 	void DrawBackToFront();
 
 	// Debug

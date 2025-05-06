@@ -193,4 +193,15 @@ void PlayScene::CreateUI()
 
 	playerChage_Image = CreateObject<UI_Image>();
 	playerChage_Image->Init(Vector2(100, 370), 150, 15, Color::Blue);
+
+	// info ui
+	info1_text = CreateObject<UI_Text>();
+	info1_text->Init(
+		"[←][→] 이동    [spcabar] 점프  [↓] 벽 내려오기",
+		Vector2(1200, 350));
+
+	info2_text = CreateObject<UI_Text>();
+	info2_text->Init(
+		"[←←][→→] 돌진  [V] 방어  [D] 공격  [F] 궁극기",
+		Vector2(1200, 370));
 }

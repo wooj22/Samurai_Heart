@@ -45,7 +45,7 @@ void Boss::Update()
 
 void Boss::Render() 
 {
-	collider.DrawCollider();
+	//collider.DrawCollider();
 
 	// fsm render
 	curState->Render();
@@ -90,7 +90,7 @@ void Boss::AnimationInit() {
 
 	// attack
 	attack01Animation.LoadFrameDataFromFile("../Resource/Boss/Attack01.txt");
-	attack01Animation.SetFrameDuration(0.3f);
+	attack01Animation.SetFrameDuration(0.15f);
 
 	attack02Animation.LoadFrameDataFromFile("../Resource/Boss/Attack02.txt");
 	attack02Animation.SetFrameDuration(0.3f);

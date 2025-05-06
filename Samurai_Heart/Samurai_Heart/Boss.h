@@ -53,7 +53,7 @@ private:
 	// [Boss stat]
 	int hp = 1500;
 	int maxHp = 1500;
-	int power = 10;
+	int power = 20;
 	float speed = 150.f;
 	float jumpPower = 1000.f;
 	float gravity = 700.f;

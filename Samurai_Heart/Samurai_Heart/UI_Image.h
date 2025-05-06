@@ -11,7 +11,7 @@ private:
     Vector2 screenPosition;  // Left-Top ±‚¡ÿ
     float width;
     float height;
-    float fillAmount;
+    float fillMax;
     Color color;
 
 public:

@@ -12,26 +12,30 @@ void Player::Start()
 
 void Player::Update() 
 {
-	UpdateTimer();
-	UpdateKeyInput();
-	UpdateSize();
-	UpdateScreenPos();
+	if (!isDie) {
 
-	// fsm update
-	curState->ChangeStateLogic();
-	curState->UpdateLogic();
+		UpdateTimer();
+		UpdateKeyInput();
+		UpdateSize();
+		UpdateScreenPos();
 
-	// rigidbody
-	UpdateGravity();
-	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
-	
-	// ¸Ê °æ°è Á¦¾î
-	if (position.x <= mapPosXMin) position.x = 0 + width/2;
-	if (position.x >= mapWidth) position.x = mapWidth - width/2;
+		// fsm update
+		curState->ChangeStateLogic();
+		curState->UpdateLogic();
 
-	// collider
-	collider.UpdateCollider(position, width, height);
-	collider.UpdateScreenCollider(screenPosition, width, height);
+		// rigidbody
+		UpdateGravity();
+		position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
+
+		// ¸Ê °æ°è Á¦¾î
+		if (position.x <= mapPosXMin) position.x = 0 + width / 2;
+		if (position.x >= mapWidth) position.x = mapWidth - width / 2;
+
+		// collider
+		collider.UpdateCollider(position, width, height);
+		collider.UpdateScreenCollider(screenPosition, width, height);
+
+	}
 
 	// debug
 	PlayerDebug();
@@ -39,7 +43,7 @@ void Player::Update()
 
 void Player::Render()
 {
-	collider.DrawCollider();
+	//collider.DrawCollider();
 
 	// fsm state render
 	curState->Render();
@@ -267,7 +271,7 @@ void Player::UpdateGravity() {
 // Charge up hp
 void Player::ChargeUp() 
 {
-	this->charge += 10;
+	this->charge += 5;
 	if (this->charge >= chargeMax)
 	{
 		this->charge = chargeMax;

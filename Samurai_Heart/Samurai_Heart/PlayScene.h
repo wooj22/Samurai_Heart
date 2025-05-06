@@ -57,6 +57,9 @@ private:
 	UI_Text* playerCharge_text;
 	UI_Image* playerChage_Image;
 
+	UI_Text* info1_text;
+	UI_Text* info2_text;
+
 	UIManager UiManager;	//singletone
 
 	void CreateMap();

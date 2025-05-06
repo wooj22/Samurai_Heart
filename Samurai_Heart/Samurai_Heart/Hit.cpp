@@ -4,9 +4,12 @@
 void Hit::Enter() 
 {
 	OutputDebugStringA("[Player] Hit Enter\n");
+
 	// sprite & animation set
 	player->currentSprite = &player->hitSprite;
 	player->currentAnimation = &player->hitAnimation;
+
+	player->rigidbody.SetVelocityX(0);
 }
 
 void Hit::ChangeStateLogic()

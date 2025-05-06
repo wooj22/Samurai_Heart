@@ -74,7 +74,7 @@ private:
 	float dashCheakTimer = 0.f;
 	float dashTime = 0.3f;				// dash 유지시간
 	float dashTimer = 0.f;				// dash 유지 체크 타이머
-	float hitInvincibilityTime = 1.f;	// 무적타임, hit 주기
+	float hitInvincibilityTime = 0.5f;	// 무적타임, hit 주기
 	float  hitInvincibilityTimer = 0.f;
 
 	// [dash cheak]

@@ -61,13 +61,37 @@ void RenderManager::DrawImage(Bitmap* image, float x, float y, float width, floa
 	backBufferGraphics->DrawImage(image, destRect);
 }
 
-/// Image Draw with Scale (atlas)
+/// Image Draw with Atlas Frame
 void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH)
 {
 	Rect srcRect(srcX, srcY, srcW, srcH);
 	Rect destRect(posX, posY, srcW, srcH); // 스케일 없이 원본 크기로 그릴 경우
 
 	backBufferGraphics->DrawImage(bitmap, destRect, srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
+}
+
+/// Image Draw with Atlas Frame + Filp
+void RenderManager::DrawImageFilp(Bitmap* bitmap, int dir, float posX, float posY, float srcX, float srcY, float srcW, float srcH) {
+	Rect srcRect(srcX, srcY, srcW, srcH);
+	Rect destRect(posX, posY, srcW, srcH);
+
+	// left 반전
+	if (dir == -1) {
+		// 좌우 반전 매트릭스
+		backBufferGraphics->TranslateTransform(posX + srcW, posY); // 우측 끝으로 이동 후
+		backBufferGraphics->ScaleTransform(-1, 1); // 좌우 반전
+
+		backBufferGraphics->DrawImage(bitmap, Rect(0, 0, srcW, srcH),
+			srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
+
+		// 원래대로 복원
+		backBufferGraphics->ResetTransform();
+	}
+	else {
+		// right (기본)
+		backBufferGraphics->DrawImage(bitmap, destRect,
+			srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
+	}
 }
 
 // Text C Draw

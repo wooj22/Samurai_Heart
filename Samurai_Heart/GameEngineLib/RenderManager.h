@@ -39,8 +39,10 @@ public:
 	// Draw
 	void DrawBackground();
 	void DrawImage(Bitmap* bitmap, float posX, float posY);
-	void DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH);
 	void DrawImage(Bitmap* image, float x, float y, float width, float height);
+	void DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH);
+	void DrawImageFilp(Bitmap* bitmap, int dir, float posX, float posY, float srcX, float srcY, float srcW, float srcH);
+	
 	void DrawTextC(const char* text, float posX, float posY);
 	void DrawTextW(const wchar_t* text, float posX, float posY);
 	void DrawTextS(const string& text, float posX, float posY);

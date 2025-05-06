@@ -7,7 +7,8 @@ void BossHit::Enter()
 	boss->currentSprite = &boss->hitSprite;
 	boss->currentAnimation = &boss->hitAnimation;
 
-	boss->rigidbody.SetVelocityX(0);
+	// 밀려나기
+	boss->rigidbody.SetVelocityX(boss->speed * -boss->direction);
 }
 
 void BossHit::ChangeStateLogic()
@@ -22,6 +23,9 @@ void BossHit::ChangeStateLogic()
 void BossHit::UpdateLogic()
 {
 	boss->hitInvincibilityTimer += TimeManager::Get().GetDeltaTime();
+
+	// 감속
+	boss->rigidbody.SetVelocityX(boss->rigidbody.GetVelocityX() * 0.7f);
 
 	// animation sprite update
 	boss->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());

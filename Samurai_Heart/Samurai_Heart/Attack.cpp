@@ -47,8 +47,10 @@ void Attack::UpdateLogic()
 		if (comboStep == 2) comboStep = -1;
 
 		// 한번 attack 할때마다 속도주기 (지금 coolTime이 없어서 여기 넣어둠)
-		if(player->isMoveLKey) player->rigidbody.SetVelocityX(-player->speed);
-		if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->speed);
+		if (player->isMoveLKey) player->lastDirection = -1;
+		if (player->isMoveRKey) player->lastDirection = 1;
+
+		player->rigidbody.SetVelocityX(player->speed * player->lastDirection);
 	}
 
 	// 감속
@@ -58,8 +60,8 @@ void Attack::UpdateLogic()
 void Attack::Render()
 {
 	// animation render
-	RenderManager::Get().DrawImage(
-		player->currentSprite->GetBitmap(),
+	RenderManager::Get().DrawImageFilp(
+		player->currentSprite->GetBitmap(), player->lastDirection,
 		player->screenPosition.x - player->width / 2, player->screenPosition.y - player->height / 2,
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
 		player->currentSprite->GetFrameRect().Width, player->currentSprite->GetFrameRect().Height);

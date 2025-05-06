@@ -71,7 +71,7 @@ void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY, float srcX
 }
 
 /// Image Draw Rect + Filp
-void RenderManager::DrawImage(Bitmap* image, int dir, float x, float y, float width, float height) {
+void RenderManager::DrawImageFilp(Bitmap* image, int dir, float x, float y, float width, float height) {
 	// left 반전
 	if (dir == -1) {
 		// 좌우 반전: 기준점을 오른쪽 끝으로 이동 후 좌우 반전

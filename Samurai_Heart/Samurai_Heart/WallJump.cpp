@@ -19,8 +19,9 @@ void WallJump::Enter()
 
 	// jump
 	player->rigidbody.SetVelocityY(-player->jumpPower);	
-	player->rigidbody.SetVelocityX(player->speed * 1.2f * 
-		-player->wallDirection);	// wall의 반대 방향
+
+	player->lastDirection = -player->wallDirection; // wall의 반대 방향
+	player->rigidbody.SetVelocityX(player->speed * 1.2f * player->lastDirection);	
 }
 
 void WallJump::ChangeStateLogic()
@@ -42,8 +43,8 @@ void WallJump::UpdateLogic()
 void WallJump::Render()
 {
 	// sprite render
-	RenderManager::Get().DrawImage(
-		player->currentSprite->GetBitmap(),
+	RenderManager::Get().DrawImageFilp(
+		player->currentSprite->GetBitmap(),player->lastDirection,
 		player->screenPosition.x - player->width / 2, player->screenPosition.y - player->height / 2,
 		player->width, player->height);
 }

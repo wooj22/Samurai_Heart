@@ -11,6 +11,9 @@ void Dash::Enter()
 
 	// gravity X
 	player->rigidbody.UseGravity(false);
+
+	// dash
+	player->rigidbody.SetVelocityX(player->dashSpeed * player->lastDirection);
 }
 
 void Dash::ChangeStateLogic() 
@@ -23,17 +26,13 @@ void Dash::ChangeStateLogic()
 void Dash::UpdateLogic() 
 {
 	player->dashTimer += TimeManager::Get().GetDeltaTime();
-
-	// test
-	if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->dashSpeed);
-	if (player->isMoveLKey) player->rigidbody.SetVelocityX(-player->dashSpeed);
 }
 
 void Dash::Render() 
 {
 	// sprite render
-	RenderManager::Get().DrawImage(
-		player->currentSprite->GetBitmap(),
+	RenderManager::Get().DrawImageFilp(
+		player->currentSprite->GetBitmap(), player->lastDirection,
 		player->screenPosition.x - player->width / 2, player->screenPosition.y - player->height / 2,
 		player->width, player->height);
 }

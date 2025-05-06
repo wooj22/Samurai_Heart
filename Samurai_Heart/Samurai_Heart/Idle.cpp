@@ -50,8 +50,8 @@ void Idle::UpdateLogic()
 void Idle::Render() 
 {
 	// animation render
-	RenderManager::Get().DrawImage(
-		player->currentSprite->GetBitmap(), 
+	RenderManager::Get().DrawImageFilp(
+		player->currentSprite->GetBitmap(), player->lastDirection,
 		player->screenPosition.x - player->width/2, player->screenPosition.y - player->height/2,
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
 		player->currentSprite->GetFrameRect().Width, player->currentSprite->GetFrameRect().Height);

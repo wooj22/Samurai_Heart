@@ -36,9 +36,12 @@ void Run::ChangeStateLogic() {
 }
 
 void Run::UpdateLogic() {
-	// test
-	if (player->isMoveRKey) player->rigidbody.SetVelocityX(player->speed);
-	if (player->isMoveLKey) player->rigidbody.SetVelocityX(-player->speed);
+	// direction
+	if (player->isMoveRKey) player->lastDirection = 1;
+	if (player->isMoveLKey) player->lastDirection = -1;
+
+	// move
+	player->rigidbody.SetVelocityX(player->speed * player->lastDirection);
 
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
@@ -48,8 +51,8 @@ void Run::UpdateLogic() {
 
 void Run::Render() {
 	// animation render
-	RenderManager::Get().DrawImage(
-		player->currentSprite->GetBitmap(),
+	RenderManager::Get().DrawImageFilp(
+		player->currentSprite->GetBitmap(), player->lastDirection,
 		player->screenPosition.x - player->width / 2, player->screenPosition.y - player->height / 2,
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
 		player->width, player->height);

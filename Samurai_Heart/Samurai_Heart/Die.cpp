@@ -8,6 +8,8 @@ void Die::Enter()
 	// sprite & animation set
 	player->currentSprite = &player->dieSprite;
 	player->currentAnimation = &player->dieAnimation;
+
+	player->rigidbody.SetVelocityX(0);
 }
 
 void Die::ChangeStateLogic()
@@ -26,8 +28,8 @@ void Die::UpdateLogic()
 void Die::Render() 
 {
 	// animation render
-	RenderManager::Get().DrawImage(
-		player->currentSprite->GetBitmap(),
+	RenderManager::Get().DrawImageFilp(
+		player->currentSprite->GetBitmap(), player->lastDirection,
 		player->screenPosition.x - player->width / 2, player->screenPosition.y - player->height / 2,
 		player->currentSprite->GetFrameRect().X, player->currentSprite->GetFrameRect().Y,
 		player->width, player->height);

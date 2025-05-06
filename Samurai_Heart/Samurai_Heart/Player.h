@@ -48,6 +48,7 @@ private:
 	float	speed = 200.f;
 	float   dashSpeed = 500.f;
 	float   wallSlideSpeed = 50.f;
+	float	specialAttackSpeed = 700.f;
 	float	jumpPower = 600.0f;
 	float   defecseAverage = 0.2f;		// defense상태일때 hitDamage * 0.2f
 	float   gravity = 700;
@@ -73,6 +74,7 @@ private:
 
 	// controll
 	int wallDirection = 0;			// -1 left, 1 right
+	int lastDirection = 0;			// -1 left, 1 right
 
 	// [cool time & timer]
 	float attackCoolTime = 0.5f;

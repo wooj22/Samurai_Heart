@@ -19,7 +19,9 @@ void WallSlide::Enter() {
 
 void WallSlide::ChangeStateLogic() {
 	// idle
-	if (player->isGround) player->ChangeState(player->IDLE);
+	if (player->isGround ||
+		InputManager::Get().GetKeyDown(VK_DOWN)) 
+		player->ChangeState(player->IDLE);
 
 	// wall jump
 	if (player->isJumpKey) player->ChangeState(player->WALL_JUMP);

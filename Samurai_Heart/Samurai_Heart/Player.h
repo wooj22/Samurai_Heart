@@ -50,7 +50,7 @@ private:
 	float   wallSlideSpeed = 50.f;
 	float	jumpPower = 600.0f;
 	float   defecseAverage = 0.2f;		// defense상태일때 hitDamage * 0.2f
-	float   gravity = 500.f;
+	float   gravity = 700;
 
 	// [player gauge] - hp, charge
 	int maxHp = 100;
@@ -132,9 +132,6 @@ private:
 	AnimationClip runAnimation;
 	AnimationClip jumpAnimation;
 	AnimationClip wallSlideAnimation;
-	//AnimationClip wallJumpAnimation;  // animation x
-	//AnimationClip DashAnimation;	    // animation x
-	//AnimationClip DefenseAnimation;	// animation x
 	AnimationClip hitAnimation;
 	AnimationClip dieAnimation;
 	AnimationClip attack01Animation;

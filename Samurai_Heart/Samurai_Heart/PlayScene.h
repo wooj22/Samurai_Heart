@@ -1,6 +1,13 @@
 #pragma once
 #include "../GameEngineLib/Scene.h"
 
+class Player;
+class Map;
+class Background;
+class Prop;
+class Ground;
+class Wall;
+
 class PlayScene : public Scene
 {
 public:
@@ -11,5 +18,30 @@ public:
 	void Update() override;
 	void Render() override;
 	void Exit() override;
+
+private:
+	Player* player;
+	Map* playMap;
+	Background* backImage1;
+	Background* backImage2;
+	Prop* prop1;
+	Prop* prop2;
+	Prop* prop3;
+	Prop* prop4;
+	Prop* prop5;
+	Prop* prop6;
+	Prop* prop7;
+	Prop* prop8;
+	Prop* prop9;
+	Prop* prop10;
+	Ground* ground;
+	Wall* wall1;
+	Wall* wall2;
+	Wall* wall3;
+	Wall* wall4;
+	Wall* wall5;
+	Wall* wall6;
+
+	void CreateMap();
 };
 

@@ -195,7 +195,7 @@ void Wall::Init(const wchar_t* path, Vector2 pos)
 
 	// image
 	width = image->GetWidth();
-	height = image->GetHeight() * 3.f;		// scaleing
+	height = image->GetHeight() * 5.f;		// scaleing
 	position = pos;
 }
 

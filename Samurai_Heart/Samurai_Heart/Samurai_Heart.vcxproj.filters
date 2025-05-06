@@ -40,6 +40,18 @@
     <Filter Include="소스 파일\BossStateFSM">
       <UniqueIdentifier>{19b75f55-3956-4c18-98e1-bf655c2bace4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Object\UI">
+      <UniqueIdentifier>{fbff65fa-c13e-4b32-8d07-9bcdf8e7940d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Object\UI">
+      <UniqueIdentifier>{cd48460f-f0b4-48d1-b193-54391c388579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Object\GameObject">
+      <UniqueIdentifier>{8d2e14d3-f6ac-4801-a443-8c7b2426ab19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Object\GameObject">
+      <UniqueIdentifier>{09532741-8c15-49f6-b6ac-31afda2516b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -53,15 +65,6 @@
     </ClInclude>
     <ClInclude Include="PlayScene.h">
       <Filter>헤더 파일\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Boss.h">
-      <Filter>헤더 파일\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Character.h">
-      <Filter>헤더 파일\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>헤더 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="AnimationClip.h">
       <Filter>헤더 파일\Component</Filter>
@@ -138,6 +141,21 @@
     <ClInclude Include="BossDie.h">
       <Filter>헤더 파일\BossStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="Character.h">
+      <Filter>헤더 파일\Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>헤더 파일\Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>헤더 파일\Object\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Image.h">
+      <Filter>헤더 파일\Object\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="UI_Text.h">
+      <Filter>헤더 파일\Object\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -154,15 +172,6 @@
     </ClCompile>
     <ClCompile Include="InfoScene.cpp">
       <Filter>소스 파일\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Boss.cpp">
-      <Filter>소스 파일\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Character.cpp">
-      <Filter>소스 파일\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>소스 파일\Object</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
       <Filter>소스 파일\Object</Filter>
@@ -220,6 +229,21 @@
     </ClCompile>
     <ClCompile Include="BossDie.cpp">
       <Filter>소스 파일\BossStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Image.cpp">
+      <Filter>소스 파일\Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="UI_Text.cpp">
+      <Filter>소스 파일\Object\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>소스 파일\Object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>소스 파일\Object\GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Character.cpp">
+      <Filter>소스 파일\Object\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

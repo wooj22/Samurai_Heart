@@ -3,6 +3,7 @@
 #include "Player.h"
 #include "Boss.h"
 #include "Map.h"
+#include "UI_Text.h"
 #include "../GameEngineLib/framework.h"
 
 /// Start
@@ -25,6 +26,9 @@ void PlayScene::Start() {
 	// set
 	player->SetBoss(boss);
 	boss->SetPlayer(player);
+
+	// ui (마지막 등록)
+	CreateUI();
 
 	__super::Start();
 }
@@ -56,14 +60,14 @@ void PlayScene::Update() {
 		player->isWall = false;
 
 	
-	if (InputManager::Get().GetKeyDown('M'))
-		SceneManager::Get().ChangeScene(GameApp::MENU);
+	if (InputManager::Get().GetKeyDown('M')){}
+		//SceneManager::Get().ChangeScene(GameApp::MENU);
 }
 
 /// Render
 void PlayScene::Render() {
 	__super::Render();
-	RenderManager::Get().DrawTextW(L"Pressed [M] -> Menu Scene", 50, 50);
+	//RenderManager::Get().DrawTextW(L"Pressed [M] -> Menu Scene", 50, 50);
 }
 
 /// Exit
@@ -158,4 +162,22 @@ void PlayScene::CreateMap() {
 	wall6 = CreateObject<Wall>();
 	wall6->Init(L"../Resource/Map/Ground/Wall.png",
 		Vector2(4000, 300));
+}
+
+// Create UI
+void PlayScene::CreateUI() 
+{
+	// boss hp
+	bossHp_text = CreateObject<UI_Text>();
+	bossHp_text->Init("Boss HP", Vector2(700, 20));
+
+	//bossHp_Image = CreateObject<UI_Image>();
+
+	// player hp
+	playerHp_text = CreateObject<UI_Text>();
+	playerHp_text->Init("HP", Vector2(40, 355));
+
+	// player charge
+	playerCharge_text = CreateObject<UI_Text>();
+	playerCharge_text->Init("Charge", Vector2(40, 370));
 }

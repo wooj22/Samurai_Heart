@@ -1,20 +1,20 @@
-#pragma once
+ï»¿#pragma once
 
-/* [Object Ãß»ó Å¬·¡½º]
-* ¾À ¾È¿¡ µé¾î°¥ ¸ğµç ¿ÀºêÁ§Æ®ÀÇ base Å¸ÀÔÀÌ´Ù.
-* °¢ Scene¿¡ Object¸¦ »ó¼Ó¹ŞÀº ´Ù¾çÇÑ Å¬·¡½º °´Ã¼µéÀ» µî·Ï½ÃÅ°°í,
-* SceneÀº ÀÚ½ÅÀÇ Scene¿¡ µî·ÏµÈ ObjectµéÀÇ update¸¦ È£Ãâ½ÃÅ²´Ù.
+/* [Object ì¶”ìƒ í´ë˜ìŠ¤]
+* ì”¬ ì•ˆì— ë“¤ì–´ê°ˆ ëª¨ë“  ì˜¤ë¸Œì íŠ¸ì˜ base íƒ€ì…ì´ë‹¤.
+* ê° Sceneì— Objectë¥¼ ìƒì†ë°›ì€ ë‹¤ì–‘í•œ í´ë˜ìŠ¤ ê°ì²´ë“¤ì„ ë“±ë¡ì‹œí‚¤ê³ ,
+* Sceneì€ ìì‹ ì˜ Sceneì— ë“±ë¡ëœ Objectë“¤ì˜ updateë¥¼ í˜¸ì¶œì‹œí‚¨ë‹¤.
 * 
-* Áï, ´ÙÇü¼ºÀ» È°¿ëÇØ ¼ö¸¹Àº Å¸ÀÔÀÇ objectµéÀÇ update¸¦ ÀÏÀÏÈ÷ È£Ãâ½ÃÅ°Áö ¾Ê°í
-* Object classÀÇ Update()·Î ÇÑ¹ø¿¡ update¸¦ È£ÃâÇÑ´Ù.
+* ì¦‰, ë‹¤í˜•ì„±ì„ í™œìš©í•´ ìˆ˜ë§ì€ íƒ€ì…ì˜ objectë“¤ì˜ updateë¥¼ ì¼ì¼íˆ í˜¸ì¶œì‹œí‚¤ì§€ ì•Šê³ 
+* Object classì˜ Update()ë¡œ í•œë²ˆì— updateë¥¼ í˜¸ì¶œí•œë‹¤.
 */
 
-class Object	// Ãß»ó Å¬·¡½º
+class Object	// ì¶”ìƒ í´ë˜ìŠ¤
 {
 public:
 	Object() = default;
-	virtual ~Object() = default;      // ¼ø¼ö °¡»ó ¼Ò¸êÀÚ
-	virtual void Start() = 0; // ¼ø¼ö °¡»ó ÇÔ¼ö
-	virtual void Update() = 0;	// ¼ø¼ö °¡»ó ÇÔ¼ö
-	virtual void Render() = 0;	// ¼ø¼ö °¡»ó ÇÔ¼ö
+	virtual ~Object() = default;    // ìˆœìˆ˜ ê°€ìƒ ì†Œë©¸ì
+	virtual void Start() = 0;   // ìˆœìˆ˜ ê°€ìƒ í•¨ìˆ˜
+	virtual void Update() = 0;	// ìˆœìˆ˜ ê°€ìƒ í•¨ìˆ˜
+	virtual void Render() = 0;	// ìˆœìˆ˜ ê°€ìƒ í•¨ìˆ˜
 };

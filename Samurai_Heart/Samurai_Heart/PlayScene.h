@@ -8,6 +8,8 @@ class Background;
 class Prop;
 class Ground;
 class Wall;
+class UI_Text;
+class UI_Image;
 
 class PlayScene : public Scene
 {
@@ -45,6 +47,16 @@ private:
 	Wall* wall5;
 	Wall* wall6;
 
+	UI_Text* bossHp_text;
+	UI_Image* bossHp_Image;
+
+	UI_Text* playerHp_text;
+	UI_Image* playerHp_Image;
+
+	UI_Text* playerCharge_text;
+	UI_Image* playerChage_Image;
+
 	void CreateMap();
+	void CreateUI();
 };
 

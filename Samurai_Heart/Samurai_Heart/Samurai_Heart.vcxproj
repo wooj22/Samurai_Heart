@@ -159,6 +159,8 @@
     <ClInclude Include="Run.h" />
     <ClInclude Include="SpecialAttack.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="UI_Image.h" />
+    <ClInclude Include="UI_Text.h" />
     <ClInclude Include="WallJump.h" />
     <ClInclude Include="WallSlide.h" />
   </ItemGroup>
@@ -188,6 +190,8 @@
     <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="Run.cpp" />
     <ClCompile Include="SpecialAttack.cpp" />
+    <ClCompile Include="UI_Image.cpp" />
+    <ClCompile Include="UI_Text.cpp" />
     <ClCompile Include="WallJump.cpp" />
     <ClCompile Include="WallSlide.cpp" />
   </ItemGroup>

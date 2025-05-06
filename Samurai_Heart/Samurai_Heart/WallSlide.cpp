@@ -4,8 +4,8 @@ void WallSlide::Enter() {
 	OutputDebugStringA("[Player] WallSlide Enter\n");
 
 	// sprite & animation set
-	player->currentSprite = &player->idleSprite;
-	player->currentAnimation = &player->idleAnimation;
+	player->currentSprite = &player->wallSlideSprite;
+	player->currentAnimation = &player->wallSlideAnimation;
 
 	// slide
 	player->rigidbody.UseGravity(false);

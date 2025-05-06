@@ -106,7 +106,7 @@ void Player::AnimationInit()
 
 	// wall slide
 	wallSlideAnimation.LoadFrameDataFromFile("../Resource/Player/Wall.txt");
-	dieAnimation.SetFrameDuration(0.3f);
+	wallSlideAnimation.SetFrameDuration(0.3f);
 }
 
 /*-------------------- FSM --------------------*/

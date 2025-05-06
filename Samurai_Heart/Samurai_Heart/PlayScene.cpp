@@ -11,6 +11,7 @@
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 
+
 	// fade in
 	FadeManager::Get().StartFadeIn(1.5f);
 

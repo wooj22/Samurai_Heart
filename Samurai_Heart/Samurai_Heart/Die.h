@@ -4,6 +4,9 @@
 
 class Die : public BaseState
 {
+private:
+	float testTime = 3;
+	float testTimer = 0;
 public:
 	Die(Player* player) : BaseState(player) {}
 	void Enter() override;

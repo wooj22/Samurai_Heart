@@ -10,9 +10,6 @@ void BossDie::Enter()
 	boss->rigidbody.SetVelocity((0, 0));
 }
 
-float testTime = 3;
-float testTimer = 0;
-
 void BossDie::ChangeStateLogic()
 {
 	if (boss->currentAnimation->IsFinished()) {

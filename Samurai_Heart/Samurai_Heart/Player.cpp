@@ -347,8 +347,8 @@ void Player::TakeDamage(int damage)
 		if (this->hp <= 0)
 		{
 			hp = 0;
-			isDie = true;
-			this->Death();
+			//isDie = true;
+			//this->Death();
 			ChangeState(DIE);
 		}
 		else {
@@ -365,7 +365,8 @@ void Player::TakeDamage(int damage)
 // Die event
 void Player::Death() 
 {
-
+	// fadeout ÈÄ ¾ÀÀüÈ¯
+	SceneManager::Get().ChangeScene(GameApp::MENU);
 }
 
 

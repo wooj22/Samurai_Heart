@@ -14,15 +14,23 @@ void Die::Enter()
 
 void Die::ChangeStateLogic()
 {
-
+	if (player->currentAnimation->IsFinished()) {
+		testTimer += TimeManager::Get().GetDeltaTime();
+		if (testTimer >= testTime) {
+			player->isDie = true;
+			player->Death();
+		}
+	}
 }
 
 void Die::UpdateLogic()
 {
 	// animation sprite update
-	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
-	Frame currentFrame = player->currentAnimation->GetCurrentFrame();
-	player->currentSprite->SetFrameRect(currentFrame);
+	if (!player->currentAnimation->IsFinished()) {
+		player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
+		Frame currentFrame = player->currentAnimation->GetCurrentFrame();
+		player->currentSprite->SetFrameRect(currentFrame);
+	}
 }
 
 void Die::Render() 

@@ -4,6 +4,9 @@
 
 class BossDie : public BossBaseState
 {
+private:
+	float testTime = 3;
+	float testTimer = 0;
 public:
 	BossDie(Boss* boss) : BossBaseState(boss) {}
 	void Enter() override;

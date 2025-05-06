@@ -12,7 +12,6 @@ void Boss::Start()
 
 void Boss::Update() 
 {
-	UpdateTimer();
 	UpdateSize();
 	UpdateScreenPos();
 
@@ -113,10 +112,6 @@ void Boss::ChangeState(BossState newState) {
 
 
 /*-------------------- Update --------------------*/
-void Boss::UpdateTimer() 
-{
-	attackTimer += TimeManager::Get().GetDeltaTime();
-}
 
 void Boss::UpdateSize()
 {
@@ -183,28 +178,25 @@ void Boss::DoAttack() {
 
 void Boss::TakeDamage(int damage) 
 {
-	// hit 상태인동안은 무적 (HIT STATE 제어)
-	if (!isHit) {
-		this->hp -= damage;
-		isHit = true;
-		player->ChargeUp();
+	this->hp -= damage;
+	isHit = true;
+	player->ChargeUp();
 
-		if (this->hp <= 0)
-		{
-			hp = 0;
-			isDie = true;
-			this->Death();
-			ChangeState(DIE);
-		}
-		else {
-			ChangeState(HIT);
-		}
-
-		// debug
-		char hitBuffer[128];
-		sprintf_s(hitBuffer, "# boss Hit! [hp] : %d\n", hp);
-		OutputDebugStringA(hitBuffer);
+	if (this->hp <= 0)
+	{
+		hp = 0;
+		isDie = true;
+		this->Death();
+		ChangeState(DIE);
 	}
+	else {
+		ChangeState(HIT);
+	}
+
+	// debug
+	char hitBuffer[128];
+	sprintf_s(hitBuffer, "# boss Hit! [hp] : %d\n", hp);
+	OutputDebugStringA(hitBuffer);
 }
 
 void Boss::Death() 

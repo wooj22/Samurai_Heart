@@ -69,11 +69,6 @@ private:
 	int direction = 0;	// player 规氢 -1 left, 1 right
 	float curDist = 0;	// player客狼 芭府
 
-	float attackCoolTime = 0.5f;		
-	float attackTimer = 0.f;
-	float hitInvincibilityTime = 0.2f;	// 公利鸥烙, hit 林扁
-	float hitInvincibilityTimer = 0.f;
-
 	// [Components]
 	Rigidbody rigidbody;
 	BoxCollider collider;

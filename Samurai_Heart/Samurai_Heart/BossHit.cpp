@@ -6,24 +6,20 @@ void BossHit::Enter()
 	// sprite & animation set
 	boss->currentSprite = &boss->hitSprite;
 	boss->currentAnimation = &boss->hitAnimation;
+	boss->currentAnimation->Reset();
 
 	// 밀려나기
-	boss->rigidbody.SetVelocityX(boss->speed * -boss->direction);
+	boss->rigidbody.SetVelocityX(boss->speed * 1.2f* -boss->direction);
 }
 
 void BossHit::ChangeStateLogic()
 {
-	// idle
-	if (boss->hitInvincibilityTimer >= boss->hitInvincibilityTime) {
+	if(boss->currentAnimation->IsFinished())
 		boss->ChangeState(boss->IDLE);
-		boss->hitInvincibilityTimer = 0;
-	}
 }
 
 void BossHit::UpdateLogic()
 {
-	boss->hitInvincibilityTimer += TimeManager::Get().GetDeltaTime();
-
 	// 감속
 	boss->rigidbody.SetVelocityX(boss->rigidbody.GetVelocityX() * 0.7f);
 

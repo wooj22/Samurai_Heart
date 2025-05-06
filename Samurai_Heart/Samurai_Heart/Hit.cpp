@@ -8,6 +8,7 @@ void Hit::Enter()
 	// sprite & animation set
 	player->currentSprite = &player->hitSprite;
 	player->currentAnimation = &player->hitAnimation;
+	player->currentAnimation->Reset();
 
 	player->rigidbody.SetVelocityX(0);
 }

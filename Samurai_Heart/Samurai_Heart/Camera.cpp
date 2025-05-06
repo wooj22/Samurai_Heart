@@ -34,8 +34,8 @@ bool Camera::IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objH
     float top = position.y - margin;
     float bottom = position.y + this->height + margin;
 
-    float halfW = width * 0.5f;
-    float halfH = height * 0.5f;
+    float halfW = objWidth * 0.5f;
+    float halfH = objHeight * 0.5f;
 
     return (worldCenterPos.x + halfW >= left && worldCenterPos.x - halfW <= right &&
         worldCenterPos.y + halfH >= top && worldCenterPos.y - halfH <= bottom);
@@ -49,8 +49,8 @@ bool Camera::IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float ob
     float top = position.y - margin;
     float bottom = position.y + this->height + margin;
 
-    return (worldTopLeftPos.x + width >= left && worldTopLeftPos.x <= right &&
-        worldTopLeftPos.y + height >= top && worldTopLeftPos.y <= bottom);
+    return (worldTopLeftPos.x + objWidth >= left && worldTopLeftPos.x <= right &&
+        worldTopLeftPos.y + objHeight >= top && worldTopLeftPos.y <= bottom);
 }
 
 // debug

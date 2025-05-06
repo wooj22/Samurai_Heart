@@ -10,17 +10,28 @@ void BossDie::Enter()
 	boss->rigidbody.SetVelocity((0, 0));
 }
 
+float testTime = 3;
+float testTimer = 0;
+
 void BossDie::ChangeStateLogic()
 {
-	
+	if (boss->currentAnimation->IsFinished()) {
+		testTimer += TimeManager::Get().GetDeltaTime();
+		if (testTimer >= testTime) {
+			boss->isDie = true;
+			boss->Death();
+		}
+	}	
 }
 
 void BossDie::UpdateLogic()
 {
 	// animation sprite update
-	boss->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
-	Frame currentFrame = boss->currentAnimation->GetCurrentFrame();
-	boss->currentSprite->SetFrameRect(currentFrame);
+	if (!boss->currentAnimation->IsFinished()) {
+		boss->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
+		Frame currentFrame = boss->currentAnimation->GetCurrentFrame();
+		boss->currentSprite->SetFrameRect(currentFrame);
+	}
 }
 
 void BossDie::Render()

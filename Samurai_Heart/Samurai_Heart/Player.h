@@ -54,7 +54,7 @@ private:
 	int 	power = 10;
 	int		specialAttackPower = 100;
 	float	speed = 200.f;
-	float   dashSpeed = 500.f;
+	float   dashSpeed = 900.f;
 	float   wallSlideSpeed = 50.f;
 	float	specialAttackSpeed = 700.f;
 	float	jumpPower = 600.0f;

@@ -1,5 +1,7 @@
 #include "Boss.h"
 #include "Player.h"
+#include "PlayScene.h"
+#include "GameApp.h"
 
 void Boss::Start() 
 {
@@ -12,29 +14,31 @@ void Boss::Start()
 
 void Boss::Update() 
 {
-	UpdateSize();
-	UpdateScreenPos();
+	if (!isDie) {
+		UpdateSize();
+		UpdateScreenPos();
 
-	// player trace data
-	UpdatePlayerDist();
-	UpdateDirection();
+		// player trace data
+		UpdatePlayerDist();
+		UpdateDirection();
 
-	// fsm update
-	curState->ChangeStateLogic();
-	curState->UpdateLogic();
+		// fsm update
+		curState->ChangeStateLogic();
+		curState->UpdateLogic();
 
-	// rigidbody
-	UpdateGravity();
-	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
+		// rigidbody
+		UpdateGravity();
+		position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
 
-	// ¸Ê °æ°è Á¦¾î
-	if (position.x <= mapPosXMin) position.x = 0 + width / 2;
-	if (position.x >= mapWidth) position.x = mapWidth - width / 2;
+		// ¸Ê °æ°è Á¦¾î
+		if (position.x <= mapPosXMin) position.x = 0 + width / 2;
+		if (position.x >= mapWidth) position.x = mapWidth - width / 2;
 
-	// collider
-	collider.UpdateCollider(position, width, height);
-	collider.UpdateScreenCollider(screenPosition, width, height);
-
+		// collider
+		collider.UpdateCollider(position, width, height);
+		collider.UpdateScreenCollider(screenPosition, width, height);
+	}
+	
 	// debug
 	//BossDebug();
 }
@@ -82,7 +86,7 @@ void Boss::AnimationInit() {
 
 	// die
 	dieAnimation.LoadFrameDataFromFile("../Resource/Boss/Die.txt");
-	dieAnimation.SetFrameDuration(0.1f);
+	dieAnimation.SetFrameDuration(0.3f);
 
 	// attack
 	attack01Animation.LoadFrameDataFromFile("../Resource/Boss/Attack01.txt");
@@ -196,8 +200,8 @@ void Boss::TakeDamage(int damage)
 	if (this->hp <= 0)
 	{
 		hp = 0;
-		isDie = true;
-		this->Death();
+		//isDie = true;
+		//this->Death();
 		ChangeState(DIE);
 	}
 	else {
@@ -222,7 +226,8 @@ void Boss::TakeDamage(int damage)
 
 void Boss::Death() 
 {
-
+	// fadeout ÈÄ ¾ÀÀüÈ¯
+	SceneManager::Get().ChangeScene(GameApp::MENU);
 }
 
 

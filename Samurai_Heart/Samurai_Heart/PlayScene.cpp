@@ -15,17 +15,19 @@ void PlayScene::Start() {
 	// player
 	player = CreateObject<Player>();
 	player->SetPosition(Vector2(100, 300));
+	player->SetMapWidth(playMap->worldWidth);
 
 	// boss
 	boss = CreateObject<Boss>();
 	boss->SetPosition(Vector2(1000, 150));
+	boss->SetMapWidth(playMap->worldWidth);
 
 	// set
 	player->SetBoss(boss);
 	boss->SetPlayer(player);
 
 	// camera
-	Camera::Get().SetSize(800.f, 600.f);
+	Camera::Get().SetSize(1550.f, 400.f);
 
 	__super::Start();
 }

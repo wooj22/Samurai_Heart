@@ -1,1 +1,100 @@
 #include "Boss.h"
+
+void Boss::Start() 
+{
+	SpriteInit();
+	AnimationInit();
+}
+
+void Boss::Update() 
+{
+	UpdateTimer();
+	UpdateSize();
+	UpdateScreenPos();
+
+	// ! fsm update logic
+
+	// rigidbody
+	UpdateGravity();
+	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
+
+	// collider
+	collider.UpdateCollider(position, width, height);
+	collider.UpdateScreenCollider(screenPosition, width, height);
+}
+
+void Boss::Render() 
+{
+	collider.DrawCollider();
+
+	// ! fsm update logic
+}
+
+
+/*-------------------- Sprite & Animation --------------------*/
+void Boss::SpriteInit() {
+	idleSprite.Load(L"../Resource/Boss/Idle.png");
+	runSprite.Load(L"../Resource/Boss/Run.png");
+	jumpUpSprite.Load(L"../Resource/Boss/JumpUp.png");
+	jumpDownSprite.Load(L"../Resource/Boss/JumpDown.png");
+	hitSprite.Load(L"../Resource/Boss/Hit.png");
+	dieSprite.Load(L"../Resource/Boss/Die.png");
+	attack01Sprite.Load(L"../Resource/Boss/Attack01.png");
+	attack02Sprite.Load(L"../Resource/Boss/Attack02.png");
+}
+
+void Boss::AnimationInit() {
+	// idle
+	idleAnimation.LoadFrameDataFromFile("../Resource/Boss/Idle.txt");
+	idleAnimation.SetFrameDuration(0.1f);
+
+	// run
+	runAnimation.LoadFrameDataFromFile("../Resource/Boss/Run.txt");
+	runAnimation.SetFrameDuration(0.1f);
+
+	// jump
+	jumpUpAnimation.LoadFrameDataFromFile("../Resource/Boss/JumpUp.txt");
+	jumpUpAnimation.SetFrameDuration(0.1f);
+
+	jumpDownAnimation.LoadFrameDataFromFile("../Resource/Boss/JumpDown.txt");
+	jumpDownAnimation.SetFrameDuration(0.1f);
+
+	// hit
+	hitAnimation.LoadFrameDataFromFile("../Resource/Boss/Hit.txt");
+	hitAnimation.SetFrameDuration(0.1f);
+
+	// die
+	dieAnimation.LoadFrameDataFromFile("../Resource/Boss/Die.txt");
+	dieAnimation.SetFrameDuration(0.1f);
+
+	// attack
+	attack01Animation.LoadFrameDataFromFile("../Resource/Boss/Attack01.txt");
+	attack01Animation.SetFrameDuration(0.1f);
+
+	attack02Animation.LoadFrameDataFromFile("../Resource/Boss/Attack02.txt");
+	attack02Animation.SetFrameDuration(0.1f);
+}
+
+/*-------------------- Update --------------------*/
+void Boss::UpdateTimer() 
+{
+	attackTimer += TimeManager::Get().GetDeltaTime();
+}
+
+void Boss::UpdateSize()
+{
+	width = currentSprite->GetFrameRect().Width;
+	height = currentSprite->GetFrameRect().Height;
+}
+
+void Boss::UpdateScreenPos() 
+{
+	screenPosition = Camera::Get().WorldToCameraPos(position);
+}
+
+void Boss::UpdateGravity()
+{
+	if (!isGround)
+		rigidbody.UpdateGravity(TimeManager::Get().GetDeltaTime());
+
+}

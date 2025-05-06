@@ -249,7 +249,8 @@ void Player::UpdateSize()
 }
 
 // ScreenPosition Update
-void Player::UpdateScreenPos() {
+void Player::UpdateScreenPos()
+{
 	screenPosition = Camera::Get().WorldToCameraPos(position);
 }
 

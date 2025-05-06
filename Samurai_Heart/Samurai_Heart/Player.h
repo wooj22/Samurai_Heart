@@ -23,7 +23,7 @@
 class Player : public Object
 {
 private:
-	// [player state enum]
+	// [player state]
 	enum PlayerState {
 		IDLE, RUN, JUMP, WALL_JUMP, WALL_SLIDE,
 		DASH, DEFENSE, HIT, DIE, ATTACK, SPECIAL_ATTACK
@@ -31,11 +31,10 @@ private:
 	PlayerState curPlayerState;
 	string tag = "Player";
 
-	// [player state]
 	BaseState* curState;
 	BaseState* stateArr[11] = {};
 
-	// transform
+	// [transform]
 	Vector2 position;
 	Vector2 screenPosition;
 	float width;
@@ -51,7 +50,7 @@ private:
 	float	specialAttackSpeed = 700.f;
 	float	jumpPower = 600.0f;
 	float   defecseAverage = 0.2f;		// defense상태일때 hitDamage * 0.2f
-	float   gravity = 700;
+	float   gravity = 700.f;
 
 	// [player gauge] - hp, charge
 	int maxHp = 100;
@@ -69,10 +68,9 @@ public:
 private:
 	bool isJumping = false;
 	bool isDash = false;
-	bool isMpEmpty = false;
 	bool isChargeMax = true;		// test용 (false로 바꾸기)
 
-	// controll
+	// [direction controll]
 	int wallDirection = 0;			// -1 left, 1 right
 	int lastDirection = 0;			// -1 left, 1 right
 

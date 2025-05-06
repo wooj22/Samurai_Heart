@@ -128,7 +128,7 @@ void Ground::Render()
 		);
 	}
 
-	collider.DrawCollider();
+	//collider.DrawCollider();
 }
 
 // Init
@@ -185,7 +185,7 @@ void Wall::Render()
 	);
 
 	// collider draw debug
-	collider.DrawCollider();
+	//collider.DrawCollider();
 }
 
 // Init

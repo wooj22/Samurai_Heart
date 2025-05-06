@@ -11,6 +11,9 @@
 void PlayScene::Start() {
 	OutputDebugStringA("PlayScene Start\n");
 
+	// fade in
+	FadeManager::Get().StartFadeIn(1.5f);
+
 	// map
 	CreateMap();
 
@@ -65,15 +68,17 @@ void PlayScene::Update() {
 	else
 		player->isWall = false;
 
-	
-	if (InputManager::Get().GetKeyDown('M')){}
-		//SceneManager::Get().ChangeScene(GameApp::MENU);
+	// fade
+	FadeManager::Get().Update(TimeManager::Get().GetDeltaTime());
+
 }
 
 /// Render
 void PlayScene::Render() {
 	__super::Render();
-	//RenderManager::Get().DrawTextW(L"Pressed [M] -> Menu Scene", 50, 50);
+	
+	// fade
+	FadeManager::Get().Render();
 }
 
 /// Exit

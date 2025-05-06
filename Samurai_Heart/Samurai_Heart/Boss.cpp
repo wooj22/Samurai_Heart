@@ -41,6 +41,12 @@ void Boss::Update()
 		collider.UpdateCollider(position, width, height);
 		collider.UpdateScreenCollider(screenPosition, width, height);
 	}
+	else {
+		if (FadeManager::Get().GetState() == FadeState::FadeOut) {
+			if (FadeManager::Get().IsFadeDone())
+				SceneManager::Get().ChangeScene(GameApp::MENU);
+		}
+	}
 	
 	// debug
 	//BossDebug();
@@ -231,7 +237,7 @@ void Boss::TakeDamage(int damage)
 void Boss::Death() 
 {
 	// fadeout ÈÄ ¾ÀÀüÈ¯
-	SceneManager::Get().ChangeScene(GameApp::MENU);
+	FadeManager::Get().StartFadeOut(1.f);
 }
 
 

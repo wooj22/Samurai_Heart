@@ -40,6 +40,12 @@ void Player::Update()
 		collider.UpdateScreenCollider(screenPosition, width, height);
 
 	}
+	else {
+		if (FadeManager::Get().GetState() == FadeState::FadeOut) {
+			if (FadeManager::Get().IsFadeDone())
+				SceneManager::Get().ChangeScene(GameApp::MENU);
+		}
+	}
 
 	// debug
 	PlayerDebug();
@@ -383,7 +389,7 @@ void Player::TakeDamage(int damage)
 void Player::Death() 
 {
 	// fadeout ÈÄ ¾ÀÀüÈ¯
-	SceneManager::Get().ChangeScene(GameApp::MENU);
+	FadeManager::Get().StartFadeOut(1.f);
 }
 
 

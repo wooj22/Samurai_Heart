@@ -7,6 +7,9 @@
 void MenuScene::Start() {
 	OutputDebugStringA("MenuScene Start\n");
 
+	// fade in
+	FadeManager::Get().StartFadeIn(1.5f);
+
 	// map
 	menuMap = new Map(1550.f, 400.f, 1550.f, 400.f);
 
@@ -28,16 +31,32 @@ void MenuScene::Start() {
 
 /// Update
 void MenuScene::Update() {
+	// object
 	__super::Update();
 
-	if (InputManager::Get().GetKeyDown(VK_SPACE))
-		SceneManager::Get().ChangeScene(GameApp::PLAY);
+	// fade
+	FadeManager::Get().Update(TimeManager::Get().GetDeltaTime());
+
+	//change scene
+	if (InputManager::Get().GetKeyDown(VK_SPACE)) {
+		FadeManager::Get().StartFadeOut(3.f);
+	}
+	if (FadeManager::Get().GetState() == FadeState::FadeOut) {
+		if(FadeManager::Get().IsFadeDone())
+			SceneManager::Get().ChangeScene(GameApp::PLAY);
+	}
 }
 
 /// Render
 void MenuScene::Render() {
+	// object
 	__super::Render();
+
+	// ui
 	RenderManager::Get().DrawTextW(L"Pressed Spacebar to Play", 700, 350);
+
+	// fade
+	FadeManager::Get().Render();
 }
 
 /// Exit

@@ -16,10 +16,10 @@ void BossAttack::ChangeStateLogic()
 	// 공격 끝나고
 	if (boss->currentAnimation->IsFinished()) {
 		// run (trace)
-		if (boss->curDist > boss->attackLimit) boss->ChangeState(boss->RUN);
+		if (boss->distance > boss->attackLimit) boss->ChangeState(boss->RUN);
 
 		// idle
-		if (boss->curDist > boss->traceLimit) boss->ChangeState(boss->IDLE);
+		if (boss->distance > boss->traceLimit) boss->ChangeState(boss->IDLE);
 	}
 }
 

@@ -132,7 +132,7 @@ void Boss::UpdateGravity()
 }
 
 void Boss::UpdatePlayerDist() {
-	curDist = this->position.Distance(player->GetPosition());
+	distance = this->position.Distance(player->GetPosition());
 }
 
 void Boss::UpdateDirection() {
@@ -178,10 +178,21 @@ void Boss::DoAttack() {
 
 void Boss::TakeDamage(int damage) 
 {
+	// dmage
 	this->hp -= damage;
 	isHit = true;
-	player->ChargeUp();
 
+	// hit count
+	hitCount++;
+	if (hitCount >= hitCountLimit) {
+		hitCount = 0;
+		ChangeState(JUMP);
+	}
+
+	// player chage
+	player->ChargeUp();
+	
+	// state
 	if (this->hp <= 0)
 	{
 		hp = 0;

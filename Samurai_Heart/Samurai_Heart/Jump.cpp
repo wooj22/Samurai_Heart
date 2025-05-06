@@ -12,7 +12,7 @@ void Jump::Enter() {
 	player->currentSprite = &player->jumpSprite;
 	player->currentAnimation = &player->jumpAnimation;
 
-	// jump (1ȸ)
+	// jump (1회)
 	player->rigidbody.SetVelocityY(-player->jumpPower);
 }
 

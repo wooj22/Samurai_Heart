@@ -11,10 +11,10 @@ void BossRun::Enter()
 void BossRun::ChangeStateLogic()
 {
 	// attack
-	if (boss->curDist <= boss->attackLimit) boss->ChangeState(boss->ATTACK);
+	if (boss->distance <= boss->attackLimit) boss->ChangeState(boss->ATTACK);
 
 	// idle
-	if (boss->curDist > boss->traceLimit) boss->ChangeState(boss->IDLE);
+	if (boss->distance > boss->traceLimit) boss->ChangeState(boss->IDLE);
 }
 
 void BossRun::UpdateLogic()

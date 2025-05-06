@@ -57,7 +57,7 @@ private:
 	// [Boss Ai data]
 	float traceLimit = 1000.f;
 	float attackLimit = 100.f;
-	int jumpHpLimit = 10;	// 10번 공격받으면 한번 도망치기
+	int hitCountLimit = 3;	// 10번 공격받으면 한번 도망치기
 
 	// [Boss flag]
 	bool isDie = false;
@@ -66,8 +66,9 @@ private:
 	bool isJumping = false;
 
 	// [Controll]
+	float distance = 0;	// player와의 거리
 	int direction = 0;	// player 방향 -1 left, 1 right
-	float curDist = 0;	// player와의 거리
+	int hitCount = 0;
 
 	// [Components]
 	Rigidbody rigidbody;

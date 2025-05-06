@@ -189,10 +189,10 @@ void Player::UpdateKeyInput()
 	// dash cheak
 	DashCheak();
 
-	// --- test ---  (HIT, DIE) 아직 게임 상호작용 로직이 없어서
-	if (InputManager::Get().GetKeyDown('K')) {
+	// --- test ---
+	/*if (InputManager::Get().GetKeyDown('K')) {
 		TakeDamage(20);
-	}
+	}*/
 }
 
 // Dash Cheak

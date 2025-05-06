@@ -209,9 +209,10 @@ void Boss::TakeDamage(int damage)
 	if (this->hp <= 0)
 	{
 		hp = 0;
-		//isDie = true;
-		//this->Death();
 		ChangeState(DIE);
+
+		// sound
+		SoundManager::Get().PlaySFX("../Resource/Sound/SFX_BossDie.mp3");
 	}
 	else {
 		// hit count
@@ -236,9 +237,6 @@ void Boss::TakeDamage(int damage)
 
 void Boss::Death() 
 {
-	// sound
-	SoundManager::Get().PlaySFX("../Resource/Sound/SFX_BossDie.mp3");
-
 	// fadeout ÈÄ ¾ÀÀüÈ¯
 	FadeManager::Get().StartFadeOut(1.f);
 }

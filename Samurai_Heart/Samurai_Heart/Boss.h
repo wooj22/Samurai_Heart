@@ -51,17 +51,17 @@ private:
 	float mapWidth;
 
 	// [Boss stat]
-	int hp = 1500;
-	int maxHp = 1500;
-	int power = 20;
+	int hp = 500;
+	int maxHp = 500;
+	int power = 25;
 	float speed = 150.f;
 	float jumpPower = 1000.f;
 	float gravity = 700.f;
 
 	// [Boss Ai data]
-	float traceLimit = 1000.f;
+	float traceLimit = 700.f;
 	float attackLimit = 100.f;
-	int hitCountLimit = 10;	// 10번 공격받으면 한번 도망치기
+	int hitCountLimit = 10;		// 10번 공격받으면 한번 도망치기
 
 	// [Boss flag]
 	bool isDie = false;

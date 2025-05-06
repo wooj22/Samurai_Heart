@@ -5,6 +5,9 @@
 void WallJump::Enter()
 {
 	OutputDebugStringA("[Player] WallJump Enter\n");
+	
+	// timer
+	timer = 0;
 
 	// flag set
 	player->isWall = false;
@@ -16,12 +19,6 @@ void WallJump::Enter()
 
 	// jump
 	player->rigidbody.SetVelocityY(-player->jumpPower);
-
-	// jump x move
-	if(player->MoveLKey)
-		player->rigidbody.SetVelocityX(-player->speed * 1.2f);
-	if (player->MoveRKey)
-		player->rigidbody.SetVelocityX(player->speed * 1.2f);
 }
 
 void WallJump::ChangeStateLogic()
@@ -30,12 +27,20 @@ void WallJump::ChangeStateLogic()
 	if (player->isGround) player->ChangeState(player->IDLE);
 
 	// wall slide
-	if (player->isWall) player->ChangeState(player->WALL_SLIDE);
+	if (timer >= cheakTime) {
+		if (player->isWall) player->ChangeState(player->WALL_SLIDE);
+	}
 }
 
 void WallJump::UpdateLogic()
 {
-	
+	timer += TimeManager::Get().GetDeltaTime();
+
+	// jump x move
+	if (player->MoveLKey)
+		player->rigidbody.SetVelocityX(-player->speed * 1.2f);
+	if (player->MoveRKey)
+		player->rigidbody.SetVelocityX(player->speed * 1.2f);
 }
 
 void WallJump::Render()

@@ -12,6 +12,8 @@
 #include "BossRun.h"
 #include "BossJump.h"
 #include "BossAttack.h"
+#include "BossHit.h"
+#include "BossDie.h"
 
 class Player;
 
@@ -141,5 +143,7 @@ public:
 	friend class BossRun;
 	friend class BossJump;
 	friend class BossAttack;
+	friend class BossHit;
+	friend class BossDie;
 };
 

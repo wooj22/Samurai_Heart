@@ -92,6 +92,8 @@ void Boss::FSMInt() {
 	stateArr[RUN] = new BossRun(this);
 	stateArr[JUMP] = new BossJump(this);
 	stateArr[ATTACK] = new BossAttack(this);
+	stateArr[HIT] = new BossHit(this);
+	stateArr[DIE] = new BossDie(this);
 
 	// state set
 	curBossState = IDLE;
@@ -175,10 +177,10 @@ void Boss::TakeDamage(int damage)
 			hp = 0;
 			isDie = true;
 			this->Death();
-			//ChangeState(DIE);
+			ChangeState(DIE);
 		}
 		else {
-			//ChangeState(HIT);
+			ChangeState(HIT);
 		}
 
 		// debug

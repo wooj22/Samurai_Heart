@@ -14,7 +14,6 @@ void Hit::Enter()
 
 void Hit::ChangeStateLogic()
 {
-	player->hitInvincibilityTimer += TimeManager::Get().GetDeltaTime();
 	if (player->hitInvincibilityTimer >= player->hitInvincibilityTime) {
 		player->ChangeState(player->IDLE);
 		player->hitInvincibilityTimer = 0;
@@ -23,6 +22,8 @@ void Hit::ChangeStateLogic()
 
 void Hit::UpdateLogic()
 {
+	player->hitInvincibilityTimer += TimeManager::Get().GetDeltaTime();
+
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();

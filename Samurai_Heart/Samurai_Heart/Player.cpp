@@ -59,6 +59,7 @@ void Player::SpriteInit()
 	hitSprite.Load(L"../Resource/Player/Hit.png");
 	dieSprite.Load(L"../Resource/Player/Die.png");
 	wallSlideSprite.Load(L"../Resource/Player/Wall.png");
+	wallJumpSprite.Load(L"../Resource/Player/WallJumpUp.png");
 }
 
 // animation load
@@ -124,6 +125,7 @@ void Player::FSMInt()
 	stateArr[HIT] = new Hit(this);
 	stateArr[DIE] = new Die(this);
 	stateArr[WALL_SLIDE] = new WallSlide(this);
+	stateArr[WALL_JUMP] = new WallJump(this);
 
 	// state set
 	curPlayerState = IDLE;
@@ -302,12 +304,7 @@ bool Player::isCollision(BoxCollider other)
 	// isWall
 	if (otherTag == "Wall") 
 	{
-		if (this->collider.isCollision(other)) 
-			this->isWall = true;
-		else 
-			this->isWall = false;
-
-		return isWall;
+		return this->collider.isCollision(other);;
 	}
 
 	return this->collider.isCollision(other);
@@ -411,6 +408,14 @@ const char* Player::PlayerStateToString(PlayerState state)
 	case IDLE: return "Idle";
 	case RUN: return "Move";
 	case JUMP: return "Jump";
+	case DASH: return "Dash";
+	case DEFENSE: return "Defense";
+	case ATTACK: return "Attack";
+	case SPECIAL_ATTACK: return "Special Attack";
+	case HIT: return "Hit";
+	case DIE: return "Die";
+	case WALL_SLIDE: return "Wall Slide";
+	case WALL_JUMP: return "Wall Jump";
 	default: return "Unknown";
 	}
 }

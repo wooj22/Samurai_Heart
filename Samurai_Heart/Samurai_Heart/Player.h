@@ -18,6 +18,7 @@
 #include "Hit.h"
 #include "Die.h"
 #include "WallSlide.h"
+#include "WallJump.h"
 
 class Player : public Object
 {
@@ -62,7 +63,9 @@ private:
 	bool isSpecialAttack = false;
 	bool isDefense = false;
 	bool isGround = false;
+public:
 	bool isWall = false;
+private:
 	bool isJumping = false;
 	bool isDash = false;
 	bool isMpEmpty = false;
@@ -111,7 +114,7 @@ private:
 	Sprite runSprite;
 	Sprite jumpSprite;
 	Sprite wallSlideSprite;
-	//Sprite wallJumpSprite;
+	Sprite wallJumpSprite;
 	Sprite dashSprite;
 	Sprite defenseSprite;
 	Sprite hitSprite;
@@ -126,7 +129,7 @@ private:
 	AnimationClip runAnimation;
 	AnimationClip jumpAnimation;
 	AnimationClip wallSlideAnimation;
-	//AnimationClip wallJumpAnimation;
+	//AnimationClip wallJumpAnimation;  // animation x
 	//AnimationClip DashAnimation;	    // animation x
 	//AnimationClip DefenseAnimation;	// animation x
 	AnimationClip hitAnimation;
@@ -191,5 +194,6 @@ public:
 	friend class Hit;
 	friend class Die;
 	friend class WallSlide;
+	friend class WallJump;
 };
 

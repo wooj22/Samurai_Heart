@@ -18,7 +18,7 @@ void WallSlide::ChangeStateLogic() {
 	if (player->isGround) player->ChangeState(player->IDLE);
 
 	// wall jump
-
+	if (player->isJumpKey) player->ChangeState(player->WALL_JUMP);
 }
 
 void WallSlide::UpdateLogic() {
@@ -39,6 +39,5 @@ void WallSlide::Render() {
 
 void WallSlide::Exit() {
 	player->rigidbody.UseGravity(true);
-
 	OutputDebugStringA("[Player] WallSlide Exit\n");
 }

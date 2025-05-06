@@ -19,7 +19,9 @@ Prop* prop8;
 Prop* prop9;
 Prop* prop10;
 Ground* ground;
-Wall* wall;
+Wall* wall1;
+Wall* wall2;
+
 
 /// Start
 void PlayScene::Start() {
@@ -84,9 +86,13 @@ void PlayScene::Start() {
 		Vector2(0, 600), playMap);
 
 	// wall
-	wall = CreateObject<Wall>();
-	wall->Init(L"../Resource/Map/Ground/Wall.png",
+	wall1 = CreateObject<Wall>();
+	wall1->Init(L"../Resource/Map/Ground/Wall.png",
 		Vector2(0, 410));
+
+	wall2 = CreateObject<Wall>();
+	wall2->Init(L"../Resource/Map/Ground/Wall.png",
+		Vector2(350, 410));
 
 	// player
 	player = CreateObject<Player>();
@@ -109,7 +115,15 @@ void PlayScene::Update() {
 
 	// collision
 	player->isCollision(ground->GetCollider());
-	player->isCollision(wall->GetCollider());
+
+	// wall collision
+	if (player->isCollision(wall1->GetCollider()) ||
+		player->isCollision(wall2->GetCollider())) {
+		player->isWall = true;
+	}
+	else
+		player->isWall = false;
+
 	
 	if (InputManager::Get().GetKeyDown('M'))
 		SceneManager::Get().ChangeScene(GameApp::MENU);

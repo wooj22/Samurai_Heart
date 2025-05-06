@@ -10,6 +10,7 @@ public:
 	enum sceneName { MENU, PLAY };
 	Camera camera;
 
+
 	GameApp(int inputWidth = 1920, int inputHeight = 1080) :
 		WinGameApp(inputWidth, inputHeight) {};
 	~GameApp() override = default;

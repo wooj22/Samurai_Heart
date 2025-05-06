@@ -6,6 +6,10 @@ void Player::Start()
 	SpriteInit();
 	AnimationInit();
 	FSMInt();
+	
+	// ui init
+	UIManager::Get().UpdatePlayerHP_Image(hp);
+	UIManager::Get().UpdatePlayerChage_Image(charge);
 
 	collider.SetTag(this->tag);
 }

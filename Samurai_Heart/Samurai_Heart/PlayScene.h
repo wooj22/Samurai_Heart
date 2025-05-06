@@ -60,7 +60,8 @@ private:
 	UI_Text* info1_text;
 	UI_Text* info2_text;
 
-	UIManager UiManager;	//singletone
+	// ui manager
+	UIManager UiManager;	
 
 	void CreateMap();
 	void CreateUI();

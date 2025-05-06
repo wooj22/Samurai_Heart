@@ -21,8 +21,7 @@ void MenuScene::Start() {
 		Vector2(525, 0));
 
 	// camera
-	Camera::Get().SetSize(1550.f, 400.f);
-	Camera::Get().SetPosition(Vector2(0,0));
+	Camera::Get().SetPosition(Vector2(0, 0));
 
 	__super::Start();
 }

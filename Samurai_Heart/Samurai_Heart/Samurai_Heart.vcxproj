@@ -146,6 +146,7 @@
     <ClInclude Include="Dash.h" />
     <ClInclude Include="Defense.h" />
     <ClInclude Include="Die.h" />
+    <ClInclude Include="FadeManager.h" />
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Hit.h" />
     <ClInclude Include="Idle.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="Dash.cpp" />
     <ClCompile Include="Defense.cpp" />
     <ClCompile Include="Die.cpp" />
+    <ClCompile Include="FadeManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Hit.cpp" />

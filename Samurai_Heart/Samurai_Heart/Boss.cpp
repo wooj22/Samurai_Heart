@@ -9,6 +9,9 @@ void Boss::Start()
 	AnimationInit();
 	FSMInt();
 
+	// ui init
+	UIManager::Get().UpdateBossHP_Image(hp);
+
 	collider.SetTag(this->tag);
 }
 

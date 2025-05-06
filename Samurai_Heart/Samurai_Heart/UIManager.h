@@ -4,6 +4,7 @@
 class UI_Text;
 class UI_Image;
 
+// playScene Àü¿ë
 class UIManager : public Singleton<UIManager>
 {
 private:

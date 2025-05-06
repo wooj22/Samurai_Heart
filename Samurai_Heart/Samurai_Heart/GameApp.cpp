@@ -12,6 +12,9 @@ void GameApp::Init() {
 	
 	SceneManager::Get().SetCurrentScene(MENU);
 	SceneManager::Get().Init();
+
+	// camera
+	Camera::Get().SetSize(1550.f, 400.f);
 }
 
 /// Game Release

@@ -21,7 +21,7 @@ void PlayScene::Start() {
 
 	// boss
 	boss = CreateObject<Boss>();
-	boss->SetPosition(Vector2(1000, 150));
+	boss->SetPosition(Vector2(2000, 150));
 	boss->SetMapWidth(playMap->worldWidth);
 
 	// set

@@ -7,7 +7,7 @@
 class GameApp : public WinGameApp
 {
 public:
-	enum sceneName { MENU, INFO, PLAY };
+	enum sceneName { MENU, PLAY };
 	Camera camera;
 
 	GameApp(int inputWidth = 1920, int inputHeight = 1080) :

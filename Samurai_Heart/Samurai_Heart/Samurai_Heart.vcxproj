@@ -149,7 +149,6 @@
     <ClInclude Include="GameApp.h" />
     <ClInclude Include="Hit.h" />
     <ClInclude Include="Idle.h" />
-    <ClInclude Include="InfoScene.h" />
     <ClInclude Include="Jump.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MenuScene.h" />
@@ -183,7 +182,6 @@
     <ClCompile Include="GameApp.cpp" />
     <ClCompile Include="Hit.cpp" />
     <ClCompile Include="Idle.cpp" />
-    <ClCompile Include="InfoScene.cpp" />
     <ClCompile Include="Jump.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MenuScene.cpp" />

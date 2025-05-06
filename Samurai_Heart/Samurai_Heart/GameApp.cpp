@@ -1,6 +1,5 @@
 #include "GameApp.h"
 #include "MenuScene.h"
-#include "InfoScene.h"
 #include "PlayScene.h"
 
 /// Game Init
@@ -9,7 +8,6 @@ void GameApp::Init() {
 
 	// scene µî·Ï
 	SceneManager::Get().CreateScene<MenuScene>();
-	SceneManager::Get().CreateScene<InfoScene>();
 	SceneManager::Get().CreateScene<PlayScene>();
 	
 	SceneManager::Get().SetCurrentScene(MENU);

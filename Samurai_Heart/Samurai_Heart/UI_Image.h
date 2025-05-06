@@ -24,5 +24,7 @@ public:
     void Init(Vector2 pos, float w, float h, Color c);
     void SetPosition(Vector2 pos);
     void SetSize(float w, float h);
+    void SetSizeW(float w);
+    void SetWidthRatio(float ratio);
 };
 

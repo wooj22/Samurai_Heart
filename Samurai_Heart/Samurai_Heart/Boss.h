@@ -14,6 +14,7 @@
 #include "BossAttack.h"
 #include "BossHit.h"
 #include "BossDie.h"
+#include "UIManager.h"
 
 class Player;
 
@@ -137,6 +138,7 @@ public:
 	void SetMapWidth(float width) { mapWidth = width; }
 	Vector2 GetPosition() { return position; }
 	string GetTag() { return tag; }
+	int GetMaxHp() { return maxHp; }
 	BoxCollider GetCollider() { return collider; }
 
 	// debug

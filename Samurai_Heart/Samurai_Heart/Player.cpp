@@ -34,7 +34,7 @@ void Player::Update()
 	collider.UpdateScreenCollider(screenPosition, width, height);
 
 	// debug
-	//PlayerDebug();
+	PlayerDebug();
 }
 
 void Player::Render()
@@ -277,6 +277,9 @@ void Player::ChargeUp()
 	{
 		isChargeMax = false;
 	}
+
+	// ui update
+	UIManager::Get().UpdatePlayerChage_Image(charge);
 }
 
 // Charge downhp
@@ -284,6 +287,9 @@ void Player::ChargeZero()
 {
 	this->charge = 0;
 	isChargeMax = false;
+
+	// ui update
+	UIManager::Get().UpdatePlayerChage_Image(charge);
 }
 
 // Collision check
@@ -354,6 +360,9 @@ void Player::TakeDamage(int damage)
 		else {
 			if(!isDefense) ChangeState(HIT);
 		}
+
+		// ui update
+		UIManager::Get().UpdatePlayerHP_Image(hp);
 
 		// debug
 		char hitBuffer[128];

@@ -19,6 +19,7 @@
 #include "Die.h"
 #include "WallSlide.h"
 #include "WallJump.h"
+#include "UIManager.h"
 
 class Boss;
 
@@ -190,6 +191,8 @@ public:
 	void SetMapWidth(float width) { mapWidth = width; }
 	Vector2 GetPosition() { return position; }
 	string GetTag() { return tag; }
+	int GetMaxHp() { return maxHp; }
+	int GetMaxCharge() { return chargeMax; }
 	BoxCollider GetCollider() { return collider; }
 
 	// debug

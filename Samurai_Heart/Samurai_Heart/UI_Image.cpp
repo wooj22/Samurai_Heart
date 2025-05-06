@@ -23,3 +23,13 @@ void UI_Image::SetSize(float w, float h)
     width = w;
     height = h;
 }
+
+void UI_Image::SetSizeW(float w)
+{
+    width = w;
+}
+
+void UI_Image::SetWidthRatio(float ratio)
+{
+    width += ratio;
+}

@@ -1,5 +1,6 @@
 #pragma once
 #include "../GameEngineLib/Scene.h"
+#include "UIManager.h"
 
 class Player;
 class Boss;
@@ -55,6 +56,8 @@ private:
 
 	UI_Text* playerCharge_text;
 	UI_Image* playerChage_Image;
+
+	UIManager UiManager;	//singletone
 
 	void CreateMap();
 	void CreateUI();

@@ -216,7 +216,8 @@ void Boss::TakeDamage(int damage)
 		}
 	}
 
-	
+	// ui update
+	UIManager::Get().UpdateBossHP_Image(hp);
 
 	// debug
 	char hitBuffer[128];

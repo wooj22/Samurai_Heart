@@ -31,6 +31,11 @@ void PlayScene::Start() {
 	// ui (마지막 등록)
 	CreateUI();
 
+	// ui manager
+	UIManager::Get().InitUI(bossHp_Image, playerHp_Image, playerChage_Image);
+	UIManager::Get().InitDate(boss->GetMaxHp(),
+		player->GetMaxHp(), player->GetMaxCharge());
+
 	__super::Start();
 }
 

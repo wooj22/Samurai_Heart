@@ -18,7 +18,7 @@ void PlayScene::Start() {
 
 	// boss
 	boss = CreateObject<Boss>();
-	boss->SetPosition(Vector2(300, 150));
+	boss->SetPosition(Vector2(1000, 150));
 
 	// set
 	player->SetBoss(boss);

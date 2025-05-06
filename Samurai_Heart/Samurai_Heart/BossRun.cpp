@@ -11,12 +11,13 @@ void BossRun::Enter()
 void BossRun::ChangeStateLogic()
 {
 	// idle
-	if (boss->curDist < boss->traceLimit) boss->ChangeState(boss->IDLE);
+	if (boss->curDist > boss->traceLimit) boss->ChangeState(boss->IDLE);
 }
 
 void BossRun::UpdateLogic()
 {
-	
+	// trace run
+	boss->rigidbody.SetVelocityX(boss->speed * boss->direction);
 
 	// animation sprite update
 	boss->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
@@ -28,7 +29,7 @@ void BossRun::Render()
 {
 	// animation render
 	RenderManager::Get().DrawImageFilp(
-		boss->currentSprite->GetBitmap(), boss->lastDirection,
+		boss->currentSprite->GetBitmap(), boss->direction,
 		boss->screenPosition.x - boss->width / 2, boss->screenPosition.y - boss->height / 2,
 		boss->currentSprite->GetFrameRect().X, boss->currentSprite->GetFrameRect().Y,
 		boss->currentSprite->GetFrameRect().Width, boss->currentSprite->GetFrameRect().Height);

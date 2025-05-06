@@ -13,7 +13,7 @@ void BossIdle::Enter()
 void BossIdle::ChangeStateLogic() 
 {
 	// run (trace)
-	if (boss->curDist >= boss->traceLimit) boss->ChangeState(boss->RUN);
+	if (boss->curDist <= boss->traceLimit) boss->ChangeState(boss->RUN);
 }
 
 void BossIdle::UpdateLogic() 
@@ -28,7 +28,7 @@ void BossIdle::Render()
 {
 	// animation render
 	RenderManager::Get().DrawImageFilp(
-		boss->currentSprite->GetBitmap(), boss->lastDirection,
+		boss->currentSprite->GetBitmap(), boss->direction,
 		boss->screenPosition.x - boss->width / 2, boss->screenPosition.y - boss->height / 2,
 		boss->currentSprite->GetFrameRect().X, boss->currentSprite->GetFrameRect().Y,
 		boss->currentSprite->GetFrameRect().Width, boss->currentSprite->GetFrameRect().Height);

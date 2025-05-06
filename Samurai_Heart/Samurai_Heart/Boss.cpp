@@ -137,7 +137,7 @@ void Boss::UpdatePlayerDist() {
 
 void Boss::UpdateDirection() {
 	direction =
-		this->position.x - player->GetPosition().x < 0 ? -1 : 1;
+		this->position.x - player->GetPosition().x < 0 ? 1 : -1;
 }
 
 /*-------------------- Event --------------------*/

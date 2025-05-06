@@ -58,6 +58,7 @@ void Player::SpriteInit()
 	specialAttackSprite.Load(L"../Resource/Player/Attack04.png");
 	hitSprite.Load(L"../Resource/Player/Hit.png");
 	dieSprite.Load(L"../Resource/Player/Die.png");
+	wallSlideSprite.Load(L"../Resource/Player/Wall.png");
 }
 
 // animation load
@@ -102,6 +103,10 @@ void Player::AnimationInit()
 	// die
 	dieAnimation.LoadFrameDataFromFile("../Resource/Player/Die.txt");
 	dieAnimation.SetFrameDuration(0.15f);
+
+	// wall slide
+	wallSlideAnimation.LoadFrameDataFromFile("../Resource/Player/Wall.txt");
+	dieAnimation.SetFrameDuration(0.3f);
 }
 
 /*-------------------- FSM --------------------*/

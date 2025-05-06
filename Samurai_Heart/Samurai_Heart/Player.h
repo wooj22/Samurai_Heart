@@ -109,8 +109,8 @@ private:
 	Sprite idleSprite;
 	Sprite runSprite;
 	Sprite jumpSprite;
-	//Sprite WallSlideSprite;
-	//Sprite WallJumpSprite;
+	Sprite wallSlideSprite;
+	//Sprite wallJumpSprite;
 	Sprite dashSprite;
 	Sprite defenseSprite;
 	Sprite hitSprite;
@@ -124,8 +124,8 @@ private:
 	AnimationClip idleAnimation;
 	AnimationClip runAnimation;
 	AnimationClip jumpAnimation;
-	//AnimationClip WallSlideAnimation;
-	//AnimationClip WallJumpAnimation;
+	AnimationClip wallSlideAnimation;
+	//AnimationClip wallJumpAnimation;
 	//AnimationClip DashAnimation;	    // animation x
 	//AnimationClip DefenseAnimation;	// animation x
 	AnimationClip hitAnimation;

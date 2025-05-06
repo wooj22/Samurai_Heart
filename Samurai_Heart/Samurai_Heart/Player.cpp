@@ -24,6 +24,7 @@ void Player::Update()
 	// rigidbody
 	UpdateGravity();
 	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
+	//if (isGround) position.y--;
 
 	// collider
 	collider.UpdateCollider(position, width, height);
@@ -292,6 +293,14 @@ bool Player::isCollision(BoxCollider other)
 	{
 		if (this->collider.isCollision(other)) {
 			this->isGround = true;
+
+			// ground collider 최상단보다 아래일경우 보정
+			if (collider.max.y > other.min.y)
+			{
+				float overlap = collider.max.y - other.min.y;
+				position.y -= overlap;
+			}
+
 			rigidbody.SetVelocityY(0);
 		}
 		else {

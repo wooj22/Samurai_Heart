@@ -15,6 +15,8 @@ void Boss::Update()
 	UpdateTimer();
 	UpdateSize();
 	UpdateScreenPos();
+
+	// player trace data
 	UpdatePlayerDist();
 	UpdateDirection();
 
@@ -78,10 +80,10 @@ void Boss::AnimationInit() {
 
 	// attack
 	attack01Animation.LoadFrameDataFromFile("../Resource/Boss/Attack01.txt");
-	attack01Animation.SetFrameDuration(0.1f);
+	attack01Animation.SetFrameDuration(0.3f);
 
 	attack02Animation.LoadFrameDataFromFile("../Resource/Boss/Attack02.txt");
-	attack02Animation.SetFrameDuration(0.1f);
+	attack02Animation.SetFrameDuration(0.3f);
 }
 
 
@@ -153,6 +155,14 @@ bool Boss::isCollision(BoxCollider other)
 	{
 		if (this->collider.isCollision(other)) {
 			this->isGround = true;
+
+			// ground collider 최상단보다 아래일경우 보정
+			if (collider.max.y > other.min.y)
+			{
+				float overlap = collider.max.y - other.min.y;
+				position.y -= overlap;
+			}
+
 			rigidbody.SetVelocityY(0);
 		}
 		else {

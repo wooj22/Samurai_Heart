@@ -10,8 +10,8 @@ class Player;
 class Camera : public Singleton<Camera>{
 public:
     Vector2 position = (0,0);
-    float width = 800;
-    float height = 600;
+    float width;
+    float height;
 
     Camera() = default;
     Camera(Vector2 pos, float width_input, float height_input) :
@@ -31,8 +31,8 @@ public:
 
     void FollowPlayer(Player* player, Map* map);
     Vector2 WorldToCameraPos(Vector2 worldPos);
-    bool IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objHeight);
-    bool IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float objHeight);
+    bool IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objHeight, float margin = 50.0f);
+    bool IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float objHeight, float margin = 50.0f);
 
     // debug
     void DebugPosition();

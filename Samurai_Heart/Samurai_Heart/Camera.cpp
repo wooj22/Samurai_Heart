@@ -27,43 +27,30 @@ Vector2 Camera::WorldToCameraPos(Vector2 worldPos) {
 
 
 // 컬링 (center)
-bool Camera::IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objHeight)
+bool Camera::IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objHeight, float margin)
 {
-    float halfCamW = width / 2.f;
-    float halfCamH = height / 2.f;
+    float left = position.x - margin;
+    float right = position.x + this->width + margin;
+    float top = position.y - margin;
+    float bottom = position.y + this->height + margin;
 
-    float camLeft = position.x - halfCamW;
-    float camRight = position.x + halfCamW;
-    float camTop = position.y - halfCamH;
-    float camBottom = position.y + halfCamH;
+    float halfW = width * 0.5f;
+    float halfH = height * 0.5f;
 
-    float objLeft = worldCenterPos.x - objWidth / 2.f;
-    float objRight = worldCenterPos.x + objWidth / 2.f;
-    float objTop = worldCenterPos.y - objHeight / 2.f;
-    float objBottom = worldCenterPos.y + objHeight / 2.f;
-
-    return !(objRight < camLeft || objLeft > camRight ||
-        objBottom < camTop || objTop > camBottom);
+    return (worldCenterPos.x + halfW >= left && worldCenterPos.x - halfW <= right &&
+        worldCenterPos.y + halfH >= top && worldCenterPos.y - halfH <= bottom);
 }
 
 // 컬링 (left, top)
-bool Camera::IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float objHeight)
+bool Camera::IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float objHeight, float margin)
 {
-    float halfCamW = width / 2.f;
-    float halfCamH = height / 2.f;
+    float left = position.x - margin;
+    float right = position.x + this->width + margin;
+    float top = position.y - margin;
+    float bottom = position.y + this->height + margin;
 
-    float camLeft = position.x - halfCamW;
-    float camRight = position.x + halfCamW;
-    float camTop = position.y - halfCamH;
-    float camBottom = position.y + halfCamH;
-
-    float objLeft = worldTopLeftPos.x;
-    float objRight = worldTopLeftPos.x + objWidth;
-    float objTop = worldTopLeftPos.y;
-    float objBottom = worldTopLeftPos.y + objHeight;
-
-    return !(objRight < camLeft || objLeft > camRight ||
-        objBottom < camTop || objTop > camBottom);
+    return (worldTopLeftPos.x + width >= left && worldTopLeftPos.x <= right &&
+        worldTopLeftPos.y + height >= top && worldTopLeftPos.y <= bottom);
 }
 
 // debug

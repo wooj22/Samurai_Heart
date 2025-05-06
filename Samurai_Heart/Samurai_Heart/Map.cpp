@@ -14,17 +14,18 @@ void Background::Render()
 		Vector2 worldPos = position;
 		worldPos.x += i * width;
 
-		// 카메라 좌표로 변환
-		Vector2 drawPos = Camera::Get().WorldToCameraPos(worldPos);
-
-		// 컬링
-
-		// draw
-		RenderManager::Get().DrawImage(
-			image,
-			drawPos.x, drawPos.y,
-			width, height
-		);
+		// culling
+		if (Camera::Get().IsInViewByTopLeft(worldPos, width, height)) {
+			// screen pos
+			Vector2 drawPos = Camera::Get().WorldToCameraPos(worldPos);
+		
+			// draw
+			RenderManager::Get().DrawImage(
+				image,
+				drawPos.x, drawPos.y,
+				width, height
+			);
+		}
 	}
 }
 
@@ -65,11 +66,14 @@ void Prop::Update()
 
 void Prop::Render()
 {
-	RenderManager::Get().DrawImage(
-		image,
-		screenPosition.x, screenPosition.y,
-		width, height
-	);
+	// culling
+	if (Camera::Get().IsInViewByCenter(position, width, height)) {
+		RenderManager::Get().DrawImage(
+			image,
+			screenPosition.x, screenPosition.y,
+			width, height
+		);
+	}
 }
 
 // Init
@@ -119,15 +123,18 @@ void Ground::Render()
 		Vector2 worldPos = imagePosition;
 		worldPos.x += i * imageWidth;
 
-		// 카메라 좌표로 변환
-		Vector2 drawPos = Camera::Get().WorldToCameraPos(worldPos);
+		// culling
+		if (Camera::Get().IsInViewByTopLeft(worldPos, imageHeight, imageHeight)) {
+			// screen pos
+			Vector2 drawPos = Camera::Get().WorldToCameraPos(worldPos);
 
-		// draw
-		RenderManager::Get().DrawImage(
-			image,
-			drawPos.x, drawPos.y,
-			imageWidth, imageHeight
-		);
+			// draw
+			RenderManager::Get().DrawImage(
+				image,
+				drawPos.x, drawPos.y,
+				imageWidth, imageHeight
+			);
+		}
 	}
 
 	//collider.DrawCollider();
@@ -179,12 +186,14 @@ void Wall::Update()
 
 void Wall::Render()
 {
-	// draw
-	RenderManager::Get().DrawImage(
-		image,
-		screenPosition.x - width/2, screenPosition.y - height/2,
-		width, height
-	);
+	// culling
+	if (Camera::Get().IsInViewByCenter(position, width, height)) {
+		RenderManager::Get().DrawImage(
+			image,
+			screenPosition.x - width / 2, screenPosition.y - height / 2,
+			width, height
+		);
+	}
 
 	// collider draw debug
 	//collider.DrawCollider();

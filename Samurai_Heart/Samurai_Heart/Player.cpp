@@ -277,7 +277,10 @@ void Player::ChargeZero()
 // Collision check
 bool Player::isCollision(BoxCollider other)
 {
-	if (other.GetTag() == "Ground")
+	string otherTag = other.GetTag();
+
+	// isGround
+	if (otherTag == "Ground")
 	{
 		if (this->collider.isCollision(other)) {
 			this->isGround = true;
@@ -286,11 +289,19 @@ bool Player::isCollision(BoxCollider other)
 		else {
 			this->isGround = false;
 		}
+
+		return isGround;
 	}
 
-	if (other.GetTag() == "Boss")
+	// isWall
+	if (otherTag == "Wall") 
 	{
+		if (this->collider.isCollision(other)) 
+			this->isWall = true;
+		else 
+			this->isWall = false;
 
+		return isWall;
 	}
 
 	return this->collider.isCollision(other);
@@ -338,6 +349,7 @@ void Player::PlayerDebug() {
 	debugtimer += TimeManager::Get().GetDeltaTime();
 
 	if (debugtimer >= debugCooltime) {
+		OutputDebugStringA("---- Plyaer Debug ----");
 		// 현재 플레이어의 State
 		std::string stateInfo = std::string("[Player State] ") + PlayerStateToString(curPlayerState) + "\n";
 		OutputDebugStringA(stateInfo.c_str());
@@ -361,6 +373,11 @@ void Player::PlayerDebug() {
 		char groundBuffer[128];
 		sprintf_s(groundBuffer, "is Ground : %d\n", isGround);
 		OutputDebugStringA(groundBuffer);
+
+		// 현재 플레이어의 isWall
+		char wallBuffer[128];
+		sprintf_s(wallBuffer, "is Wall : %d\n", isWall);
+		OutputDebugStringA(wallBuffer);
 
 		// currentAnimation의 프레임 정보
 		/*Frame currentFrame = currentAnimation->GetCurrentFrame();

@@ -107,8 +107,9 @@ void PlayScene::Update() {
 	Camera::Get().FollowPlayer(player, playMap);
 	Camera::Get().DebugPosition();
 
-	// ground collision
+	// collision
 	player->isCollision(ground->GetCollider());
+	player->isCollision(wall->GetCollider());
 	
 	if (InputManager::Get().GetKeyDown('M'))
 		SceneManager::Get().ChangeScene(GameApp::MENU);

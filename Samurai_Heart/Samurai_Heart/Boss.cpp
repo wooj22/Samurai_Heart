@@ -1,4 +1,5 @@
 #include "Boss.h"
+#include "Player.h"
 
 void Boss::Start() 
 {
@@ -56,7 +57,7 @@ void Boss::AnimationInit() {
 
 	// run
 	runAnimation.LoadFrameDataFromFile("../Resource/Boss/Run.txt");
-	runAnimation.SetFrameDuration(0.1f);
+	runAnimation.SetFrameDuration(0.05f);
 
 	// jump
 	jumpUpAnimation.LoadFrameDataFromFile("../Resource/Boss/JumpUp.txt");

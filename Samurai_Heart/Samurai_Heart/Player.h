@@ -20,9 +20,14 @@
 #include "WallSlide.h"
 #include "WallJump.h"
 
+class Boss;
+
 class Player : public Object
 {
 private:
+	// [boss]
+	Boss* boss;
+
 	// [player state]
 	enum PlayerState {
 		IDLE, RUN, JUMP, WALL_JUMP, WALL_SLIDE,
@@ -171,6 +176,9 @@ public:
 	bool isCollision(BoxCollider other);
 	void TakeDamage(int damage);
 	void Death();
+
+	// boss set
+	void SetBoss(Boss* b) { boss = b; }
 
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }

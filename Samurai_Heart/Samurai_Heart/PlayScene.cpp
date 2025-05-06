@@ -20,6 +20,10 @@ void PlayScene::Start() {
 	boss = CreateObject<Boss>();
 	boss->SetPosition(Vector2(300, 150));
 
+	// set
+	player->SetBoss(boss);
+	boss->SetPlayer(player);
+
 	// camera
 	Camera::Get().SetSize(800.f, 600.f);
 

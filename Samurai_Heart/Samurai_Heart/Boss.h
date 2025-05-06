@@ -12,9 +12,18 @@
 #include "BossRun.h"
 #include "BossJump.h"
 
+class Player;
+
+// 보스 패턴
+// default : run (계속 플레이어를 향해 쫒아간다)
+// 
+
 class Boss : public Object
 {
 private:
+	// [Plyaer]
+	Player* player;
+
 	// [Boss state]
 	enum BossState {
 		IDLE, RUN, JUMP, HIT, DIE, ATTACK
@@ -42,6 +51,7 @@ private:
 	// [Boss Ai data]
 	float traceLimit = 300.f;
 	float attackLimit = 150.f;
+	int jumpHpLimit = 10;	// 10번 공격받으면 한번 도망치기
 
 	// [Boss flag]
 	bool isDie = false;
@@ -110,6 +120,9 @@ public:
 	bool isCollision(BoxCollider other);
 	void TakeDamage(int damage);
 	void Death();
+
+	// player set
+	void SetPlayer(Player* p) { player = p; }
 
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }

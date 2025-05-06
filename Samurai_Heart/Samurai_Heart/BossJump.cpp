@@ -13,9 +13,6 @@ void BossJump::Enter()
 
 	// jump (1회)
 	boss->rigidbody.SetVelocityY(-boss->jumpPower);
-
-	// 플레이어 반대방향으로 날아가기
-	boss->rigidbody.SetVelocityX(boss->speed * 2.0f * -boss->direction);
 }
 
 void BossJump::ChangeStateLogic()
@@ -26,6 +23,9 @@ void BossJump::ChangeStateLogic()
 
 void BossJump::UpdateLogic()
 {
+	// 플레이어 반대방향으로 날아가기
+	boss->rigidbody.SetVelocityX(boss->speed * 2.0f * -boss->direction);
+
 	// up & down sprite upate
 	float velocityY = boss->rigidbody.GetVelocity().y;
 
@@ -40,6 +40,9 @@ void BossJump::UpdateLogic()
 	{
 		boss->currentSprite = &boss->jumpDownSprite;
 		boss->currentAnimation = &boss->jumpDownAnimation;
+
+		// 내려올때 천천히
+		boss->rigidbody.SetGravity(boss->gravity * 0.2f);
 	}
 
 	// frame update
@@ -61,5 +64,6 @@ void BossJump::Render()
 
 void BossJump::Exit()
 {
+	boss->rigidbody.SetGravity(boss->gravity);
 	boss->isJumping = false;
 }

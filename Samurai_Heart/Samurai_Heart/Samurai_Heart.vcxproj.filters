@@ -34,6 +34,12 @@
     <Filter Include="헤더 파일\PlayerStateFSM">
       <UniqueIdentifier>{2b031964-e127-4a68-9ca1-f4e4aa05356b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\BossStateFSM">
+      <UniqueIdentifier>{2fab9614-61de-43c9-a5b7-4935c2f59ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\BossStateFSM">
+      <UniqueIdentifier>{19b75f55-3956-4c18-98e1-bf655c2bace4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameApp.h">
@@ -111,6 +117,12 @@
     <ClInclude Include="WallJump.h">
       <Filter>헤더 파일\PlayerStateFSM</Filter>
     </ClInclude>
+    <ClInclude Include="BossBaseState.h">
+      <Filter>헤더 파일\BossStateFSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BossIdle.h">
+      <Filter>헤더 파일\BossStateFSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -175,6 +187,9 @@
     </ClCompile>
     <ClCompile Include="WallJump.cpp">
       <Filter>소스 파일\PlayerStateFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="BossIdle.cpp">
+      <Filter>소스 파일\BossStateFSM</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

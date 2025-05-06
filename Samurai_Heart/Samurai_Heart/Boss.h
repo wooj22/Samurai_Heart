@@ -7,6 +7,8 @@
 #include "Sprite.h"
 #include "AnimationClip.h"
 #include "Camera.h"
+#include "BossBaseState.h"
+#include "BossIdle.h"
 
 class Boss : public Object
 {
@@ -17,6 +19,9 @@ private:
 	};
 	BossState curBossState;
 	string tag = "Boss";
+
+	BossBaseState* curState;
+	BossBaseState* stateArr[6] = {};
 	
 	// [Transform]
 	Vector2 position;
@@ -89,6 +94,8 @@ public:
 	void AnimationInit();
 
 	// fsm
+	void FSMInt();
+	void ChangeState(BossState state);
 
 	// update
 	void UpdateTimer();
@@ -101,5 +108,8 @@ public:
 	Vector2 GetPosition() { return position; }
 	string GetTag() { return tag; }
 	BoxCollider GetCollider() { return collider; }
+
+	// fsm class
+	friend class BossIdle;
 };
 

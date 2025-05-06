@@ -4,6 +4,9 @@ void Boss::Start()
 {
 	SpriteInit();
 	AnimationInit();
+	FSMInt();
+
+	collider.SetTag(this->tag);
 }
 
 void Boss::Update() 
@@ -12,7 +15,9 @@ void Boss::Update()
 	UpdateSize();
 	UpdateScreenPos();
 
-	// ! fsm update logic
+	// fsm update
+	curState->ChangeStateLogic();
+	curState->UpdateLogic();
 
 	// rigidbody
 	UpdateGravity();
@@ -27,7 +32,8 @@ void Boss::Render()
 {
 	collider.DrawCollider();
 
-	// ! fsm update logic
+	// fsm render
+	curState->Render();
 }
 
 
@@ -73,6 +79,25 @@ void Boss::AnimationInit() {
 
 	attack02Animation.LoadFrameDataFromFile("../Resource/Boss/Attack02.txt");
 	attack02Animation.SetFrameDuration(0.1f);
+}
+
+/*-------------------- FSM --------------------*/
+void Boss::FSMInt() {
+	// fsm state class µî·Ï
+	stateArr[IDLE] = new BossIdle(this);
+
+	// state set
+	curBossState = IDLE;
+	curState = stateArr[curBossState];
+	ChangeState(curBossState);
+}
+
+void Boss::ChangeState(BossState newState) {
+	if (curState) curState->Exit();
+
+	curBossState = newState;
+	curState = stateArr[curBossState];
+	curState->Enter();
 }
 
 /*-------------------- Update --------------------*/

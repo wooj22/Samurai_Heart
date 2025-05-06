@@ -16,7 +16,7 @@ void Player::Update()
 	UpdateSize();
 	UpdateScreenPos();
 
-	// fsm state update
+	// fsm update
 	curState->ChangeStateLogic();
 	curState->UpdateLogic();
 

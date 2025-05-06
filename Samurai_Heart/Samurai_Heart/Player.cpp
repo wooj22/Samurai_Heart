@@ -31,7 +31,7 @@ void Player::Update()
 	collider.UpdateScreenCollider(screenPosition, width, height);
 
 	// debug
-	PlayerDebug();
+	//PlayerDebug();
 }
 
 void Player::Render()
@@ -444,7 +444,7 @@ const char* Player::PlayerStateToString(PlayerState state)
 	switch (state)
 	{
 	case IDLE: return "Idle";
-	case RUN: return "Move";
+	case RUN: return "RUN";
 	case JUMP: return "Jump";
 	case DASH: return "Dash";
 	case DEFENSE: return "Defense";

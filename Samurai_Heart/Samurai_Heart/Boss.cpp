@@ -30,6 +30,9 @@ void Boss::Update()
 	// collider
 	collider.UpdateCollider(position, width, height);
 	collider.UpdateScreenCollider(screenPosition, width, height);
+
+	// debug
+	BossDebug();
 }
 
 void Boss::Render() 
@@ -182,13 +185,6 @@ void Boss::TakeDamage(int damage)
 	this->hp -= damage;
 	isHit = true;
 
-	// hit count
-	hitCount++;
-	if (hitCount >= hitCountLimit) {
-		hitCount = 0;
-		ChangeState(JUMP);
-	}
-
 	// player chage
 	player->ChargeUp();
 	
@@ -201,8 +197,18 @@ void Boss::TakeDamage(int damage)
 		ChangeState(DIE);
 	}
 	else {
-		ChangeState(HIT);
+		// hit count
+		hitCount++;
+		if (hitCount >= hitCountLimit) {
+			ChangeState(JUMP);
+			hitCount = 0;
+		}
+		else {
+			ChangeState(HIT);
+		}
 	}
+
+	
 
 	// debug
 	char hitBuffer[128];
@@ -213,4 +219,49 @@ void Boss::TakeDamage(int damage)
 void Boss::Death() 
 {
 
+}
+
+
+// debug
+float b_debugtimer = 0;
+float b_debugCooltime = 0.2f;
+
+void Boss::BossDebug() 
+{
+	b_debugtimer += TimeManager::Get().GetDeltaTime();
+
+	if (b_debugtimer >= b_debugCooltime)
+	{
+		OutputDebugStringA("---- Boss Debug ----\n");
+
+		// State
+		std::string stateInfo = std::string("[Boss State] ") + BossStateToString(curBossState) + "\n";
+		OutputDebugStringA(stateInfo.c_str());
+
+		// Hp
+		char hpBuffer[123];
+		sprintf_s(hpBuffer, "hp : %d\n", hp);
+		OutputDebugStringA(hpBuffer);
+
+		// hit count (jump)
+		char hitBuffer[123];
+		sprintf_s(hitBuffer, "hit count : %d\n", hitCount);
+		OutputDebugStringA(hitBuffer);
+
+		b_debugtimer = 0;
+	}
+}
+
+const char* Boss::BossStateToString(BossState state)
+{
+	switch (state)
+	{
+	case IDLE: return "Idle";
+	case RUN: return "RUN";
+	case JUMP: return "Jump";
+	case ATTACK: return "Attack";
+	case HIT: return "Hit";
+	case DIE: return "Die";
+	default: return "Unknown";
+	}
 }

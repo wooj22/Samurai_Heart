@@ -5,6 +5,7 @@ void BossJump::Enter()
 {
 	// flag
 	boss->isJumping = true;
+	boss->isGround = false;
 
 	// sprite & animation set
 	boss->currentSprite = &boss->jumpUpSprite;
@@ -14,7 +15,7 @@ void BossJump::Enter()
 	boss->rigidbody.SetVelocityY(-boss->jumpPower);
 
 	// 플레이어 반대방향으로 날아가기
-	boss->rigidbody.SetVelocityX(boss->speed * 100.f * -boss->direction);
+	boss->rigidbody.SetVelocityX(boss->speed * 2.0f * -boss->direction);
 }
 
 void BossJump::ChangeStateLogic()
@@ -51,7 +52,7 @@ void BossJump::Render()
 {
 	// animation render
 	RenderManager::Get().DrawImageFilp(
-		boss->currentSprite->GetBitmap(), boss->direction,
+		boss->currentSprite->GetBitmap(), -boss->direction,
 		boss->screenPosition.x - boss->width / 2, boss->screenPosition.y - boss->height / 2,
 		boss->currentSprite->GetFrameRect().X, boss->currentSprite->GetFrameRect().Y,
 		boss->currentSprite->GetFrameRect().Width, boss->currentSprite->GetFrameRect().Height);

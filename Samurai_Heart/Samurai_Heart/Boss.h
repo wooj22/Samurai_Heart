@@ -135,6 +135,10 @@ public:
 	string GetTag() { return tag; }
 	BoxCollider GetCollider() { return collider; }
 
+	// debug
+	void BossDebug();
+	const char* BossStateToString(BossState state);
+
 	// fsm class
 	friend class BossIdle;
 	friend class BossRun;

@@ -2,6 +2,7 @@
 #include "../GameEngineLib/Scene.h"
 
 class Player;
+class Boss;
 class Map;
 class Background;
 class Prop;
@@ -21,6 +22,8 @@ public:
 
 private:
 	Player* player;
+	Boss* boss;
+
 	Map* playMap;
 	Background* backImage1;
 	Background* backImage2;

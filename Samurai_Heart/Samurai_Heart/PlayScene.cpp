@@ -1,6 +1,7 @@
 #include "PlayScene.h"
 #include "GameApp.h"
 #include "Player.h"
+#include "Boss.h"
 #include "Map.h"
 #include "../GameEngineLib/framework.h"
 
@@ -14,6 +15,10 @@ void PlayScene::Start() {
 	// player
 	player = CreateObject<Player>();
 	player->SetPosition(Vector2(100, 300));
+
+	// boss
+	boss = CreateObject<Boss>();
+	boss->SetPosition(Vector2(300, 150));
 
 	// camera
 	Camera::Get().SetSize(800.f, 600.f);
@@ -32,6 +37,7 @@ void PlayScene::Update() {
 
 	// collision - ground
 	player->isCollision(ground->GetCollider());
+	boss->isCollision(ground->GetCollider());
 
 	// collision - wall
 	if (player->isCollision(wall1->GetCollider()) ||

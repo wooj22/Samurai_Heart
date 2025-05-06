@@ -21,8 +21,6 @@ void Player::Update()
 	curState->UpdateLogic();
 
 	// rigidbody
-	// 기본적으로 중력을 update하며 각 state에서 중력값을 setting
-	// 이동 코드에 따라 velocity값을 setting하여 아래 로직에서 position에 더해짐
 	UpdateGravity();
 	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
 
@@ -332,7 +330,7 @@ void Player::TakeDamage(int damage)
 
 		// debug
 		char hitBuffer[128];
-		sprintf_s(hitBuffer, "player Hit! [hp] : %d\n", hp);
+		sprintf_s(hitBuffer, "# player Hit! [hp] : %d\n", hp);
 		OutputDebugStringA(hitBuffer);
 	}
 }

@@ -81,6 +81,7 @@ void Boss::AnimationInit() {
 	attack02Animation.SetFrameDuration(0.1f);
 }
 
+
 /*-------------------- FSM --------------------*/
 void Boss::FSMInt() {
 	// fsm state class 등록
@@ -99,6 +100,7 @@ void Boss::ChangeState(BossState newState) {
 	curState = stateArr[curBossState];
 	curState->Enter();
 }
+
 
 /*-------------------- Update --------------------*/
 void Boss::UpdateTimer() 
@@ -121,5 +123,58 @@ void Boss::UpdateGravity()
 {
 	if (!isGround)
 		rigidbody.UpdateGravity(TimeManager::Get().GetDeltaTime());
+
+}
+
+
+/*-------------------- Event --------------------*/
+bool Boss::isCollision(BoxCollider other) 
+{
+	string otherTag = other.GetTag();
+
+	// isGround
+	if (otherTag == "Ground")
+	{
+		if (this->collider.isCollision(other)) {
+			this->isGround = true;
+			rigidbody.SetVelocityY(0);
+		}
+		else {
+			this->isGround = false;
+		}
+
+		return isGround;
+	}
+
+	return this->collider.isCollision(other);
+}
+
+void Boss::TakeDamage(int damage) 
+{
+	// hit 상태인동안은 무적 (HIT STATE 제어)
+	if (!isHit) {
+		this->hp -= damage;
+		isHit = true;
+
+		if (this->hp <= 0)
+		{
+			hp = 0;
+			isDie = true;
+			this->Death();
+			//ChangeState(DIE);
+		}
+		else {
+			//ChangeState(HIT);
+		}
+
+		// debug
+		char hitBuffer[128];
+		sprintf_s(hitBuffer, "# boss Hit! [hp] : %d\n", hp);
+		OutputDebugStringA(hitBuffer);
+	}
+}
+
+void Boss::Death() 
+{
 
 }

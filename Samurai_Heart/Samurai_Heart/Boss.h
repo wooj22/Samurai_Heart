@@ -103,6 +103,11 @@ public:
 	void UpdateScreenPos();
 	void UpdateGravity();
 
+	// boss event
+	bool isCollision(BoxCollider other);
+	void TakeDamage(int damage);
+	void Death();
+
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }
 	Vector2 GetPosition() { return position; }

@@ -50,9 +50,10 @@ public:
 	void DrawTextS(const string& text, float posX, float posY);
 	
 	void DrawRect(Vector2 pos, float width, float height, Color color);
+	void DrawFadeRect(BYTE alpha);
 	void DrawBackToFront();
 
-	// Debug
+	// Debug (Å×µÎ¸®)
 	void DrawBox(Vector2 minPos, float width, float height);
 };
 

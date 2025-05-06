@@ -138,11 +138,19 @@ void RenderManager::DrawTextS(const std::string& text, float posX, float posY) {
 	TextOutA(backBufferDC, posX, posY, text.c_str(), static_cast<int>(text.length()));
 }
 
-// Draw Rect (full)
+// Draw Rect (fill)
 void RenderManager::DrawRect(Vector2 pos, float width, float height, Color color)
 {
 	SolidBrush brush(color);
 	backBufferGraphics->FillRectangle(&brush, pos.x, pos.y, width, height);
+}
+
+// Draw Fade Fect
+void RenderManager::DrawFadeRect(BYTE alpha)
+{
+	Graphics g(backBufferDC);
+	SolidBrush brush(Color(alpha, 0, 0, 0)); // 알파 있는 검은색
+	g.FillRectangle(&brush, 0, 0, width, height);
 }
 
 /// Back -> Front copy

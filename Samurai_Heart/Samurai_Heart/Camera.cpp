@@ -25,16 +25,45 @@ Vector2 Camera::WorldToCameraPos(Vector2 worldPos) {
     return Vector2(camX, camY);
 }
 
-// 컬링 여부
-bool Camera::IsInView(Vector2 worldPos)
-{
-    float left = position.x - width / 2.0f;
-    float right = position.x + width / 2.0f;
-    float top = position.y - height / 2.0f;
-    float bottom = position.y + height / 2.0f;
 
-    return (worldPos.x >= left && worldPos.x <= right &&
-        worldPos.y >= top && worldPos.y <= bottom);
+// 컬링 (center)
+bool Camera::IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objHeight)
+{
+    float halfCamW = width / 2.f;
+    float halfCamH = height / 2.f;
+
+    float camLeft = position.x - halfCamW;
+    float camRight = position.x + halfCamW;
+    float camTop = position.y - halfCamH;
+    float camBottom = position.y + halfCamH;
+
+    float objLeft = worldCenterPos.x - objWidth / 2.f;
+    float objRight = worldCenterPos.x + objWidth / 2.f;
+    float objTop = worldCenterPos.y - objHeight / 2.f;
+    float objBottom = worldCenterPos.y + objHeight / 2.f;
+
+    return !(objRight < camLeft || objLeft > camRight ||
+        objBottom < camTop || objTop > camBottom);
+}
+
+// 컬링 (left, top)
+bool Camera::IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float objHeight)
+{
+    float halfCamW = width / 2.f;
+    float halfCamH = height / 2.f;
+
+    float camLeft = position.x - halfCamW;
+    float camRight = position.x + halfCamW;
+    float camTop = position.y - halfCamH;
+    float camBottom = position.y + halfCamH;
+
+    float objLeft = worldTopLeftPos.x;
+    float objRight = worldTopLeftPos.x + objWidth;
+    float objTop = worldTopLeftPos.y;
+    float objBottom = worldTopLeftPos.y + objHeight;
+
+    return !(objRight < camLeft || objLeft > camRight ||
+        objBottom < camTop || objTop > camBottom);
 }
 
 // debug

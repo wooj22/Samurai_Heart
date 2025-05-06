@@ -31,7 +31,8 @@ public:
 
     void FollowPlayer(Player* player, Map* map);
     Vector2 WorldToCameraPos(Vector2 worldPos);
-    bool IsInView(Vector2 worldPos);
+    bool IsInViewByCenter(Vector2 worldCenterPos, float objWidth, float objHeight);
+    bool IsInViewByTopLeft(Vector2 worldTopLeftPos, float objWidth, float objHeight);
 
     // debug
     void DebugPosition();

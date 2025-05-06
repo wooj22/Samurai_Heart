@@ -24,7 +24,10 @@ void Player::Update()
 	// rigidbody
 	UpdateGravity();
 	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
-	//if (isGround) position.y--;
+	
+	// ¸Ê °æ°è Á¦¾î
+	if (position.x <= mapPosXMin) position.x = 0 + width/2;
+	if (position.x >= mapWidth) position.x = mapWidth - width/2;
 
 	// collider
 	collider.UpdateCollider(position, width, height);

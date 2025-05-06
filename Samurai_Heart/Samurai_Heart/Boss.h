@@ -46,6 +46,9 @@ private:
 	float width;
 	float height;
 
+	float mapPosXMin = 0;
+	float mapWidth;
+
 	// [Boss stat]
 	int hp = 3000;
 	int maxHp = 3000;
@@ -57,7 +60,7 @@ private:
 	// [Boss Ai data]
 	float traceLimit = 1000.f;
 	float attackLimit = 100.f;
-	int hitCountLimit = 3;	// 10번 공격받으면 한번 도망치기
+	int hitCountLimit = 10;	// 10번 공격받으면 한번 도망치기
 
 	// [Boss flag]
 	bool isDie = false;
@@ -131,6 +134,7 @@ public:
 
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }
+	void SetMapWidth(float width) { mapWidth = width; }
 	Vector2 GetPosition() { return position; }
 	string GetTag() { return tag; }
 	BoxCollider GetCollider() { return collider; }

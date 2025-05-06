@@ -44,6 +44,9 @@ private:
 	Vector2 screenPosition;
 	float width;
 	float height;
+	
+	float mapPosXMin = 0;
+	float mapWidth;
 
 	// [player stat]
 	int		hp = 100;
@@ -181,9 +184,10 @@ public:
 
 	// boss set
 	void SetBoss(Boss* b) { boss = b; }
-
+	
 	// get & set
 	void SetPosition(Vector2 pos) { position = pos; }
+	void SetMapWidth(float width) { mapWidth = width; }
 	Vector2 GetPosition() { return position; }
 	string GetTag() { return tag; }
 	BoxCollider GetCollider() { return collider; }

@@ -27,12 +27,16 @@ void Boss::Update()
 	UpdateGravity();
 	position += rigidbody.GetVelocity() * TimeManager::Get().GetDeltaTime();
 
+	// ¸Ê °æ°è Á¦¾î
+	if (position.x <= mapPosXMin) position.x = 0 + width / 2;
+	if (position.x >= mapWidth) position.x = mapWidth - width / 2;
+
 	// collider
 	collider.UpdateCollider(position, width, height);
 	collider.UpdateScreenCollider(screenPosition, width, height);
 
 	// debug
-	BossDebug();
+	//BossDebug();
 }
 
 void Boss::Render() 

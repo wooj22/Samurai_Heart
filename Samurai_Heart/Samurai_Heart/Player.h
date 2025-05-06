@@ -17,6 +17,7 @@
 #include "SpecialAttack.h"
 #include "Hit.h"
 #include "Die.h"
+#include "WallSlide.h"
 
 class Player : public Object
 {
@@ -45,7 +46,7 @@ private:
 	int 	power = 10;
 	float	speed = 200.f;
 	float   dashSpeed = 500.f;
-	float   wallSlideSpeed = 100.f;
+	float   wallSlideSpeed = 50.f;
 	float	jumpPower = 600.0f;
 	float   defecseAverage = 0.2f;		// defense상태일때 hitDamage * 0.2f
 	float   gravity = 500.f;
@@ -189,5 +190,6 @@ public:
 	friend class SpecialAttack;
 	friend class Hit;
 	friend class Die;
+	friend class WallSlide;
 };
 

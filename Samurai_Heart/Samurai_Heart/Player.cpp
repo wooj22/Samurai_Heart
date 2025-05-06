@@ -123,6 +123,7 @@ void Player::FSMInt()
 	stateArr[SPECIAL_ATTACK] = new SpecialAttack(this);
 	stateArr[HIT] = new Hit(this);
 	stateArr[DIE] = new Die(this);
+	stateArr[WALL_SLIDE] = new WallSlide(this);
 
 	// state set
 	curPlayerState = IDLE;
@@ -354,7 +355,7 @@ void Player::PlayerDebug() {
 	debugtimer += TimeManager::Get().GetDeltaTime();
 
 	if (debugtimer >= debugCooltime) {
-		OutputDebugStringA("---- Plyaer Debug ----");
+		OutputDebugStringA("---- Plyaer Debug ----\n");
 		// 현재 플레이어의 State
 		std::string stateInfo = std::string("[Player State] ") + PlayerStateToString(curPlayerState) + "\n";
 		OutputDebugStringA(stateInfo.c_str());

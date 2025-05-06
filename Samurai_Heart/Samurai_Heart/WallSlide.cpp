@@ -1,37 +1,34 @@
-#include "Jump.h"
-#include <windows.h>
+﻿#include "WallSlide.h"
 
-void Jump::Enter() {
-	OutputDebugStringA("[Player] Jump Enter\n");
-
-	// flag set
-	player->isJumping = true;
-	player->isGround = false;
+void WallSlide::Enter() {
+	OutputDebugStringA("[Player] WallSlide Enter\n");
 
 	// sprite & animation set
-	player->currentSprite = &player->jumpSprite;
-	player->currentAnimation = &player->jumpAnimation;
+	player->currentSprite = &player->idleSprite;
+	player->currentAnimation = &player->idleAnimation;
 
-	// jump (1ȸ)
-	player->rigidbody.SetVelocityY(-player->jumpPower);
+	// slide
+	player->rigidbody.UseGravity(false);
+	player->rigidbody.SetVelocityX(0);
+	player->rigidbody.SetVelocityY(player->wallSlideSpeed);
 }
 
-void Jump::ChangeStateLogic() {
+void WallSlide::ChangeStateLogic() {
 	// idle
 	if (player->isGround) player->ChangeState(player->IDLE);
 
-	// wall
-	if (player->isWall) player->ChangeState(player->WALL_SLIDE);
+	// wall jump
+
 }
 
-void Jump::UpdateLogic() {
+void WallSlide::UpdateLogic() {
 	// animation sprite update
 	player->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = player->currentAnimation->GetCurrentFrame();
 	player->currentSprite->SetFrameRect(currentFrame);
 }
 
-void Jump::Render() {
+void WallSlide::Render() {
 	// animation render
 	RenderManager::Get().DrawImage(
 		player->currentSprite->GetBitmap(),
@@ -40,9 +37,8 @@ void Jump::Render() {
 		player->width, player->height);
 }
 
-void Jump::Exit() {
-	// flag set
-	player->isJumping = false;
+void WallSlide::Exit() {
+	player->rigidbody.UseGravity(true);
 
-	OutputDebugStringA("[Player] Jump Exit\n");
+	OutputDebugStringA("[Player] WallSlide Exit\n");
 }

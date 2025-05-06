@@ -18,7 +18,9 @@ void WallJump::Enter()
 	player->currentSprite->SetFullFrameRect();
 
 	// jump
-	player->rigidbody.SetVelocityY(-player->jumpPower);
+	player->rigidbody.SetVelocityY(-player->jumpPower);	
+	player->rigidbody.SetVelocityX(player->speed * 1.2f * 
+		-player->wallDirection);	// wall의 반대 방향
 }
 
 void WallJump::ChangeStateLogic()
@@ -35,12 +37,6 @@ void WallJump::ChangeStateLogic()
 void WallJump::UpdateLogic()
 {
 	timer += TimeManager::Get().GetDeltaTime();
-
-	// jump x move
-	if (player->MoveLKey)
-		player->rigidbody.SetVelocityX(-player->speed * 1.2f);
-	if (player->MoveRKey)
-		player->rigidbody.SetVelocityX(player->speed * 1.2f);
 }
 
 void WallJump::Render()

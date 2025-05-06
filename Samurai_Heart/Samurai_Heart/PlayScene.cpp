@@ -88,11 +88,11 @@ void PlayScene::Start() {
 	// wall
 	wall1 = CreateObject<Wall>();
 	wall1->Init(L"../Resource/Map/Ground/Wall.png",
-		Vector2(0, 410));
+		Vector2(100, 410));
 
 	wall2 = CreateObject<Wall>();
 	wall2->Init(L"../Resource/Map/Ground/Wall.png",
-		Vector2(350, 410));
+		Vector2(550, 410));
 
 	// player
 	player = CreateObject<Player>();

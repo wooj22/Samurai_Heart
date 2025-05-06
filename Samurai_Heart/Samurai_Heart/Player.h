@@ -71,6 +71,9 @@ private:
 	bool isMpEmpty = false;
 	bool isChargeMax = true;		// test용 (false로 바꾸기)
 
+	// controll
+	int wallDirection = 0;			// -1 left, 1 right
+
 	// [cool time & timer]
 	float attackCoolTime = 0.5f;
 	float attackTimer = 0.f;
@@ -79,7 +82,7 @@ private:
 	float dashTime = 0.3f;				// dash 유지시간
 	float dashTimer = 0.f;				// dash 유지 체크 타이머
 	float hitInvincibilityTime = 0.5f;	// 무적타임, hit 주기
-	float  hitInvincibilityTimer = 0.f;
+	float hitInvincibilityTimer = 0.f;
 
 	// [dash cheak]
 	float lastLeftInputTime = -1.0f;     // 마지막 왼쪽 키 입력 시간

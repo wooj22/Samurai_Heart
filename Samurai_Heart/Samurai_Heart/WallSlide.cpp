@@ -7,6 +7,10 @@ void WallSlide::Enter() {
 	player->currentSprite = &player->wallSlideSprite;
 	player->currentAnimation = &player->wallSlideAnimation;
 
+	// wall direction
+	float x = player->rigidbody.GetVelocityX();
+	player->wallDirection = x<0 ? -1 : 1;
+
 	// slide
 	player->rigidbody.UseGravity(false);
 	player->rigidbody.SetVelocityX(0);

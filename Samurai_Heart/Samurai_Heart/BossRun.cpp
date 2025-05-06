@@ -10,11 +10,14 @@ void BossRun::Enter()
 
 void BossRun::ChangeStateLogic()
 {
-
+	// idle
+	if (boss->curDist < boss->traceLimit) boss->ChangeState(boss->IDLE);
 }
 
 void BossRun::UpdateLogic()
 {
+	
+
 	// animation sprite update
 	boss->currentAnimation->UpdateFrame(TimeManager::Get().GetDeltaTime());
 	Frame currentFrame = boss->currentAnimation->GetCurrentFrame();

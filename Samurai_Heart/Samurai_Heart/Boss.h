@@ -49,7 +49,7 @@ private:
 	float gravity = 700.f;
 
 	// [Boss Ai data]
-	float traceLimit = 300.f;
+	float traceLimit = 1000.f;
 	float attackLimit = 150.f;
 	int jumpHpLimit = 10;	// 10번 공격받으면 한번 도망치기
 
@@ -60,7 +60,7 @@ private:
 	bool isJumping = false;
 
 	// [Controll]
-	int lastDirection = 0;
+	int direction = 0;	// player 방향 -1 left, 1 right
 	float curDist = 0;	// player와의 거리
 
 	float attackCoolTime = 0.5f;		
@@ -115,6 +115,8 @@ public:
 	void UpdateSize();
 	void UpdateScreenPos();
 	void UpdateGravity();
+	void UpdatePlayerDist();
+	void UpdateDirection();
 
 	// boss event
 	bool isCollision(BoxCollider other);

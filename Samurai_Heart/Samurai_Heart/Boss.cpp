@@ -15,6 +15,8 @@ void Boss::Update()
 	UpdateTimer();
 	UpdateSize();
 	UpdateScreenPos();
+	UpdatePlayerDist();
+	UpdateDirection();
 
 	// fsm update
 	curState->ChangeStateLogic();
@@ -91,7 +93,7 @@ void Boss::FSMInt() {
 	stateArr[JUMP] = new BossJump(this);
 
 	// state set
-	curBossState = RUN;
+	curBossState = IDLE;
 	curState = stateArr[curBossState];
 	ChangeState(curBossState);
 }
@@ -129,6 +131,14 @@ void Boss::UpdateGravity()
 
 }
 
+void Boss::UpdatePlayerDist() {
+	curDist = this->position.Distance(player->GetPosition());
+}
+
+void Boss::UpdateDirection() {
+	direction =
+		this->position.x - player->GetPosition().x < 0 ? -1 : 1;
+}
 
 /*-------------------- Event --------------------*/
 bool Boss::isCollision(BoxCollider other) 

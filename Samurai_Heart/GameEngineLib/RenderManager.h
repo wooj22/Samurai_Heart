@@ -41,6 +41,8 @@ public:
 	void DrawImage(Bitmap* bitmap, float posX, float posY);
 	void DrawImage(Bitmap* image, float x, float y, float width, float height);
 	void DrawImage(Bitmap* bitmap, float posX, float posY, float srcX, float srcY, float srcW, float srcH);
+	
+	void DrawImage(Bitmap* image, int dir, float x, float y, float width, float height);
 	void DrawImageFilp(Bitmap* bitmap, int dir, float posX, float posY, float srcX, float srcY, float srcW, float srcH);
 	
 	void DrawTextC(const char* text, float posX, float posY);

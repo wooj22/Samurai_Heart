@@ -70,6 +70,27 @@ void RenderManager::DrawImage(Bitmap* bitmap, float posX, float posY, float srcX
 	backBufferGraphics->DrawImage(bitmap, destRect, srcRect.X, srcRect.Y, srcRect.Width, srcRect.Height, UnitPixel);
 }
 
+/// Image Draw Rect + Filp
+void RenderManager::DrawImage(Bitmap* image, int dir, float x, float y, float width, float height) {
+	// left 반전
+	if (dir == -1) {
+		// 좌우 반전: 기준점을 오른쪽 끝으로 이동 후 좌우 반전
+		backBufferGraphics->TranslateTransform(x + width, y);
+		backBufferGraphics->ScaleTransform(-1, 1); // X축만 반전
+
+		// 반전된 좌표계에서 (0, 0)에 그리기
+		backBufferGraphics->DrawImage(image, Rect(0, 0, width, height));
+
+		// 변환 초기화
+		backBufferGraphics->ResetTransform();
+	}
+	else {
+		// right (기본)
+		RectF destRect(x, y, width, height);
+		backBufferGraphics->DrawImage(image, destRect);
+	}
+}
+
 /// Image Draw with Atlas Frame + Filp
 void RenderManager::DrawImageFilp(Bitmap* bitmap, int dir, float posX, float posY, float srcX, float srcY, float srcW, float srcH) {
 	Rect srcRect(srcX, srcY, srcW, srcH);

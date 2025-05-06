@@ -17,7 +17,7 @@ private:
 
 public:
 	void InitUI(UI_Image* bossHp, UI_Image* playeHp, UI_Image* playerChage);
-	void InitDate(float maxBossHp, float maxPlayerHp, float maxPlayerCharge);
+	void InitDate(float i_maxBossHp, float i_maxPlayerHp, float i_maxPlayerCharge);
 	
 	void UpdateBossHP_Image(float bossHp);
 	void UpdatePlayerHP_Image(float playerHp);

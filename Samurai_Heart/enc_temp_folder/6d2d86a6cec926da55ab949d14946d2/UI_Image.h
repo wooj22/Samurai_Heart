@@ -26,6 +26,6 @@ public:
     void SetPosition(Vector2 pos);
     void SetSize(float w, float h);
     void SetSizeW(float w);
-    void SetWidthRatio(float fillAmount);
+    void SetWidthRatio(float ratio);
 };
 

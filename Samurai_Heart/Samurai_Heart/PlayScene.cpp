@@ -193,5 +193,4 @@ void PlayScene::CreateUI()
 
 	playerChage_Image = CreateObject<UI_Image>();
 	playerChage_Image->Init(Vector2(100, 370), 150, 15, Color::Blue);
-
 }

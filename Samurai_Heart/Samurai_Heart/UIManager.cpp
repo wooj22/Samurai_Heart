@@ -8,11 +8,11 @@ void UIManager::InitUI(UI_Image* bossHp, UI_Image* playeHp, UI_Image* playerChag
     playerChage_Image = playerChage;
 }
 
-void UIManager::InitDate(float maxBossHp, float maxPlayerHp, float maxPlayerCharge) 
+void UIManager::InitDate(float i_maxBossHp, float i_maxPlayerHp, float i_maxPlayerCharge)
 {
-    maxBossHp = maxBossHp;
-    maxPlayerHp = maxPlayerHp;
-    maxPlayerCharge = maxPlayerCharge;
+    maxBossHp = i_maxBossHp;
+    maxPlayerHp = i_maxPlayerHp;
+    maxPlayerCharge = i_maxPlayerCharge;
 }
 
 void UIManager::UpdateBossHP_Image(float bossHp) 

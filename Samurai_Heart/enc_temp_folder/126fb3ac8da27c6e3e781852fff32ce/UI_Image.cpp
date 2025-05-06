@@ -10,7 +10,7 @@ void UI_Image::Init(Vector2 pos, float w, float h, Color c)
     screenPosition = pos;
     width = w;
     height = h;
-    fillMax = w;
+    fillAmount = w;
     color = c;
 }
 
@@ -30,7 +30,7 @@ void UI_Image::SetSizeW(float w)
     width = w;
 }
 
-void UI_Image::SetWidthRatio(float fillAmount)
+void UI_Image::SetWidthRatio(float ratio)
 {
-    width = fillMax * fillAmount;
+    width = fillAmount * ratio;
 }

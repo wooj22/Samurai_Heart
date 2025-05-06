@@ -1,10 +1,27 @@
 #include "MenuScene.h"
 #include "GameApp.h"
+#include "Map.h"
 #include "../GameEngineLib/framework.h"
 
 /// Start
 void MenuScene::Start() {
 	OutputDebugStringA("MenuScene Start\n");
+
+	// map
+	menuMap = new Map(1550.f, 400.f, 1550.f, 400.f);
+
+	// background
+	backImage = CreateObject<Background>();
+	backImage->Init(L"../Resource/Map/Background/BackGround01.png",
+		Vector2(0, 0), menuMap);
+
+	// title
+	titleImage = CreateObject<Prop>();
+	titleImage->Init(L"../Resource/UI/Title.png",
+		Vector2(525, 0));
+
+	// camera
+	Camera::Get().SetSize(1550.f, 400.f);
 
 	__super::Start();
 }

@@ -26,9 +26,6 @@ void PlayScene::Start() {
 	player->SetBoss(boss);
 	boss->SetPlayer(player);
 
-	// camera
-	Camera::Get().SetSize(1550.f, 400.f);
-
 	__super::Start();
 }
 
@@ -39,7 +36,7 @@ void PlayScene::Update() {
 
 	// camera
 	Camera::Get().FollowPlayer(player, playMap);
-	Camera::Get().DebugPosition();
+	//Camera::Get().DebugPosition();
 
 	// collision - ground
 	player->isCollision(ground->GetCollider());
@@ -80,7 +77,7 @@ void PlayScene::Exit() {
 // Cerate Map
 void PlayScene::CreateMap() {
 	// play map
-	playMap = new Map(800.f, 600.f, 4000.f, 700.f);
+	playMap = new Map(1550.f, 400.f, 4000.f, 700.f);
 
 	// backgroun
 	backImage1 = CreateObject<Background>();

@@ -1,6 +1,10 @@
 #pragma once
 #include "../GameEngineLib/Scene.h"
 
+class Map;
+class Background;
+class Prop;
+
 class MenuScene : public Scene
 {
 public:
@@ -11,5 +15,10 @@ public:
 	void Update() override;
 	void Render() override;
 	void Exit() override;
+
+private:
+	Map* menuMap;
+	Background* backImage;
+	Prop* titleImage;
 };
 

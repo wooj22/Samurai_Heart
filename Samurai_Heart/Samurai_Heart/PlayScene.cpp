@@ -19,6 +19,7 @@ Prop* prop8;
 Prop* prop9;
 Prop* prop10;
 Ground* ground;
+Wall* wall;
 
 /// Start
 void PlayScene::Start() {
@@ -77,11 +78,15 @@ void PlayScene::Start() {
 	prop10->Init(L"../Resource/Map/Props/House01.png",
 		Vector2(3700, 234));
 
-
 	// ground
 	ground = CreateObject<Ground>();
 	ground->Init(L"../Resource/Map/Ground/Ground01.png",
 		Vector2(0, 600), playMap);
+
+	// wall
+	wall = CreateObject<Wall>();
+	wall->Init(L"../Resource/Map/Ground/Wall.png",
+		Vector2(0, 410));
 
 	// player
 	player = CreateObject<Player>();

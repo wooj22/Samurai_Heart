@@ -102,3 +102,33 @@ public:
     string GetTag() { return tag; }
     BoxCollider GetCollider() { return collider; }
 };
+
+/* Wall */
+class Wall : public Object {
+private:
+    string tag = "Wall";
+
+    // transform
+    Vector2 position;
+    Vector2 screenPosition;
+    float width, height;
+
+    // image
+    Bitmap* image;
+
+    // collider -> isWall cheak
+    BoxCollider collider;
+
+public:
+    Wall() = default;
+    ~Wall() { delete image; }
+
+    void Start() override;
+    void Update() override;
+    void Render() override;
+
+    void Init(const wchar_t* path, Vector2 pos);
+    void SetScreenPosition();
+    string GetTag() { return tag; }
+    BoxCollider GetCollider() { return collider; }
+};

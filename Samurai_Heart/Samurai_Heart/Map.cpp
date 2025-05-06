@@ -157,3 +157,50 @@ void Ground::SetScreenPosition()
 	screenPosition = Camera::Get().WorldToCameraPos(position);
 	imageScreenPosition = Camera::Get().WorldToCameraPos(imagePosition);
 }
+
+
+
+/*----------- Wall -----------*/
+void Wall::Start()
+{
+	collider.SetTag(this->tag);
+}
+
+void Wall::Update()
+{
+	SetScreenPosition();
+
+	// collider update
+	collider.UpdateCollider(position, width, height);
+	collider.UpdateScreenCollider(screenPosition, width, height);
+}
+
+void Wall::Render()
+{
+	// draw
+	RenderManager::Get().DrawImage(
+		image,
+		screenPosition.x - width/2, screenPosition.y - height/2,
+		width, height
+	);
+
+	// collider draw debug
+	collider.DrawCollider();
+}
+
+// Init
+void Wall::Init(const wchar_t* path, Vector2 pos)
+{
+	image = new Bitmap(path);
+
+	// image
+	width = image->GetWidth();
+	height = image->GetHeight() * 3.f;		// scaleing
+	position = pos;
+}
+
+// Set ScreenPositiona
+void Wall::SetScreenPosition()
+{
+	screenPosition = Camera::Get().WorldToCameraPos(position);;
+}

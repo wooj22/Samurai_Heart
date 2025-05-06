@@ -187,6 +187,7 @@ void Boss::TakeDamage(int damage)
 	if (!isHit) {
 		this->hp -= damage;
 		isHit = true;
+		player->ChargeUp();
 
 		if (this->hp <= 0)
 		{

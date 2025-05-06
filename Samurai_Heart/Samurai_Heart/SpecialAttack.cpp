@@ -23,9 +23,20 @@ void SpecialAttack::Enter()
 
 void SpecialAttack::ChangeStateLogic()
 {
-	// idle
-	if (player->specialAttackAnimation.IsFinished())
-		player->ChangeState(player->IDLE);
+	// 공격이 끝났을 때
+	if (player->specialAttackAnimation.IsFinished()) 
+	{
+		// attack
+		if (player->isAttackKey && player->isGround)
+			player->ChangeState(player->ATTACK);
+
+		// run
+		if (player->isMoveLKey || player->isMoveRKey)
+			player->ChangeState(player->RUN);
+		// idle
+		else
+			player->ChangeState(player->IDLE);
+	}	
 }
 
 void SpecialAttack::UpdateLogic() 

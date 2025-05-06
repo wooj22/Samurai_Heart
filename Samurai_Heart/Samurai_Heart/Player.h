@@ -47,7 +47,7 @@ private:
 
 	// [player stat]
 	int		hp = 100;
-	int		charge = 0;
+	int		charge = 100;
 	int 	power = 10;
 	int		specialAttackPower = 100;
 	float	speed = 200.f;
@@ -74,7 +74,7 @@ public:
 private:
 	bool isJumping = false;
 	bool isDash = false;
-	bool isChargeMax = true;		// test용 (false로 바꾸기)
+	bool isChargeMax = true;
 
 	// [direction controll]
 	int wallDirection = 0;			// -1 left, 1 right

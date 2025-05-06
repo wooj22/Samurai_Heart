@@ -12,6 +12,9 @@ void Attack::Enter()
 	comboStep = 0;
 	SetAttackAnimation(comboStep);
 	player->currentAnimation->Reset();
+
+	// attack
+	player->DoAttack(player->power);
 }
 
 void Attack::ChangeStateLogic()
@@ -19,12 +22,17 @@ void Attack::ChangeStateLogic()
 	// 공격 키가 안눌려있고 현재 애니메이션이 끝났을 때
 	if (!player->isAttackKey && player->currentAnimation->IsFinished())
 	{
+		// special attack
+		if (player->isSpecialAttackKey && player->isChargeMax && player->isGround)
+			player->ChangeState(player->SPECIAL_ATTACK);
+
 		// run
 		if (player->isMoveLKey || player->isMoveRKey)
 			player->ChangeState(player->RUN);
 		// idle
 		else
 			player->ChangeState(player->IDLE);
+
 	}
 }
 

@@ -71,7 +71,7 @@ private:
 
 	float attackCoolTime = 0.5f;		
 	float attackTimer = 0.f;
-	float hitInvincibilityTime = 0.5f;	// 公利鸥烙, hit 林扁
+	float hitInvincibilityTime = 0.2f;	// 公利鸥烙, hit 林扁
 	float hitInvincibilityTimer = 0.f;
 
 	// [Components]

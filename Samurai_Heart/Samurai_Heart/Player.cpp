@@ -264,7 +264,7 @@ void Player::UpdateGravity() {
 // Charge up hp
 void Player::ChargeUp() 
 {
-	this->charge += 5;
+	this->charge += 10;
 	if (this->charge >= chargeMax)
 	{
 		this->charge = chargeMax;
@@ -397,6 +397,11 @@ void Player::PlayerDebug() {
 		char wallBuffer[128];
 		sprintf_s(wallBuffer, "is Wall : %d\n", isWall);
 		OutputDebugStringA(wallBuffer);
+
+		// 현재 플레이어의 Charge
+		char chargeBuffer[123];
+		sprintf_s(chargeBuffer, "charge : %d (is Cahrge? : %d)\n", charge, isChargeMax);
+		OutputDebugStringA(chargeBuffer);
 
 		// currentAnimation의 프레임 정보
 		/*Frame currentFrame = currentAnimation->GetCurrentFrame();

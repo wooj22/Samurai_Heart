@@ -51,10 +51,10 @@ private:
 	float mapWidth;
 
 	// [Boss stat]
-	int hp = 1500;
-	int maxHp = 1500;
+	int hp = 3000;
+	int maxHp = 3000;
 	int power = 30;
-	float speed = 150.f;
+	float speed = 400.f;
 	float jumpPower = 1000.f;
 	float gravity = 700.f;
 

@@ -4,7 +4,8 @@
  - 작업 시간 : 약 4~50시간
  - 사용 언어 : C++
  - 활용 라이브러리 : Windows API, Gdi+
- - 시연 영상 : 
+ - 시연 영상 : https://youtu.be/qg-SJ4g1zT0
+
 
 
 [구현 기술]

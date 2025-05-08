@@ -13,6 +13,7 @@
  - 다형성을 이용한 게임 프레임 워크 (Scene, Object => Start(), Upate(), Render(), Exit())
  - 카메라 (World position, Screen Position, Culling)
  - Rigidbody, BoxCollider, Sprite, AnimationCilp (atlas frame change)
+ - 더블버퍼링
  - 다형성 개념을 활용한 추상클래스 FSM으로 Player, Boss 구현
 
 

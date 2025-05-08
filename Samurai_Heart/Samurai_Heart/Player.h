@@ -59,7 +59,7 @@ private:
 	float   wallSlideSpeed = 50.f;
 	float	specialAttackSpeed = 700.f;
 	float	jumpPower = 600.0f;
-	float   defecseAverage = 0.2f;		// defense상태일때 hitDamage * 0.2f
+	float   defecseAverage = 0.1f;		// defense상태일때 hitDamage 절감
 	float   gravity = 700.f;
 
 	// [player gauge] - hp, charge

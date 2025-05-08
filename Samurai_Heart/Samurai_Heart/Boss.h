@@ -55,13 +55,13 @@ private:
 	int maxHp = 3000;
 	int power = 30;
 	float speed = 400.f;
-	float jumpPower = 1000.f;
+	float jumpPower = 800.f;
 	float gravity = 700.f;
 
 	// [Boss Ai data]
-	float traceLimit = 700.f;
+	float traceLimit = 1000.f;
 	float attackLimit = 100.f;
-	int hitCountLimit = 10;		// 10번 공격받으면 한번 도망치기
+	int hitCountLimit = 20;		// 20번 공격받으면 한번 도망치기
 
 	// [Boss flag]
 	bool isDie = false;

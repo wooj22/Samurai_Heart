@@ -5,6 +5,9 @@ void Dash::Enter()
 {
 	OutputDebugStringA("[Player] Dash Enter\n");
 
+	// flag
+	player->isDash = true;
+
 	// sprite set
 	player->currentSprite = &player->dashSprite;
 	player->currentSprite->SetFullFrameRect();

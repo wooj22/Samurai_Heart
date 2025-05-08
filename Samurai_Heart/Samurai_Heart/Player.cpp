@@ -352,8 +352,8 @@ void Player::DoAttack(int damage) {
 // Hit event
 void Player::TakeDamage(int damage) 
 {
-	// hit 상태인동안은 무적 (HIT STATE 제어)
-	if (!isHit) {
+	// hit 상태인동안은 무적 (HIT STATE 제어), dash중일때도 무적
+	if (!isHit && !isDash) {
 
 		// damage
 		if(isDefense) this->hp -= damage* defecseAverage;

@@ -24,7 +24,7 @@ void BossJump::ChangeStateLogic()
 void BossJump::UpdateLogic()
 {
 	// 플레이어 반대방향으로 날아가기
-	boss->rigidbody.SetVelocityX(boss->speed * 2.0f * -boss->direction);
+	boss->rigidbody.SetVelocityX(boss->speed * -boss->direction);
 
 	// up & down sprite upate
 	float velocityY = boss->rigidbody.GetVelocity().y;
